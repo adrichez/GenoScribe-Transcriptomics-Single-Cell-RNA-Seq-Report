@@ -1,0 +1,3 @@
+project_path: "/workspace/data/0101-EXT-25-Transcriptomics-Bulk-RNA-Seq"
+experiment_name: mary
+report_version: 1

@@ -3,18 +3,18 @@
     "report_data_sources": {
         "FastQC": {
             "all_sections": {
-                "PX_Cd0_Rep1_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/PX_Cd0_Rep1_R1_fastqc.zip",
-                "PX_Cd0_Rep1_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/PX_Cd0_Rep1_R2_fastqc.zip",
-                "PX_Cd0_Rep2_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/PX_Cd0_Rep2_R1_fastqc.zip",
-                "PX_Cd0_Rep2_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/PX_Cd0_Rep2_R2_fastqc.zip",
-                "PX_Cd0_Rep3_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/PX_Cd0_Rep3_R1_fastqc.zip",
-                "PX_Cd0_Rep3_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/PX_Cd0_Rep3_R2_fastqc.zip",
-                "WT_Cd0_Rep1_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/WT_Cd0_Rep1_R1_fastqc.zip",
-                "WT_Cd0_Rep1_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/WT_Cd0_Rep1_R2_fastqc.zip",
-                "WT_Cd0_Rep2_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/WT_Cd0_Rep2_R1_fastqc.zip",
-                "WT_Cd0_Rep2_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/WT_Cd0_Rep2_R2_fastqc.zip",
-                "WT_Cd0_Rep3_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/WT_Cd0_Rep3_R1_fastqc.zip",
-                "WT_Cd0_Rep3_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results/WT_Cd0_Rep3_R2_fastqc.zip"
+                "PX_Cd0_Rep1_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/PX_Cd0_Rep1_R1_fastqc.zip",
+                "PX_Cd0_Rep1_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/PX_Cd0_Rep1_R2_fastqc.zip",
+                "PX_Cd0_Rep2_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/PX_Cd0_Rep2_R1_fastqc.zip",
+                "PX_Cd0_Rep2_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/PX_Cd0_Rep2_R2_fastqc.zip",
+                "PX_Cd0_Rep3_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/PX_Cd0_Rep3_R1_fastqc.zip",
+                "PX_Cd0_Rep3_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/PX_Cd0_Rep3_R2_fastqc.zip",
+                "WT_Cd0_Rep1_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/WT_Cd0_Rep1_R1_fastqc.zip",
+                "WT_Cd0_Rep1_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/WT_Cd0_Rep1_R2_fastqc.zip",
+                "WT_Cd0_Rep2_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/WT_Cd0_Rep2_R1_fastqc.zip",
+                "WT_Cd0_Rep2_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/WT_Cd0_Rep2_R2_fastqc.zip",
+                "WT_Cd0_Rep3_R1": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/WT_Cd0_Rep3_R1_fastqc.zip",
+                "WT_Cd0_Rep3_R2": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results/WT_Cd0_Rep3_R2_fastqc.zip"
             }
         }
     },
@@ -200,7 +200,7 @@
             }
         }
     },
-    "report_creation_date": "2026-02-23, 16:07 UTC",
+    "report_creation_date": "2026-02-24, 08:48 UTC",
     "report_plot_data": {
         "fastqc_sequence_counts_plot": {
             "id": "fastqc_sequence_counts_plot",
@@ -26232,11 +26232,11 @@
     "config_subtitle": null,
     "config_title": null,
     "config_version": "1.33",
-    "config_output_dir": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6",
+    "config_output_dir": "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef",
     "config_sample_names_rename": [],
     "config_sample_names_rename_buttons": [],
     "config_analysis_dir_abs": [
-        "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/26/94e503510454755ac3dd033ae484c6/Pre_fastqc_results"
+        "/workspace/GenoScribe/02-pipelines/01-transcriptomics/01-bulk-rna-seq/work/5f/a30646ebcebcee93896829ca1983ef/Pre_fastqc_results"
     ],
     "report_saved_raw_data": {
         "multiqc_fastqc": {

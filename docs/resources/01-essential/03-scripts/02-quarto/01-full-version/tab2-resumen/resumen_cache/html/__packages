@@ -1,0 +1,11 @@
+jsonlite
+dplyr
+stringr
+glue
+fs
+purrr
+ggplot2
+tidyr
+plotly
+htmltools
+tibble

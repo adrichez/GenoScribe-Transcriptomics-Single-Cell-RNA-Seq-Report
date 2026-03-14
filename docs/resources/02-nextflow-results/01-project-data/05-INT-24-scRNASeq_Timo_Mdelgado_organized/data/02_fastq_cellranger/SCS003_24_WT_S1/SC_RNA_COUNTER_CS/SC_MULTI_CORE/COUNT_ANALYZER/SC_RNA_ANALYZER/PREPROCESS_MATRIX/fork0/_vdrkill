@@ -1,0 +1,28 @@
+{
+    "timestamp": "2024-11-14T21:02:11.085356393+01:00",
+    "paths": [
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/PREPROCESS_MATRIX/fork0/join-u51213656ca/files/cloupe_matrix_h5.h5",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/PREPROCESS_MATRIX/fork0/join-u51213656ca/files/preprocessed_matrix_h5.h5"
+    ],
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2024-11-14T21:00:10.408986872+01:00",
+            "DeltaBytes": 5990
+        },
+        {
+            "Timestamp": "2024-11-14T21:00:15.43604572+01:00",
+            "DeltaBytes": 51497888
+        },
+        {
+            "Timestamp": "2024-11-14T21:00:27.98176649+01:00",
+            "DeltaBytes": -26143975
+        },
+        {
+            "Timestamp": "2024-11-14T21:02:11.085356393+01:00",
+            "DeltaBytes": -25346154
+        }
+    ],
+    "count": 2,
+    "size": 51490129
+}

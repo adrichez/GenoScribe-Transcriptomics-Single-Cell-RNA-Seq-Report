@@ -1,0 +1,2 @@
+project_path: "/workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized"
+report_version: 1

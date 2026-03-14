@@ -1,0 +1,37 @@
+{
+    "timestamp": "2024-11-14T21:02:42.849785975+01:00",
+    "paths": [
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/chnk0-u51213656cb/files/metrics.pickle",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/chnk1-u51213656cb/files/metrics.pickle",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/chnk2-u51213656cb/files/metrics.pickle",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/chnk3-u51213656cb/files/metrics.pickle",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/chnk4-u51213656cb/files/metrics.pickle",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/chnk5-u51213656cb/files/metrics.pickle",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/join-u51213656c4/files/summary.json"
+    ],
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2024-11-14T21:00:04.843860404+01:00",
+            "DeltaBytes": 113382
+        },
+        {
+            "Timestamp": "2024-11-14T21:00:11.692315103+01:00",
+            "DeltaBytes": 147694732
+        },
+        {
+            "Timestamp": "2024-11-14T21:02:16.614681425+01:00",
+            "DeltaBytes": 146542
+        },
+        {
+            "Timestamp": "2024-11-14T21:02:22.15060654+01:00",
+            "DeltaBytes": -147510384
+        },
+        {
+            "Timestamp": "2024-11-14T21:02:42.849785975+01:00",
+            "DeltaBytes": -40340
+        }
+    ],
+    "count": 7,
+    "size": 147550724
+}

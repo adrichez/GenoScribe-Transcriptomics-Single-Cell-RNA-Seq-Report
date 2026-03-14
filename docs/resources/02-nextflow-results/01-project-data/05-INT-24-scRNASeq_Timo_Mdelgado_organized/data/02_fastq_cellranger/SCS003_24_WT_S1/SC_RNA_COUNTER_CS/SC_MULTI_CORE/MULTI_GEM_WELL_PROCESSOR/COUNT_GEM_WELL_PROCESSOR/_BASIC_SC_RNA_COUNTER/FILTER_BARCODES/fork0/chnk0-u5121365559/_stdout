@@ -1,0 +1,11 @@
+[stdout]
+Found recovered_cells = 3036 with loss = 0.004434642271341773
+Range empty barcodes: 45000 - 90000
+Max background UMIs: 46
+Number of candidate bcs: 4519
+Range candidate bc umis: 500, 5299
+Number of distinct N supplied: 2864
+Range of N: 4799
+Number of features: 22902
+....................................................................................................
+Max adjusted P-value: 0.01

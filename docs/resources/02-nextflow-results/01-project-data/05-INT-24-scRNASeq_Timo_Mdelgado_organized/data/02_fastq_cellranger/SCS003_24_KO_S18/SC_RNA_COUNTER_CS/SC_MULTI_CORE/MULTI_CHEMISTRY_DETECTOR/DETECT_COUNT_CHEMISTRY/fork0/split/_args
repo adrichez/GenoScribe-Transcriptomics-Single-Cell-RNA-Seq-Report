@@ -1,0 +1,51 @@
+{
+    "allowed_chems": [
+        "auto",
+        "custom",
+        "threeprime",
+        "fiveprime",
+        "SC3Pv1",
+        "SC3Pv2",
+        "SC3Pv3",
+        "SC3Pv3LT",
+        "SC3Pv3HT",
+        "SC3Pv4",
+        "SC5P-PE",
+        "SC5P-R2",
+        "SC5P-R2-v3",
+        "SC5P-R2-OH-v3",
+        "SC5PHT",
+        "SC-FB",
+        "ARC-v1"
+    ],
+    "chemistry_specs": {
+        "Gene Expression": "auto"
+    },
+    "custom_chemistry_def": null,
+    "feature_config": null,
+    "feature_reference": null,
+    "is_pd": false,
+    "multi_config": null,
+    "r1_length": null,
+    "r2_length": null,
+    "reference_path": "/mnt/beegfs/Bioinformatica/datasets/CellRanger/Mouse/refdata-gex-GRCm39-2024-A",
+    "sample_def": [
+        {
+            "fastq_id": null,
+            "fastq_mode": "ILMN_BCL2FASTQ",
+            "gem_group": null,
+            "lanes": null,
+            "library_type": "Gene Expression",
+            "read_path": "/mnt/beegfs/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads",
+            "sample_indices": [
+                "any"
+            ],
+            "sample_names": [
+                "SCS003_24_KO"
+            ],
+            "subsample_rate": null,
+            "target_set": null,
+            "target_set_name": null
+        }
+    ]
+}

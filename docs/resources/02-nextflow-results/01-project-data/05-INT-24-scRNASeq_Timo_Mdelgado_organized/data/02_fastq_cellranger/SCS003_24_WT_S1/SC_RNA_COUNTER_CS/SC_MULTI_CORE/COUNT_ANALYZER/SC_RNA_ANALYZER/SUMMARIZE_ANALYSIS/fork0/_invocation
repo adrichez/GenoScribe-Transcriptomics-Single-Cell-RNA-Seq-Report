@@ -1,0 +1,22 @@
+@include "rna/_sc_rna_analyzer_stages.mro"
+
+call SUMMARIZE_ANALYSIS(
+    matrix_h5                     = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/PREPROCESS_MATRIX/fork0/join-u51213656ca/files/preprocessed_matrix_h5.h5",
+    pca_h5                        = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_PCA/fork0/join-u51213656dc/files/pca_h5.h5",
+    clustering_h5                 = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/COMBINE_CLUSTERING/fork0/chnk0-u51213656fe/files/clustering_h5.h5",
+    diffexp_h5                    = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/join-u5121365700/files/diffexp_h5.h5",
+    tsne_h5                       = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_TSNE/fork0/join-u51213656ec/files/tsne_h5.h5",
+    umap_h5                       = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_UMAP/fork0/join-u51213656ec/files/umap_h5.h5",
+    pca_csv                       = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_PCA/fork0/join-u51213656dc/files/pca_csv",
+    clustering_csv                = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/COMBINE_CLUSTERING/fork0/chnk0-u51213656fe/files/clustering_csv",
+    diffexp_csv                   = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/join-u5121365700/files/diffexp_csv",
+    tsne_csv                      = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_TSNE/fork0/join-u51213656ec/files/tsne_csv",
+    umap_csv                      = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_UMAP/fork0/join-u51213656ec/files/umap_csv",
+    multi_genome_summary          = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_MULTIGENOME_ANALYSIS/fork0/join-u51213656dc/files/multi_genome_summary.json",
+    multi_genome_csv              = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_MULTIGENOME_ANALYSIS/fork0/join-u51213656dc/files/multi_genome_csv",
+    multi_genome_json             = "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_MULTIGENOME_ANALYSIS/fork0/join-u51213656dc/files/multi_genome_json",
+    is_multi_genome               = false,
+    chemistry_batch_correction    = false,
+    batch_score_before_correction = null,
+    batch_score_after_correction  = null,
+)

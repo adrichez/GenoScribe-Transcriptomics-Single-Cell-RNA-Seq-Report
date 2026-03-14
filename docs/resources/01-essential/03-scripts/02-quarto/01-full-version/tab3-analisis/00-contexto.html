@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>IPBLN Bioinformatics Report</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../../../">
+<script src="../../../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../../../site_libs/bootstrap/bootstrap-c27fce070f9e1faf5b65ec12c04f7688.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="shortcut icon" href="../../../../01-images/icons/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../../../../01-images/icons/favicon.ico">
+
+
+<link rel="stylesheet" href="../../../../../../resources/01-essential/03-scripts/03-css/styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../../../index.html">
+    <span class="navbar-title"><img class="brand-logo" src="../../../../../../resources/01-essential/01-images/icons/ipbln.png"> <a class="brand-text" href="https://www.ipb.csic.es/servicios/Bioinformatica/index.html">IPBLN</a></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab1-metodologia/metodologia.html"> <i class="bi bi-wrench" role="img">
+</i> 
+<span class="menu-text">Metodología</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab2-resumen/resumen.html"> <i class="bi bi-clipboard-data" role="img">
+</i> 
+<span class="menu-text">Resumen</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-bar-chart" role="img">
+</i> 
+ <span class="menu-text">Análisis</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-análisis">    
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/00-contexto.html">
+ <span class="dropdown-text">➤ Introducción contextual</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/01-revision-inicial.html">
+ <span class="dropdown-text">1. Revisión inicial de muestras y metadatos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/02-control-calidad.html">
+ <span class="dropdown-text">2. Control de calidad y filtrado (QC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/03-clustering.html">
+ <span class="dropdown-text">3. Reducción de dimensionalidad y clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/04-marcadores.html">
+ <span class="dropdown-text">4. Identificación de marcadores (clusters ciegos)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/05-anotacion.html">
+ <span class="dropdown-text">5. Anotación celular (automática y manual)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/06-agrupacion.html">
+ <span class="dropdown-text">6. Agrupación de poblaciones biológicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/07-expresion-diferencial.html">
+ <span class="dropdown-text">7. Expresión diferencial por condición (WT vs KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/08-enriquecimiento.html">
+ <span class="dropdown-text">8. Análisis funcional y de enriquecimiento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/09-extra.html">
+ <span class="dropdown-text">9. Análisis personalizados y ad hoc</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/10-conclusiones.html">
+ <span class="dropdown-text">10. Conclusiones y perspectivas</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IPBLN Bioinformatics Report</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  CHATBOT
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!-- Contenedor del chat -->
+<div id="chat-container">
+  <button id="chat-toggle"></button>
+  <div id="chat-box">
+    <div id="chat-info" class="chat-info">
+      <h1>
+        Mini Chat RAG (beta)
+      </h1>
+
+      <p>
+        ¡Hola! Soy <strong>Geni</strong>, el asistente inteligente de <strong>GenoScribe</strong>.  
+        Estoy aquí para ayudarte a explorar de forma interactiva el contenido de este informe bioinformático.
+      </p>
+
+      <p>
+        Cuando me haces una pregunta, primero intento reconocer si coincide con alguno de los patrones o expresiones que conozco.  
+        Si encuentro una coincidencia, te responderé directamente con una respuesta predefinida, diseñada para ser rápida, clara e incluso un poco ingeniosa.  
+        Si no reconozco el patrón, entonces activo mis herramientas de búsqueda: genero representaciones vectoriales (embeddings) y busco los fragmentos más relevantes entre varios documentos —incluyendo el propio informe, archivos PDF y HTML externos, y sesiones de preguntas y respuestas (QA).  
+        A partir de esa información, creo un resumen que intenta ofrecerte una respuesta coherente y útil basada en el contenido existente.
+      </p>
+
+      <p>
+        Se debe tener en cuenta que este entorno es experimental. No utilizo grandes modelos de lenguaje, por lo que algunas respuestas pueden ser aproximadas o incompletas.  
+        El objetivo principal es facilitar una visualización rápida, comprensible y reproducible de la información contenida en los documentos, permitiendo una exploración más dinámica del informe.
+      </p>
+
+      <p>
+        Actualmente, los resultados pueden variar en precisión, ya que empleo modelos ligeros y locales para asegurar que la aplicación funcione en cualquier entorno sin necesidad de servidores externos.  
+        Sin embargo, la estructura del sistema está preparada para mejorar notablemente su rendimiento en el futuro mediante la integración con modelos más avanzados o APIs externas.  
+        Para comenzar, simplemente escribe tu pregunta en el campo inferior y deja que yo me encargue del resto. ¡Prometo poner todo mi código en ello!
+      </p>
+    </div>
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" placeholder="Escribe tu pregunta...">
+    <button id="chat-send" title="Enviar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  IMPORTACIONES
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!-- Incluir Font Awesome -->
+<p><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"></p>
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  TAB 3: ANÁLISIS 16S | 0. CONTEXTO -->
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<div class="informe-titulo-tab">
+<h1>
+Pestaña
+</h1>
+<h2>
+Análisis Bioinformático Completo
+</h2>
+</div>
+<div class="informe-titulo-seccion-unique">
+<h1>
+Sección
+</h1>
+<h2>
+Introducción Contextual
+</h2>
+</div>
+<div class="flecha-abajo">
+<p>▼</p>
+</div>
+<div class="informe-resumen">
+<h2>
+Resumen
+</h2>
+<p>
+Esta pestaña tiene como propósito ofrecer una <strong>visión contextual y estructurada</strong> del análisis transcriptómico a nivel de célula única (<em>Single-Cell RNA-Seq</em>) ejecutado mediante la integración de <em>pipelines</em> primarios (como <code>Cell Ranger</code>) y el potente entorno analítico de <code>Seurat</code> en <code>R</code>. Actúa como una <strong>guía introductoria y mapa de navegación</strong>, describiendo el flujo de trabajo secuencial, la lógica subyacente y los contenidos interactivos que el investigador encontrará en cada uno de los módulos posteriores.
+</p>
+<p>
+A diferencia de la secuenciación masiva tradicional (donde la señal del tejido se promedia), este estudio disecciona la heterogeneidad celular absoluta. El informe documenta exhaustivamente cada hito del proceso: desde el riguroso filtrado de calidad célula a célula, la reducción de dimensionalidad y el descubrimiento de linajes, hasta el modelado estadístico del impacto de la mutación (WT vs KO) y su correspondiente traducción funcional.
+</p>
+<p>
+Esta arquitectura modular favorece una lectura progresiva y adaptada a distintos perfiles (técnicos, biológicos o clínicos). A continuación, se desglosa el contenido de los 10 bloques principales que conforman este informe:
+</p>
+<ul>
+<li>
+<strong>1. Revisión inicial de muestras y metadatos ⇒</strong> Punto de partida que certifica la trazabilidad del proyecto. Ofrece una visión de la organización del repositorio, la procedencia de los datos crudos y el diseño experimental, asegurando la consistencia antes del procesamiento técnico.
+</li>
+<li>
+<strong>2. Control de calidad y filtrado (QC) ⇒</strong> Evaluación técnica implacable a múltiples niveles. Comienza auditando las métricas de secuenciación primaria (lecturas y alineamientos) y culmina con el filtrado celular estricto (eliminando células muertas, dobletes o material genético vacío) para garantizar que solo las células biológicamente viables pasen a la fase de agrupamiento.
+</li>
+<li>
+<strong>3. Reducción de dimensionalidad y clustering ⇒</strong> El núcleo topológico del estudio. Las células de alta calidad se proyectan espacialmente (mediante PCA y UMAP) basándose en sus similitudes transcripcionales. Aquí se evalúan y comparan las estrategias matemáticas con y sin corrección de efecto lote (<em>Integrated</em> vs <em>Merged</em>) para definir las agrupaciones celulares de forma robusta.
+</li>
+<li>
+<strong>4. Identificación de marcadores (clústeres ciegos) ⇒</strong> Extracción algorítmica de las firmas génicas basales. Se aplican contrastes estadísticos exhaustivos para descubrir qué genes definen intrínsecamente a cada agrupación matemática, sentando las bases moleculares para su futura identificación visual y fenotípica.
+</li>
+<li>
+<strong>5. Anotación celular (automática y manual) ⇒</strong> La fase de traducción biológica. Transforma los “clústeres numéricos” en identidades celulares reales (ej. <em>Macrófagos, Células T, Astrocitos</em>). Este proceso combina proyecciones rápidas contra atlas de referencia mundiales con una curación manual profunda y experta a diferentes niveles de resolución.
+</li>
+<li>
+<strong>6. Agrupación de poblaciones biológicas ⇒</strong> Consolidación del modelo definitivo. Muestra la evolución iterativa de las anotaciones hasta alcanzar el mapa topológico final consensuado, sirviendo como el marco inamovible sobre el que se ejecutarán los análisis de perturbación posteriores.
+</li>
+<li>
+<strong>7. Expresión diferencial por condición (WT vs KO) ⇒</strong> El epicentro estadístico para responder a la hipótesis de trabajo. Aísla cada linaje celular curado y contrasta el transcriptoma de las células mutantes frente a las sanas (contraste intrapoblacional), identificando con precisión quirúrgica el catálogo de genes diferencialmente expresados (DEGs) inducidos por el experimento.
+</li>
+<li>
+<strong>8. Análisis funcional y de enriquecimiento ⇒</strong> La interpretación sistémica de los datos. Proyecta las listas de DEGs alterados sobre bases del conocimiento global (como GO y KEGG) utilizando algoritmos avanzados (ORA y GSEA) para revelar qué rutas metabólicas, organelas o procesos de señalización se han visto comprometidos por la perturbación.
+</li>
+<li>
+<strong>9. Análisis personalizados y ad hoc ⇒</strong> Un ecosistema de exploración dinámica de alto nivel. Este repositorio a medida está destinado a alojar visualizaciones dirigidas (ej. <em>FeaturePlots</em> de genes concretos), tablas atípicas o <em>subclusterings</em> específicos solicitados expresamente por el equipo investigador fuera del flujo de trabajo automatizado.
+</li>
+<li>
+<strong>10. Conclusiones y perspectivas ⇒</strong> El cierre traslacional del informe. Sintetiza los hallazgos biológicos más relevantes sobre la arquitectura celular y la resiliencia de los linajes, proponiendo metodologías de validación experimental y las futuras líneas de integración multi-ómica (ej. Transcriptómica Espacial, Interactoma).
+</li>
+</ul>
+<p>
+En definitiva, esta pestaña actúa como el <strong>punto de acceso unificado al ecosistema de análisis</strong>. Navegando mediante el índice interactivo inferior, el investigador podrá transitar fluidamente a través de toda la cronología bioinformática, obteniendo un entendimiento profundo, dinámico y totalmente reproducible de su modelo biológico.
+</p>
+</div>
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div class="titulo-toc">
+<p>Tabla de contenidos general</p>
+</div>
+<p>
+Se presenta a continuación el índice interactivo de la pestaña de <strong>Análisis</strong>, el cual organiza de forma estructurada cada etapa del proceso seguido. Desde aquí, es posible navegar fácilmente entre las distintas secciones del informe.
+</p>
+
+<!-- ====================================================================================================================== -->
+<!-- APERTURA -->
+<!-- ====================================================================================================================== -->
+<div class="toc">
+  <ul>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 1. REVISION INICIAL -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="01-revision-inicial.html#tab3-seccion1">
+        1<span>.</span> Revisión inicial de muestras y metadatos
+      </a>
+      <ul>
+        <li>
+          <a href="01-revision-inicial.html#tab3-seccion1.1">
+            1.1. Organización y estructura del directorio del proyecto
+          </a>
+        </li>
+        <li>
+          <a href="01-revision-inicial.html#tab3-seccion1.2">
+            1.2. Diseño experimental y metadatos clínicos
+          </a>
+        </li>
+        <li>
+          <a href="01-revision-inicial.html#tab3-seccion1.3">
+            1.3. Trazado de secuenciación y datos crudos
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 2. CONTROL CALIDAD -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="02-control-calidad.html#tab3-seccion2">
+        2<span>.</span> Control de calidad y filtrado (QC)
+      </a>
+      <ul>
+        <li>
+          <a href="02-control-calidad.html#tab3-seccion2.1">
+            2.1. Calidad del procesamiento primario (Cell Ranger)
+          </a>
+          <ul>
+            <li>
+              <a href="02-control-calidad.html#tab3-seccion2.1.1">
+                2.1.1. Evaluación técnica individualizada
+              </a>
+            </li>
+            <li>
+              <a href="02-control-calidad.html#tab3-seccion2.1.2">
+                2.1.2. Consolidación de métricas globales
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="02-control-calidad.html#tab3-seccion2.2">
+            2.2. Evaluación de lecturas crudas (Opcional: FastQC / Fastp)
+          </a>
+          <ul>
+            <li>
+              <a href="02-control-calidad.html#tab3-seccion2.2.1">
+                2.2.1. Control de calidad mediante Fastp
+              </a>
+            </li>
+            <li>
+              <a href="02-control-calidad.html#tab3-seccion2.2.2">
+                2.2.2. Control de calidad mediante FastQC
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="02-control-calidad.html#tab3-seccion2.3">
+            2.3. Control de calidad y filtrado celular (Seurat)
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 3. CLUSTERING -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="03-clustering.html#tab3-seccion3">
+        3<span>.</span> Reducción de dimensionalidad y clustering
+      </a>
+      <ul>
+        <li>
+          <a href="03-clustering.html#tab3-seccion3.1">
+            3.1. Reducción lineal (Análisis de Componentes Principales - PCA)
+          </a>
+          <ul>
+            <li>
+              <a href="03-clustering.html#tab3-seccion3.1.1">
+                3.1.1. Exploración visual de Componentes Principales
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="03-clustering.html#tab3-seccion3.2">
+            3.2. Estrategias de Agrupamiento: Merged vs. Integrated
+          </a>
+        </li>
+        <li>
+          <a href="03-clustering.html#tab3-seccion3.3">
+            3.3. Topología y Agrupamiento sin corrección de lote (Merged)
+          </a>
+          <ul>
+            <li>
+              <a href="03-clustering.html#tab3-seccion3.3.1">
+                3.3.1. Proyecciones espaciales (UMAP)
+              </a>
+            </li>
+            <li>
+              <a href="03-clustering.html#tab3-seccion3.3.2">
+                3.3.2. Proporciones celulares y abundancia
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="03-clustering.html#tab3-seccion3.4">
+            3.4. Topología y Agrupamiento con alineamiento de lote (Integrated)
+          </a>
+          <ul>
+            <li>
+              <a href="03-clustering.html#tab3-seccion3.4.1">
+                3.4.1. Proyecciones espaciales (UMAP)
+              </a>
+            </li>
+            <li>
+              <a href="03-clustering.html#tab3-seccion3.4.2">
+                3.4.2. Análisis estadístico y proporciones celulares
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 4. MARCADORES -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="04-marcadores.html#tab3-seccion4">
+        4<span>.</span> Identificación de marcadores (clusters ciegos)
+      </a>
+      <ul>
+        <li>
+          <a href="04-marcadores.html#tab3-seccion4.1">
+            4.1. Fundamentos del Análisis de Expresión Diferencial
+          </a>
+        </li>
+        <li>
+          <a href="04-marcadores.html#tab3-seccion4.2">
+            4.2. Firmas génicas en agrupamiento basal (Merged)
+          </a>
+          <ul>
+            <li>
+              <a href="04-marcadores.html#tab3-seccion4.2.1">
+                4.2.1. Visualización global de marcadores
+              </a>
+            </li>
+            <li>
+              <a href="04-marcadores.html#tab3-seccion4.2.2">
+                4.2.2. Escrutinio estadístico por clúster (Cluster vs All)
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="04-marcadores.html#tab3-seccion4.3">
+            4.3. Firmas génicas en agrupamiento alineado (Integrated)
+          </a>
+          <ul>
+            <li>
+              <a href="04-marcadores.html#tab3-seccion4.3.1">
+                4.3.1. Visualización global de marcadores
+              </a>
+            </li>
+            <li>
+              <a href="04-marcadores.html#tab3-seccion4.3.2">
+                4.3.2. Escrutinio estadístico por clúster (Cluster vs All)
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 5. ANOTACION -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="05-anotacion.html#tab3-seccion5">
+        5<span>.</span> Anotación celular (automática y manual)
+      </a>
+      <ul>
+        <li>
+          <a href="05-anotacion.html#tab3-seccion5.1">
+            5.1. Fundamentos de la Inferencia Fenotípica
+          </a>
+        </li>
+        <li>
+          <a href="05-anotacion.html#tab3-seccion5.2">
+            5.2. Anotación Automática basada en Atlas de Referencia
+          </a>
+        </li>
+        <li>
+          <a href="05-anotacion.html#tab3-seccion5.3">
+            5.3. Anotación Manual Curada (Resolución Específica)
+          </a>
+          <ul>
+            <li>
+              <a href="05-anotacion.html#tab3-seccion5.3.1">
+                5.3.1. Resolución Fina: Nivel de "Etapa"
+              </a>
+            </li>
+            <li>
+              <a href="05-anotacion.html#tab3-seccion5.3.2">
+                5.3.2. Resolución Agrupada: Nivel de "Big Etapa"
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 6. AGRUPACION -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="06-agrupacion.html#tab3-seccion6">
+        6<span>.</span> Agrupación de poblaciones biológicas
+      </a>
+      <ul>
+        <li>
+          <a href="06-agrupacion.html#tab3-seccion6.1">
+            6.1. Fundamentos de la Consolidación Fenotípica
+          </a>
+        </li>
+        <li>
+          <a href="06-agrupacion.html#tab3-seccion6.2">
+            6.2. Evolución y Mapas Topológicos (Versiones)
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 7. EXPRESION DIFERENCIAL -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="07-expresion-diferencial.html#tab3-seccion7">
+        7<span>.</span> Expresión diferencial por condición (WT vs KO)
+      </a>
+      <ul>
+        <li>
+          <a href="07-expresion-diferencial.html#tab3-seccion7.1">
+            7.1. Fundamentos de la Expresión Diferencial
+          </a>
+        </li>
+        <li>
+          <a href="07-expresion-diferencial.html#tab3-seccion7.2">
+            7.2. Exploración Preliminar en Clústeres Numéricos (Seurat)
+          </a>
+        </li>
+        <li>
+          <a href="07-expresion-diferencial.html#tab3-seccion7.3">
+            7.3. Exploración en Anotaciones Automáticas (Bases de Datos)
+          </a>
+        </li>
+        <li>
+          <a href="07-expresion-diferencial.html#tab3-seccion7.4">
+            7.4. Análisis Definitivo en Poblaciones Consolidadas (Manual)
+          </a>
+          <ul>
+            <li>
+              <a href="07-expresion-diferencial.html#tab3-seccion7.4.1">
+                7.4.1. Histórico de Versiones y Tipos de Contraste
+              </a>
+            </li>
+            <li>
+              <a href="07-expresion-diferencial.html#tab3-seccion7.4.2">
+                7.4.2. Contraste Intrapoblacional (WT vs KO): Evaluación Detallada
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 8. ENRIQUECIMIENTO -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="08-enriquecimiento.html#tab3-seccion8">
+        8<span>.</span> Análisis funcional y de enriquecimiento
+      </a>
+      <ul>
+        <li>
+          <a href="08-enriquecimiento.html#tab3-seccion8.1">
+            8.1. Fundamentos del Análisis de Vías Biológicas
+          </a>
+        </li>
+        <li>
+          <a href="08-enriquecimiento.html#tab3-seccion8.2">
+            8.2. Exploración Global: Arquitectura del Enriquecimiento
+          </a>
+        </li>
+        <li>
+          <a href="08-enriquecimiento.html#tab3-seccion8.3">
+            8.3. Análisis Definitivo: Enriquecimiento Intrapoblacional (WT vs KO)
+          </a>
+          <ul>
+            <li>
+              <a href="08-enriquecimiento.html#tab3-seccion8.3.1">
+                8.3.1. Bases de Datos Analizadas (GO y KEGG)
+              </a>
+            </li>
+            <li>
+              <a href="08-enriquecimiento.html#tab3-seccion8.3.2">
+                8.3.2. Guía de Interpretación de Archivos (ORA y GSEA)
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 9. EXTRA -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="09-extra.html#tab3-seccion9">
+        9<span>.</span> Análisis personalizados y ad hoc
+      </a>
+      <ul>
+        <li>
+          <a href="09-extra.html#tab3-seccion9.1">
+            9.1. Naturaleza de las Peticiones Adicionales
+          </a>
+        </li>
+        <li>
+          <a href="09-extra.html#tab3-seccion9.2">
+            9.2. Repositorio de Exploración Dirigida
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ====================================================================================================================== -->
+    <!-- 10. CONCLUSIONES -->
+    <!-- ====================================================================================================================== -->
+    <li>
+      <a href="10-conclusiones.html#tab3-seccion10">
+        10<span>.</span> Conclusiones y perspectivas
+      </a>
+      <ul>
+        <li>
+          <a href="10-conclusiones.html#tab3-seccion10.1">
+            10.1. Conclusiones Biológicas Fundamentales
+          </a>
+        </li>
+        <li>
+          <a href="10-conclusiones.html#tab3-seccion10.2">
+            10.2. Perspectivas y Direcciones Futuras
+          </a>
+        </li>
+      </ul>
+    </li>
+
+
+
+<!-- ====================================================================================================================== -->
+<!-- CIERRE -->
+<!-- ====================================================================================================================== -->
+  </ul>
+</div>
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  FOOTER
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<footer>
+<a href="#" class="arriba"><i class="fa-solid fa-angles-up"></i></a>
+</footer>
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  CARGAR SCRIPTS DE JAVASCRIPT
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<script type="module" src="../../../04-javascript/chatbot.js"></script>
+<script type="module" src="../../../04-javascript/script.js"></script>
+
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

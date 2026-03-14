@@ -1,0 +1,635 @@
+{
+  "chunks": [
+    {
+      "__mem_gb": 15,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "ANCTGCAGACCTGGAT"
+          },
+          "gem_group": 1,
+          "valid": false
+        },
+        "start": null
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 15,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "CATTCTCAATACAGGA"
+          },
+          "gem_group": 1,
+          "valid": false
+        },
+        "start": {
+          "content": {
+            "Sequence": "ANCTGCAGACCTGGAT"
+          },
+          "gem_group": 1,
+          "valid": false
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 15,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "CTACCTGAGAAGAACA"
+          },
+          "gem_group": 1,
+          "valid": false
+        },
+        "start": {
+          "content": {
+            "Sequence": "CATTCTCAATACAGGA"
+          },
+          "gem_group": 1,
+          "valid": false
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 15,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "GACCCTTGTTCAACTG"
+          },
+          "gem_group": 1,
+          "valid": false
+        },
+        "start": {
+          "content": {
+            "Sequence": "CTACCTGAGAAGAACA"
+          },
+          "gem_group": 1,
+          "valid": false
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 15,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "GGTGATCTCGGCATAC"
+          },
+          "gem_group": 1,
+          "valid": false
+        },
+        "start": {
+          "content": {
+            "Sequence": "GACCCTTGTTCAACTG"
+          },
+          "gem_group": 1,
+          "valid": false
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 15,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "TCAGTTTAACACATTC"
+          },
+          "gem_group": 1,
+          "valid": false
+        },
+        "start": {
+          "content": {
+            "Sequence": "GGTGATCTCGGCATAC"
+          },
+          "gem_group": 1,
+          "valid": false
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 15,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "TGGGTTAACAGAGAAG"
+          },
+          "gem_group": 1,
+          "valid": false
+        },
+        "start": {
+          "content": {
+            "Sequence": "TCAGTTTAACACATTC"
+          },
+          "gem_group": 1,
+          "valid": false
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 15,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "AAACCCAAGCACTAGG"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "TGGGTTAACAGAGAAG"
+          },
+          "gem_group": 1,
+          "valid": false
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "AATGCCAGTCGGATTT"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "AAACCCAAGCACTAGG"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "AGAAGCGCAACCAATC"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "AATGCCAGTCGGATTT"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "AGGTTACCAAGTATCC"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "AGAAGCGCAACCAATC"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "ATGAGTCTCTCGCTTG"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "AGGTTACCAAGTATCC"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "CACGTGGAGCATTGAA"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "ATGAGTCTCTCGCTTG"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "CCAAGCGAGACTGAGC"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "CACGTGGAGCATTGAA"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "CCTCAACTCGCTCTAC"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "CCAAGCGAGACTGAGC"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "CGTGAATCAGAACTTC"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "CCTCAACTCGCTCTAC"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "CTCGAGGTCTGCAGCG"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "CGTGAATCAGAACTTC"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 19,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "GAAGGGTCACCTGATA"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "CTCGAGGTCTGCAGCG"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "GATCATGTCTCCGAGG"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "GAAGGGTCACCTGATA"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "GCGGATCAGATACGAT"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "GATCATGTCTCCGAGG"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 19,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "GGGTCTGCACGAGGAT"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "GCGGATCAGATACGAT"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "GTCGTTCCATCGATGT"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "GGGTCTGCACGAGGAT"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "GTTGTAGGTAGGCTGA"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "GTCGTTCCATCGATGT"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 19,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "TAGCACATCCGATCTC"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "GTTGTAGGTAGGCTGA"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "TCATATCGTCGCATCG"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "TAGCACATCCGATCTC"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "TCGGGTGGTCAGGAGT"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "TCATATCGTCGCATCG"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "TGCGGCAAGGAACGTC"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "TCGGGTGGTCAGGAGT"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": {
+          "content": {
+            "Sequence": "TTAGGCACAGGAACCA"
+          },
+          "gem_group": 1,
+          "valid": true
+        },
+        "start": {
+          "content": {
+            "Sequence": "TGCGGCAAGGAACGTC"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    },
+    {
+      "__mem_gb": 20,
+      "__threads": 4,
+      "__vmem_gb": null,
+      "range": {
+        "end": null,
+        "start": {
+          "content": {
+            "Sequence": "TTAGGCACAGGAACCA"
+          },
+          "gem_group": 1,
+          "valid": true
+        }
+      },
+      "read_ann_subsample_rate": 0.11308859288692474
+    }
+  ],
+  "join": {
+    "__mem_gb": 6,
+    "__threads": null,
+    "__vmem_gb": null
+  }
+}

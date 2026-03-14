@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>IPBLN Bioinformatics Report</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../../../">
+<script src="../../../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../../../site_libs/bootstrap/bootstrap-c27fce070f9e1faf5b65ec12c04f7688.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="../../../../../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../../../../../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../../../../../../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../../../../../../site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="../../../../../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../../../../../../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../../../../../../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../../../../../../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../../../../../../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="../../../../../../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<script src="../../../../../../site_libs/plotly-binding-4.11.0/plotly.js"></script>
+<script src="../../../../../../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="../../../../../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../../../../../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link rel="shortcut icon" href="../../../../01-images/icons/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../../../../01-images/icons/favicon.ico">
+
+
+<link rel="stylesheet" href="../../../../../../resources/01-essential/03-scripts/03-css/styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../../../index.html">
+    <span class="navbar-title"><img class="brand-logo" src="../../../../../../resources/01-essential/01-images/icons/ipbln.png"> <a class="brand-text" href="https://www.ipb.csic.es/servicios/Bioinformatica/index.html">IPBLN</a></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab1-metodologia/metodologia.html"> <i class="bi bi-wrench" role="img">
+</i> 
+<span class="menu-text">Metodología</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab2-resumen/resumen.html" aria-current="page"> <i class="bi bi-clipboard-data" role="img">
+</i> 
+<span class="menu-text">Resumen</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-bar-chart" role="img">
+</i> 
+ <span class="menu-text">Análisis</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-análisis">    
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/00-contexto.html">
+ <span class="dropdown-text">➤ Introducción contextual</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/01-revision-inicial.html">
+ <span class="dropdown-text">1. Revisión inicial de muestras y metadatos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/02-control-calidad.html">
+ <span class="dropdown-text">2. Control de calidad y filtrado (QC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/03-clustering.html">
+ <span class="dropdown-text">3. Reducción de dimensionalidad y clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/04-marcadores.html">
+ <span class="dropdown-text">4. Identificación de marcadores (clusters ciegos)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/05-anotacion.html">
+ <span class="dropdown-text">5. Anotación celular (automática y manual)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/06-agrupacion.html">
+ <span class="dropdown-text">6. Agrupación de poblaciones biológicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/07-expresion-diferencial.html">
+ <span class="dropdown-text">7. Expresión diferencial por condición (WT vs KO)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/08-enriquecimiento.html">
+ <span class="dropdown-text">8. Análisis funcional y de enriquecimiento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/09-extra.html">
+ <span class="dropdown-text">9. Análisis personalizados y ad hoc</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../resources/01-essential/03-scripts/02-quarto/01-full-version/tab3-analisis/10-conclusiones.html">
+ <span class="dropdown-text">10. Conclusiones y perspectivas</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IPBLN Bioinformatics Report</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  CHATBOT
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!-- Contenedor del chat -->
+<div id="chat-container">
+  <button id="chat-toggle"></button>
+  <div id="chat-box">
+    <div id="chat-info" class="chat-info">
+      <h1>
+        Mini Chat RAG (beta)
+      </h1>
+
+      <p>
+        ¡Hola! Soy <strong>Geni</strong>, el asistente inteligente de <strong>GenoScribe</strong>.  
+        Estoy aquí para ayudarte a explorar de forma interactiva el contenido de este informe bioinformático.
+      </p>
+
+      <p>
+        Cuando me haces una pregunta, primero intento reconocer si coincide con alguno de los patrones o expresiones que conozco.  
+        Si encuentro una coincidencia, te responderé directamente con una respuesta predefinida, diseñada para ser rápida, clara e incluso un poco ingeniosa.  
+        Si no reconozco el patrón, entonces activo mis herramientas de búsqueda: genero representaciones vectoriales (embeddings) y busco los fragmentos más relevantes entre varios documentos —incluyendo el propio informe, archivos PDF y HTML externos, y sesiones de preguntas y respuestas (QA).  
+        A partir de esa información, creo un resumen que intenta ofrecerte una respuesta coherente y útil basada en el contenido existente.
+      </p>
+
+      <p>
+        Se debe tener en cuenta que este entorno es experimental. No utilizo grandes modelos de lenguaje, por lo que algunas respuestas pueden ser aproximadas o incompletas.  
+        El objetivo principal es facilitar una visualización rápida, comprensible y reproducible de la información contenida en los documentos, permitiendo una exploración más dinámica del informe.
+      </p>
+
+      <p>
+        Actualmente, los resultados pueden variar en precisión, ya que empleo modelos ligeros y locales para asegurar que la aplicación funcione en cualquier entorno sin necesidad de servidores externos.  
+        Sin embargo, la estructura del sistema está preparada para mejorar notablemente su rendimiento en el futuro mediante la integración con modelos más avanzados o APIs externas.  
+        Para comenzar, simplemente escribe tu pregunta en el campo inferior y deja que yo me encargue del resto. ¡Prometo poner todo mi código en ello!
+      </p>
+    </div>
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" placeholder="Escribe tu pregunta...">
+    <button id="chat-send" title="Enviar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  IMPORTACIONES
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!-- Incluir Font Awesome -->
+<p><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"></p>
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  TAB 2: ANÁLISIS | RESUMEN Y VISIÓN GENERAL DEL EXPERIMENTO 16S -->
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<div class="informe-titulo-tab-unique">
+<h1>
+Pestaña
+</h1>
+<h2>
+Resumen General del Proyecto
+</h2>
+</div>
+<div class="flecha-abajo">
+<p>▼</p>
+</div>
+<div class="informe-resumen">
+<h2>
+Resumen
+</h2>
+<p>
+Esta pestaña ofrece una <strong>visión general integral y ejecutiva</strong> del proyecto de <strong>Single-Cell RNA-Seq (scRNA-Seq)</strong>, partiendo del <strong>diseño experimental</strong> y el <strong>rendimiento de la secuenciación</strong>, para luego revelar directamente el <strong>paisaje celular final</strong> y un <strong>resumen del impacto transcriptómico</strong>.
+</p>
+<p>
+Inicialmente, se detalla el <strong>contexto biológico</strong> y los <strong>metadatos</strong> de las muestras analizadas, estableciendo la conexión técnica y la trazabilidad con los datos crudos. A continuación, se evalúa el <strong>rendimiento global de la captura celular</strong> mediante métricas primarias clave (como el número estimado de células y la mediana de genes por célula) obtenidas tras el procesamiento inicial con <em>Cell Ranger</em>. Estas métricas se presentan mediante <strong>tarjetas visuales</strong> y tablas dinámicas para facilitar su rápida interpretación.
+</p>
+<p>
+Tras validar el éxito técnico de la secuenciación, se expone el <strong>paisaje celular del tejido</strong> mediante proyecciones de reducción de dimensionalidad (UMAP) y gráficos de abundancia poblacional, permitiendo visualizar la estructura biológica de las muestras y sus variaciones. Finalmente, la sección concluye con un <strong>resumen global de genes diferencialmente expresados (DEGs)</strong> por tipo celular, ofreciendo una instantánea inmediata sobre qué subpoblaciones han sufrido una mayor alteración entre las condiciones de estudio.
+</p>
+<p>
+En conjunto, esta sección funciona como un panel de control avanzado que destaca los hitos biológicos y técnicos más relevantes del estudio. Esto proporciona una comprensión rápida de los resultados globales y prepara al usuario para explorar detalladamente el flujo de trabajo y la toma de decisiones metodológicas en la pestaña de <strong><a href="../tab3-analisis/00-contexto.html" class="normalink">Análisis</a></strong>.
+</p>
+</div>
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div class="titulo-toc">
+<p>Tabla de contenidos de esta sección</p>
+</div>
+<div class="toc">
+<ul>
+<li>
+<a href="#tab2-seccion1">1<span>.</span> Resumen General del Proyecto</a>
+<ul>
+<li>
+<a href="#tab2-seccion1.1">1.1. Diseño experimental y metadatos</a>
+</li>
+<li>
+<a href="#tab2-seccion1.2">1.2. Rendimiento global de secuenciación</a>
+</li>
+<li>
+<a href="#tab2-seccion1.3">1.3. Paisaje celular y abundancia de poblaciones</a>
+</li>
+<li>
+<a href="#tab2-seccion1.4">1.4. Resumen del impacto transcriptómico (DEGs)</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- REDACCIÓN -->
+<!-- #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="height: 25px; background-color: transparent;">
+
+</div>
+<div id="tab2-seccion1" class="titulo1">
+<p>1<span>.</span> Resumen General del Proyecto</p>
+</div>
+<p>
+Todo proyecto de transcriptómica a nivel de célula única requiere una base sólida que vincule de manera inequívoca la pregunta biológica original con los datos computacionales generados. En las siguientes subsecciones, desplegaremos de forma secuencial los pilares que sustentan este estudio. Este recorrido estructurado comienza estableciendo el marco de referencia exacto —las muestras y sus variables clínicas— para luego ir destilando la complejidad de los datos hasta alcanzar las alteraciones transcripcionales definitivas, garantizando así una interpretación rigurosa desde el primer momento.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab2-seccion1.1" class="titulo2">
+<p>1.1. Diseño experimental y metadatos</p>
+</div>
+<p>
+La reproducibilidad técnica y la correcta interpretación biológica de un experimento de Single-Cell RNA-Seq dependen directamente de una exhaustiva documentación inicial. En este directorio se centralizan los archivos que definen el <strong>diseño experimental</strong>, estableciendo el puente entre las variables clínicas de las muestras y los archivos binarios crudos provenientes de la plataforma de secuenciación.
+</p>
+<p>
+A continuación se detallan los archivos de metadatos asociados a este proyecto:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-tsv">
+<a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata/fastq_mapping.tsv" target="_blank">fastq_mapping.tsv</a>
+</li>
+<li class="file-tsv">
+<a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata/sample_metadata.tsv" target="_blank">sample_metadata.tsv</a>
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar los archivos de metadatos aquí </a>
+</p>
+<p>
+Tras verificar la estructura del directorio, se procede a continuación a explorar detalladamente el contenido individual de cada uno de estos archivos de metadatos. Cada tabla se presenta de forma interactiva, lo que permite al investigador revisar rápidamente las asignaciones experimentales, ordenar los datos según variables de interés y comprobar la integridad del diseño antes de adentrarse en los resultados puramente analíticos.
+</p>
+<div class="divider">
+
+</div>
+<p>
+<i class="fa-solid fa-flask" style="color: #4a86e8;"></i> <strong>Archivo:</strong> <code>sample_metadata.tsv</code>
+</p>
+<p>
+Este archivo conforma el <strong>diccionario biológico</strong> del análisis. Su función es asociar cada identificador único de muestra (<code>Sample_ID</code>) con sus correspondientes variables experimentales, tales como la condición clínica (e.g., WT vs KO), el tejido de origen, réplicas, edad o lote de secuenciación.
+</p>
+<p>
+Estos parámetros son fundamentales en etapas avanzadas del pipeline (mediante herramientas como <em>Seurat</em>), ya que permiten agrupar células biológicamente similares, realizar correcciones de efecto lote (<em>batch effect</em>) y ejecutar los contrastes estadísticos de expresión diferencial.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-da66ad561ad52caa077d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-da66ad561ad52caa077d">{"x":{"filter":"none","vertical":false,"data":[["SCS003_24_WT","SCS003_24_KO"],["WT","KO"],[1,1],["Thymus","Thymus"],[null,null],[null,null],[null,null],[null,null]],"container":"<table class=\"stripe hover compact\">\n  <thead>\n    <tr>\n      <th>Sample_ID<\/th>\n      <th>Condition<\/th>\n      <th>Replicate<\/th>\n      <th>Tissue<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Batch<\/th>\n      <th>Notes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"300px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"ft","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"className":"dt-right","targets":2},{"name":"Sample_ID","targets":0},{"name":"Condition","targets":1},{"name":"Replicate","targets":2},{"name":"Tissue","targets":3},{"name":"Age","targets":4},{"name":"Sex","targets":5},{"name":"Batch","targets":6},{"name":"Notes","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata/sample_metadata.tsv" download="sample_metadata.tsv" class="boton-file-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar archivo “sample_metadata.tsv” </a>
+</p>
+<p>
+<i class="fa-solid fa-flask" style="color: #4a86e8;"></i> <strong>Archivo:</strong> <code>fastq_mapping.tsv</code>
+</p>
+<p>
+Este documento representa el <strong>trazado informático y de secuenciación</strong> del proyecto. Establece la correspondencia directa entre los nombres de muestra estandarizados y los archivos binarios crudos <code>.fastq.gz</code> (R1 y R2) generados por el secuenciador Illumina.
+</p>
+<p>
+Esta trazabilidad garantiza una transparencia total del proceso computacional, asegurando que los pipelines de procesamiento primario (como <em>Cell Ranger</em>) identifiquen y ensamblen correctamente la estructura de códigos de barras (Cell Barcodes), identificadores moleculares (UMIs) y lecturas transcriptómicas (Reads) correspondientes a cada carril de secuenciación (<em>Lane</em>).
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-8ec88a27e075f744941a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8ec88a27e075f744941a">{"x":{"filter":"none","vertical":false,"data":[["SCS003_24_WT","SCS003_24_KO"],["WT","KO"],["L001","L005"],["SCS003_24_WT_S1_L001_R1_001.fastq.gz","SCS003_24_KO_S18_L005_R1_001.fastq.gz"],["SCS003_24_WT_S1_L001_R2_001.fastq.gz","SCS003_24_KO_S18_L005_R2_001.fastq.gz"]],"container":"<table class=\"stripe hover compact\">\n  <thead>\n    <tr>\n      <th>Sample_ID<\/th>\n      <th>Condition<\/th>\n      <th>Lane<\/th>\n      <th>FASTQ_R1<\/th>\n      <th>FASTQ_R2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"300px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"ft","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"name":"Sample_ID","targets":0},{"name":"Condition","targets":1},{"name":"Lane","targets":2},{"name":"FASTQ_R1","targets":3},{"name":"FASTQ_R2","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata/fastq_mapping.tsv" download="fastq_mapping.tsv" class="boton-file-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar archivo “fastq_mapping.tsv” </a>
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab2-seccion1.2" class="titulo2">
+<p>1.2. Rendimiento global de secuenciación</p>
+</div>
+<p>
+Una vez establecido el diseño experimental, el siguiente paso crítico es evaluar el <strong>rendimiento técnico primario</strong> de la secuenciación y de la captura celular. A diferencia de la transcriptómica <em>Bulk</em>, donde el control de calidad se centra principalmente en la integridad de las lecturas a nivel de nucleótido (porcentajes de GC, adaptadores o duplicados), en <em>Single-Cell RNA-Seq</em> el éxito de un experimento se fundamenta en métricas de biología de sistemas.
+</p>
+<p>
+Aquí evaluamos la <strong>eficiencia de encapsulación</strong> (cuántas células reales hemos capturado), la <strong>riqueza transcriptómica</strong> de las librerías (cuántos genes detectamos por célula) y la <strong>pureza de la señal</strong> (la correcta asignación de lecturas a células reales frente a ARN ambiente o “ruido de fondo”).
+</p>
+<p>
+En este proyecto, se ha completado con éxito el procesamiento primario mediante el pipeline de <em>Cell Ranger</em> (alineamiento, filtrado de <em>barcodes</em> celulares y conteo de UMIs) para un total de <strong>2 muestras</strong>: <code>SCS003_24_KO_S18</code>, <code>SCS003_24_WT_S1</code>.
+</p>
+<p>
+A continuación, se presentan las <strong>métricas globales consolidadas</strong> del experimento. Estos valores agregados —calculados como la media de las métricas de calidad de todas las muestras— permiten confirmar de un rápido vistazo que la secuenciación no sufrió fallos técnicos generalizados y que se ha obtenido un volumen de datos robusto para el análisis computacional posterior.
+</p>
+<div class="metric-cards">
+<div class="metric-card blue">
+<h3>
+Células estimadas (Total)
+</h3>
+<p>
+18,038 <span style="font-size: 0.6em; opacity: 0.8;">células</span>
+</p>
+</div>
+<div class="metric-card green">
+<h3>
+Genes / Célula (Mediana)
+</h3>
+<p>
+2,212 <span style="font-size: 0.6em; opacity: 0.8;">genes</span>
+</p>
+</div>
+<div class="metric-card purple">
+<h3>
+Reads / Célula (Media)
+</h3>
+<p>
+47,872 <span style="font-size: 0.6em; opacity: 0.8;">reads</span>
+</p>
+</div>
+<div class="metric-card orange">
+<h3>
+Lecturas en Células
+</h3>
+<p>
+94.1 <span style="font-size: 0.6em; opacity: 0.8;">%</span>
+</p>
+</div>
+<div class="metric-card yellow">
+<h3>
+Saturación Secuenciación
+</h3>
+<p>
+74.1 <span style="font-size: 0.6em; opacity: 0.8;">%</span>
+</p>
+</div>
+<div class="metric-card cyan">
+<h3>
+Total genes detectados
+</h3>
+<p>
+22,822 <span style="font-size: 0.6em; opacity: 0.8;">genes</span>
+</p>
+</div>
+</div>
+<div style="height: 30px; background-color: transparent;">
+
+</div>
+<p>
+<strong>Interpretación clínica y técnica de los parámetros clave:</strong>
+</p>
+<ul>
+<li>
+<strong>Células estimadas (Suma Total):</strong> Indica el éxito global de la partición microfluídica y la viabilidad del tejido. Cifras extremadamente bajas respecto a las esperadas (basado en el <em>input</em> del laboratorio) sugieren lisis celular prematura o problemas en la fase de disgregación enzimática del tejido original.
+</li>
+<li>
+<strong>Genes por Célula (Mediana global):</strong> Refleja la complejidad individual de las librerías construidas. Valores altos implican una mayor sensibilidad técnica para descubrir subtipos celulares raros o detectar alteraciones transcripcionales sutiles. Este valor también es intrínseco a la biología celular (por ejemplo, las células epiteliales o neuronas expresan de forma nativa muchos más genes simultáneos que los linfocitos pequeños).
+</li>
+<li>
+<strong>Profundidad de Secuenciación (Reads / Célula):</strong> Cuantifica el esfuerzo de secuenciación invertido. Una profundidad demasiado baja puede agravar el fenómeno de <em>dropout</em> (falsos negativos donde genes débilmente expresados no se detectan), mientras que una profundidad excesiva sin aumento de genes únicos indica un gasto ineficiente de recursos de secuenciación.
+</li>
+<li>
+<strong>Pureza celular (Lecturas en Células):</strong> Un porcentaje alto (generalmente &gt;70-80%) confirma que el tejido era robusto, garantizando que las secuencias obtenidas provienen de células físicamente intactas dentro de la gota lipídica, y no de “sopa de ARN” (ARN ambiente flotando en la suspensión debido a células muertas o reventadas).
+</li>
+<li>
+<strong>Saturación de Secuenciación (%):</strong> Es un indicador directo de costo-eficiencia. Mide la fracción del transcriptoma capturado que ya ha sido observada. Un valor alto (&gt;70-80%) indica que la librería se ha secuenciado casi en su totalidad; secuenciarla más profundamente aportaría escasa información nueva (la mayoría de nuevas lecturas serían duplicados de PCR). Un valor bajo (&lt;50%) sugiere que aún existe gran diversidad transcripcional oculta que podría revelarse secuenciando más la misma librería.
+</li>
+<li>
+<strong>Total de Genes Detectados:</strong> Proporciona una panorámica de la diversidad transcripcional del experimento en su conjunto, aproximándose al tamaño total del transcriptoma genómico activo presente en el tejido bajo las condiciones del estudio.
+</li>
+</ul>
+<p>
+Aunque estas métricas globales proporcionan un excelente panorama general de la calidad técnica del estudio, es imperativo comparar estos valores de forma individualizada entre las distintas réplicas biológicas y condiciones. Discrepancias masivas (por ejemplo, una muestra con el doble de profundidad de secuenciación que otra o una fracción de ruido excesiva) pueden impactar en la agrupación (<em>clustering</em>) y requerir técnicas de normalización severas durante el análisis integrado en <em>Seurat</em>.
+</p>
+<p>
+A continuación se desglosan las métricas métricas técnicas completas e interactivas para cada muestra procesada individualmente:
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-57e5f1088dcb414b1106" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-57e5f1088dcb414b1106">{"x":{"filter":"none","vertical":false,"data":[["SCS003_24_KO_S18","SCS003_24_WT_S1"],["10,646","7,392"],["35,931","59,812"],["2,210","2,213"],["382,526,607","442,131,242"],["95.3%","95.4%"],["67.3%","80.9%"],["94.8%","95.2%"],["93.9%","93.7%"],["96.1%","96.3%"],["95.1%","94.2%"],["93.1%","92.2%"],["6.2%","6.3%"],["30.1%","31.2%"],["56.8%","54.7%"],["71.6%","70.7%"],["14.9%","14.9%"],["93.9%","94.3%"],["23,211","22,432"],["4,613","4,642"]],"container":"<table class=\"stripe hover row-border order-column\">\n  <thead>\n    <tr>\n      <th>Sample<\/th>\n      <th>Estimated Number of Cells<\/th>\n      <th>Mean Reads per Cell<\/th>\n      <th>Median Genes per Cell<\/th>\n      <th>Number of Reads<\/th>\n      <th>Valid Barcodes<\/th>\n      <th>Sequencing Saturation<\/th>\n      <th>Q30 Bases in Barcode<\/th>\n      <th>Q30 Bases in RNA Read<\/th>\n      <th>Q30 Bases in UMI<\/th>\n      <th>Reads Mapped to Genome<\/th>\n      <th>Reads Mapped Confidently to Genome<\/th>\n      <th>Reads Mapped Confidently to Intergenic Regions<\/th>\n      <th>Reads Mapped Confidently to Intronic Regions<\/th>\n      <th>Reads Mapped Confidently to Exonic Regions<\/th>\n      <th>Reads Mapped Confidently to Transcriptome<\/th>\n      <th>Reads Mapped Antisense to Gene<\/th>\n      <th>Fraction Reads in Cells<\/th>\n      <th>Total Genes Detected<\/th>\n      <th>Median UMI Counts per Cell<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"400px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"t","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"name":"Sample","targets":0},{"name":"Estimated Number of Cells","targets":1},{"name":"Mean Reads per Cell","targets":2},{"name":"Median Genes per Cell","targets":3},{"name":"Number of Reads","targets":4},{"name":"Valid Barcodes","targets":5},{"name":"Sequencing Saturation","targets":6},{"name":"Q30 Bases in Barcode","targets":7},{"name":"Q30 Bases in RNA Read","targets":8},{"name":"Q30 Bases in UMI","targets":9},{"name":"Reads Mapped to Genome","targets":10},{"name":"Reads Mapped Confidently to Genome","targets":11},{"name":"Reads Mapped Confidently to Intergenic Regions","targets":12},{"name":"Reads Mapped Confidently to Intronic Regions","targets":13},{"name":"Reads Mapped Confidently to Exonic Regions","targets":14},{"name":"Reads Mapped Confidently to Transcriptome","targets":15},{"name":"Reads Mapped Antisense to Gene","targets":16},{"name":"Fraction Reads in Cells","targets":17},{"name":"Total Genes Detected","targets":18},{"name":"Median UMI Counts per Cell","targets":19}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../resources/01-essential/02-archives/02-tmp/tab2-resumen/cellranger_metrics_summary_all_samples.csv" download="cellranger_metrics_summary_all_samples.csv" class="boton-file-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar métricas completas por muestra (.csv) </a>
+</p>
+<p>
+<strong>Exploración de métricas secundarias y de alineamiento:</strong>
+</p>
+<p>
+Además de las métricas principales mostradas en las tarjetas, la tabla superior incluye parámetros técnicos avanzados fundamentales para el diagnóstico de la librería. Si se observan anomalías en el rendimiento global, estas columnas permiten identificar en qué punto exacto del proceso técnico se originó el problema:
+</p>
+<ul>
+<li>
+<strong>Calidad de secuenciación (Q30 Bases):</strong> Columnas como <code>Q30 Bases in Barcode</code>, <code>RNA Read</code> y <code>UMI</code> indican el porcentaje de bases secuenciadas con una precisión superior al 99.9%. Valores consistentemente bajos (por debajo del 85-90%) apuntan a problemas físicos durante la corrida en el secuenciador de Illumina, no a la preparación biológica de la muestra.
+</li>
+<li>
+<strong>Tasas de Mapeo (Reads Mapped Confidently):</strong> Evalúa qué porcentaje de las lecturas se han podido alinear de forma única y segura contra el genoma o transcriptoma de referencia. Un porcentaje bajo en <code>Reads Mapped to Transcriptome</code> (ej. &lt; 50%) suele ser indicativo de contaminación (por ejemplo, por ARN ribosómico, bacterias o secuencias adaptadoras).
+</li>
+<li>
+<strong>Distribución Genómica (Exonic, Intronic, Intergenic):</strong> En experimentos <em>Single-Cell</em> estándar (scRNA-Seq), la gran mayoría de las lecturas deben mapear en regiones exónicas (ARNm maduro). Sin embargo, si se observa una tasa inusualmente alta en regiones intrónicas (<code>Reads Mapped Confidently to Intronic Regions</code>), podría indicar contaminación por ARN nuclear o una lisis incompleta. <em>Nota: En experimentos de Single-Nucleus (snRNA-Seq), una alta tasa intrónica es el comportamiento esperado y correcto.</em>
+</li>
+<li>
+<strong>Mediana de UMIs por Célula (Median UMI Counts):</strong> A diferencia de los genes, esta métrica cuenta el número total de transcritos individuales (moléculas de ARN) capturados por célula. Es un indicador excelente de la eficiencia de la retrotranscripción (RT) dentro de la gota lipídica.
+</li>
+</ul>
+<p>
+Una vez validadas las métricas de calidad a nivel técnico y confirmado que las librerías son robustas, el enfoque del informe transiciona de la técnica a la biología. Dejamos atrás los códigos de barras y las lecturas de secuenciación para adentrarnos en la estructura celular real del tejido analizado.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab2-seccion1.3" class="titulo2">
+<p>1.3. Paisaje celular y abundancia de poblaciones</p>
+</div>
+<p>
+Tras validar la calidad de la secuenciación, el enfoque analítico transiciona de las métricas técnicas a la biología subyacente del tejido. En experimentos de <em>Single-Cell</em>, las miles de células secuenciadas se proyectan en un espacio bidimensional (típicamente mediante <strong>UMAP</strong> o t-SNE) de forma que las células transcripcionalmente similares se agrupen juntas, formando clústeres.
+</p>
+<p>
+Posteriormente, estos clústeres numéricos han sido anotados e identificados utilizando bases de datos inmunológicas y marcadores canónicos. En colaboración con el equipo investigador, estos grupos iniciales se han reevaluado, refinado y <strong>agregado en poblaciones biológicamente funcionales y definitivas</strong>. Las figuras que se presentan a continuación representan el <strong>mapa final y curado</strong> del experimento. Esta visualización panorámica permite identificar de un solo vistazo la estructura del tejido y detectar cambios poblacionales drásticos entre condiciones (por ejemplo, la depleción o expansión masiva de una subpoblación celular en un fenotipo Knockout).
+</p>
+<p>
+A continuación, se listan los archivos gráficos generados en la última versión consensuada de la agrupación de poblaciones:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-pdf">
+UMAP_clusters_combinados_by_condition.pdf
+</li>
+<li class="file-pdf">
+UMAP_clusters_combinados.pdf
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/06_population_aggregation/02_version" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar los archivos de la carpeta “02_version” aquí </a>
+</p>
+<p>
+A partir de estos archivos, extraemos y visualizamos los gráficos de reducción de dimensionalidad (UMAP) que representan la conformación definitiva del estudio:
+</p>
+<p style="margin-top: 10px; margin-bottom: -10px;">
+<i class="fa-solid fa-map-location-dot" style="color: #276DC3;"></i> <strong>Mapa celular:</strong> <code>UMAP_clusters_combinados_by_condition.pdf</code>
+</p>
+<div class="iframe-container">
+<p><iframe src="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/06_population_aggregation/02_version/UMAP_clusters_combinados_by_condition.pdf" frameborder="0" style="height: 700px;"></iframe></p>
+</div>
+<div style="display: flex; justify-content: center; gap: 25px;">
+<p><a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/06_population_aggregation/02_version/UMAP_clusters_combinados_by_condition.pdf" target="_blank" class="boton-iframe"> <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir PDF en pestaña nueva </a></p>
+<p><a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/06_population_aggregation/02_version/UMAP_clusters_combinados_by_condition.pdf" download="UMAP_clusters_combinados_by_condition.pdf" class="boton-iframe-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar gráfico </a></p>
+</div>
+<p style="margin-top: 10px; margin-bottom: -10px;">
+<i class="fa-solid fa-map-location-dot" style="color: #276DC3;"></i> <strong>Mapa celular:</strong> <code>UMAP_clusters_combinados.pdf</code>
+</p>
+<div class="iframe-container">
+<p><iframe src="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/06_population_aggregation/02_version/UMAP_clusters_combinados.pdf" frameborder="0" style="height: 700px;"></iframe></p>
+</div>
+<div style="display: flex; justify-content: center; gap: 25px;">
+<p><a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/06_population_aggregation/02_version/UMAP_clusters_combinados.pdf" target="_blank" class="boton-iframe"> <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir PDF en pestaña nueva </a></p>
+<p><a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/06_population_aggregation/02_version/UMAP_clusters_combinados.pdf" download="UMAP_clusters_combinados.pdf" class="boton-iframe-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar gráfico </a></p>
+</div>
+<p>
+<strong>Guía para la interpretación biológica de las proyecciones celulares:</strong>
+</p>
+<ul>
+<li>
+<strong>Proximidad topológica (Similitud transcriptómica):</strong> En estas proyecciones bidimensionales, cada punto representa el transcriptoma de una célula individual (basado en miles de genes). La cercanía entre los puntos refleja su afinidad biológica; las células densamente empaquetadas en un mismo “continente” comparten un estado o linaje celular común, mientras que las agrupaciones lejanas representan tipos celulares funcional y ontogénicamente divergentes.
+</li>
+<li>
+<strong>Identidad y Estructura (Colores):</strong> La paleta de colores proyectada sobre las células identifica las subpoblaciones definitivas acordadas. La forma, dispersión y conectividad de estos clústeres ofrecen pistas sobre trayectorias de diferenciación celular (por ejemplo, clústeres que se solapan ligeramente pueden sugerir estados de transición evolutiva entre poblaciones maduras e inmaduras).
+</li>
+<li>
+<strong>Dinámica poblacional (Gráficos separados por condición):</strong> Si entre los archivos mostrados existe una versión fragmentada por condición experimental (<em>split by condition</em>), esta representa la herramienta visual más potente del panel. Permite identificar al instante eventos de reorganización del tejido: la aparición, desaparición (depleción masiva) o desplazamiento de clústeres específicos en el fenotipo mutante frente al fenotipo basal.
+</li>
+</ul>
+<p>
+Es importante destacar que la obtención de este mapa celular curado representa la culminación de un extenso y riguroso proceso bioinformático, y no un resultado inicial algorítmico directo. Para alcanzar esta resolución de consenso, se han evaluado iterativamente múltiples etapas previas, que incluyen desde las segmentaciones matemáticas automáticas (no supervisadas) generadas por <em>Seurat</em> hasta el análisis pormenorizado de los perfiles de marcadores genéticos canónicos diferenciales subyacentes a cada clúster.
+</p>
+<p>
+Toda la trazabilidad metodológica —incluyendo las pruebas con distintas resoluciones algorítmicas, la depuración de células transicionales, las anotaciones preliminares en bases de datos (SingleR) y las decisiones biológicas conjuntas que han conducido a la definición de estas poblaciones finales— se encuentra documentada de forma exhaustiva para su reproducibilidad en la sección dedicada a la <a href="../tab3-analisis/06-agrupacion.html" class="normalink">Agrupación de poblaciones celulares</a> dentro de la pestaña de análisis detallado.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab2-seccion1.4" class="titulo2">
+<p>1.4. Resumen del impacto transcriptómico (DEGs)</p>
+</div>
+<p>
+Una vez que las células han sido agrupadas en sus poblaciones biológicas definitivas, la pregunta fundamental que guía el estudio es: <strong>¿Cómo responde cada uno de estos tipos celulares a la perturbación experimental?</strong>
+</p>
+<p>
+En la transcriptómica de célula única, la expresión diferencial no se calcula globalmente mezclando todo el tejido (como ocurriría en el <em>Bulk RNA-Seq</em>), sino que se realizan contrastes estadísticos aislados <strong>dentro de cada subpoblación celular</strong> (por ejemplo, comparando exclusivamente la población <em>DPre</em> del ratón WT frente a la <em>DPre</em> del ratón KO). Esto permite descubrir respuestas transcripcionales extremadamente específicas que de otro modo quedarían completamente enmascaradas.
+</p>
+<p>
+A continuación se listan los resultados tabulares (genes estadísticamente significativos) y gráficos (Volcano plots) generados para cada población celular de forma individual en esta comparativa:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-pdf">
+DEG_CD8_exhausted_naive_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_CD8_exhausted_naive_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-tsv">
+DEG_Cluster_13_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-tsv">
+DEG_Cluster_14_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-pdf">
+DEG_Cluster_2_6_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_Cluster_2_6_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-pdf">
+DEG_Cluster_9_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_Cluster_9_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-pdf">
+DEG_DN_Precursors_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_DN_Precursors_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-pdf">
+DEG_DPre_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_DPre_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-pdf">
+DEG_DPsel_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_DPsel_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-pdf">
+DEG_Monocyte_Macrophages_Dendritic_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_Monocyte_Macrophages_Dendritic_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-pdf">
+DEG_preDP_DPblast_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_preDP_DPblast_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-pdf">
+DEG_SP_KO_vs_WT_cell_annot_plots.pdf
+</li>
+<li class="file-tsv">
+DEG_SP_KO_vs_WT_cell_annot.tsv
+</li>
+<li class="file-tsv">
+DEG_Stroma_KO_vs_WT_cell_annot.tsv
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/07_deg_conditions/03_degs_manual_aggregated_named_clusters/02_version/01_degs_wt_vs_ko_within_cluster" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar los resultados de DEGs aquí </a>
+</p>
+<p>
+La exploración profunda de estos archivos generados, la visualización de los <em>Volcano plots</em> interactivos por clúster, los mapas de calor (<em>heatmaps</em>) y la lista de top marcadores se tratarán de forma rigurosa y extendida en la sección <a href="../tab3-analisis/07-expresion-diferencial.html" class="normalink">Expresión Diferencial por Condición</a> dentro de la pestaña de análisis.
+</p>
+<p>
+A modo de resumen general (<em>overview</em>), se ha contabilizado el número total de <strong>Genes Diferencialmente Expresados (DEGs)</strong> significativos (FDR &lt; 0.05) para cada tipo celular. El siguiente gráfico interactivo ilustra la magnitud de este impacto transcripcional, discriminando entre los genes que se sobreexpresan (<em>Up</em>) o se reprimen (<em>Down</em>) por culpa del Knockout:
+</p>
+<div class="cell">
+<div class="cell-output-display">
+  <div class="plot-center" style="margin-top: 30px; margin-bottom: 40px;"> 
+
+<div class="plotly html-widget html-fill-item" id="htmlwidget-cc1cdbf2ad3a9a3bfa2b" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-cc1cdbf2ad3a9a3bfa2b">{"x":{"data":[{"orientation":"v","width":[0.89999999999999858,0.89999999999999858,0.89999999999999858,0.90000000000000013,0.90000000000000036,0.89999999999999947,0.89999999999999991,0.90000000000000036,0.90000000000000036,0.90000000000000036,0.89999999999999858,0.90000000000000036],"base":[2,0,0,76,4,2,100,21,5,14,0,37],"x":[9,10,11,2,6,8,1,4,7,5,12,3],"y":[0,0,0,20,6,2,89,29,2,13,0,53],"text":["Cluster: CD8_exhausted_naive<br>Regulación: Down<br>Count: 0","Cluster: Cluster_13<br>Regulación: Down<br>Count: 0","Cluster: Cluster_14<br>Regulación: Down<br>Count: 0","Cluster: Cluster_2_6<br>Regulación: Down<br>Count: 20","Cluster: Cluster_9<br>Regulación: Down<br>Count: 6","Cluster: DN_Precursors<br>Regulación: Down<br>Count: 2","Cluster: DPre<br>Regulación: Down<br>Count: 89","Cluster: DPsel<br>Regulación: Down<br>Count: 29","Cluster: Monocyte_Macrophages_Dendritic<br>Regulación: Down<br>Count: 2","Cluster: SP<br>Regulación: Down<br>Count: 13","Cluster: Stroma<br>Regulación: Down<br>Count: 0","Cluster: preDP_DPblast<br>Regulación: Down<br>Count: 53"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(205,0,0,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Down","legendgroup":"Down","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999858,0.89999999999999858,0.89999999999999858,0.90000000000000013,0.90000000000000036,0.89999999999999947,0.89999999999999991,0.90000000000000036,0.90000000000000036,0.90000000000000036,0.89999999999999858,0.90000000000000036],"base":[0,0,0,0,0,0,0,0,0,0,0,0],"x":[9,10,11,2,6,8,1,4,7,5,12,3],"y":[2,0,0,76,4,2,100,21,5,14,0,37],"text":["Cluster: CD8_exhausted_naive<br>Regulación: Up<br>Count: 2","Cluster: Cluster_13<br>Regulación: Up<br>Count: 0","Cluster: Cluster_14<br>Regulación: Up<br>Count: 0","Cluster: Cluster_2_6<br>Regulación: Up<br>Count: 76","Cluster: Cluster_9<br>Regulación: Up<br>Count: 4","Cluster: DN_Precursors<br>Regulación: Up<br>Count: 2","Cluster: DPre<br>Regulación: Up<br>Count: 100","Cluster: DPsel<br>Regulación: Up<br>Count: 21","Cluster: Monocyte_Macrophages_Dendritic<br>Regulación: Up<br>Count: 5","Cluster: SP<br>Regulación: Up<br>Count: 14","Cluster: Stroma<br>Regulación: Up<br>Count: 0","Cluster: preDP_DPblast<br>Regulación: Up<br>Count: 37"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(152,251,152,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Up","legendgroup":"Up","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[9,10,11,2,6,8,1,4,7,5,12,3],"y":[2,0,0,96,10,4,189,50,7,27,0,90],"text":[2,0,0,96,10,4,189,50,7,27,0,90],"hovertext":["","","","","","","","","","","",""],"textfont":{"size":13.228346456692915,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":80,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,12.6],"tickmode":"array","ticktext":["DPre","Cluster_2_6","preDP_DPblast","DPsel","SP","Cluster_9","Monocyte_Macrophages_Dendritic","DN_Precursors","CD8_exhausted_naive","Cluster_13","Cluster_14","Stroma"],"tickvals":[1,2,3,4.0000000000000009,5,6,7.0000000000000009,8,9,10,11,12],"categoryorder":"array","categoryarray":["DPre","Cluster_2_6","preDP_DPblast","DPsel","SP","Cluster_9","Monocyte_Macrophages_Dendritic","DN_Precursors","CD8_exhausted_naive","Cluster_13","Cluster_14","Stroma"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Población Celular (Cluster)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-9.4500000000000011,198.44999999999999],"tickmode":"array","ticktext":["0","50","100","150"],"tickvals":[0,50.000000000000007,100,150],"categoryorder":"array","categoryarray":["0","50","100","150"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Número de genes","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Regulación","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"7d07248a087c":{"x":{},"y":{},"fill":{},"text":{},"type":"bar"},"7d0753ee6bfa":{"x":{},"y":{},"label":{}}},"cur_data":"7d07248a087c","visdat":{"7d07248a087c":["function (y) ","x"],"7d0753ee6bfa":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+  </div> 
+
+</div>
+</div>
+<p>
+<strong>Guía de interpretación del impacto transcriptómico:</strong>
+</p>
+<ul>
+<li>
+<strong>Sensibilidad celular (Altura de la barra):</strong> Las poblaciones con las barras más altas representan los tipos celulares primarios afectados por el experimento. En contraste, los clústeres hacia la derecha muestran “robustez transcripcional”, manteniendo su perfil casi inalterado a pesar del Knockout.
+</li>
+<li>
+<strong>Dirección de la respuesta (Up vs Down):</strong> El predominio verde (<em>Up</em>) sugiere hiperactivación, estrés o compensación génica; mientras que la dominancia roja (<em>Down</em>) suele indicar pérdida funcional de redes regulatorias o silenciamiento asociado a la condición estudiada.
+</li>
+</ul>
+<p>
+A continuación se desglosan numéricamente los resultados en una tabla interactiva, permitiendo clasificar y buscar ágilmente las poblaciones según su volumen de respuesta:
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-0bf472f7034e6ad2eac2" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0bf472f7034e6ad2eac2">{"x":{"filter":"none","vertical":false,"data":[["CD8_exhausted_naive","Cluster_13","Cluster_14","Cluster_2_6","Cluster_9","DN_Precursors","DPre","DPsel","Monocyte_Macrophages_Dendritic","SP","Stroma","preDP_DPblast"],[2,0,0,76,4,2,100,21,5,14,0,37],[0,0,0,20,6,2,89,29,2,13,0,53],[2,0,0,96,10,4,189,50,7,27,0,90]],"container":"<table class=\"stripe hover row-border order-column compact\">\n  <thead>\n    <tr>\n      <th>Población Celular<\/th>\n      <th>Genes Sobreexpresados (Up)<\/th>\n      <th>Genes Reprimidos (Down)<\/th>\n      <th>Total DEGs<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"400px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"t","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"name":"Población Celular","targets":0},{"name":"Genes Sobreexpresados (Up)","targets":1},{"name":"Genes Reprimidos (Down)","targets":2},{"name":"Total DEGs","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../resources/01-essential/02-archives/02-tmp/tab2-resumen/deg_agg_wr_vs_ko_summary.tsv" download="deg_agg_wr_vs_ko_summary.tsv" class="boton-file-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar recuento global de DEGs (.tsv) </a>
+</p>
+<p>
+<strong>Perspectivas Funcionales (Análisis de Enriquecimiento):</strong>
+</p>
+<p>
+Conocer la cantidad de genes alterados es solo el primer paso. Para comprender biológicamente estos mecanismos, estas listas de genes diferencialmente expresados se han sometido a rigurosos análisis de enriquecimiento funcional frente a ontologías biológicas canónicas (bases de datos GO y KEGG). Este proceso traduce la lista de genes “anónimos” en la identificación de <strong>rutas de señalización activadas o cascadas metabólicas interrumpidas</strong>. Todos estos hallazgos moleculares se encuentran ampliamente documentados en la siguiente fase de la pestaña de análisis.
+</p>
+<div class="divider">
+
+</div>
+<p>
+Así, una vez revisados en esta pestaña los aspectos generales del resumen y las estadísticas globales de calidad, se recomienda continuar explorando la pestaña <a href="../tab3-analisis/00-contexto.html" class="normalink">Análisis</a>. Allí se ofrece un recorrido detallado y exhaustivo del procesamiento de datos, que permite visualizar paso a paso cada etapa del flujo de trabajo.
+</p>
+<p>
+En dicha pestaña de <a href="../tab3-analisis/00-contexto.html" class="normalink">Análisis</a> se incluye desde la revisión inicial de las muestras y metadatos, pasando por el control de calidad individual y conjunto, hasta el alineamiento y la cuantificación de la expresión génica. También se presentan análisis estadísticos avanzados, normalización, control post-normalización, análisis diferencial y análisis funcional y de enriquecimiento, finalizando con conclusiones y perspectivas del estudio.
+</p>
+<p>
+Esta navegación detallada facilita validar la calidad y la robustez del experimento, identificar posibles problemas y comprender mejor los resultados obtenidos en el resumen general.
+</p>
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  FOOTER
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<footer>
+<a href="#" class="arriba"><i class="fa-solid fa-angles-up"></i></a>
+</footer>
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  CARGAR SCRIPTS DE JAVASCRIPT
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<script type="module" src="../../../04-javascript/chatbot.js"></script>
+<script type="module" src="../../../04-javascript/script.js"></script>
+
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

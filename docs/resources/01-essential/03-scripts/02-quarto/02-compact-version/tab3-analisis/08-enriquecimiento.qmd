@@ -1,0 +1,641 @@
+---
+title: "IPBLN Bioinformatics Report"
+
+include-in-header:
+  text: |
+    <link rel="shortcut icon" href="../../../../01-images/icons/favicon.svg"/>
+    <link rel="icon" type="image/x-icon" href="../../../../01-images/icons/favicon.ico">
+
+params:
+  project_path: ""
+  report_version: ""
+---
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  CHATBOT
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+```{=html}
+<!-- Contenedor del chat -->
+<div id="chat-container">
+  <button id="chat-toggle"></button>
+  <div id="chat-box">
+    <div id="chat-info" class="chat-info">
+      <h1>
+        Mini Chat RAG (beta)
+      </h1>
+
+      <p>
+        ¡Hola! Soy <strong>Geni</strong>, el asistente inteligente de <strong>GenoScribe</strong>.  
+        Estoy aquí para ayudarte a explorar de forma interactiva el contenido de este informe bioinformático.
+      </p>
+
+      <p>
+        Cuando me haces una pregunta, primero intento reconocer si coincide con alguno de los patrones o expresiones que conozco.  
+        Si encuentro una coincidencia, te responderé directamente con una respuesta predefinida, diseñada para ser rápida, clara e incluso un poco ingeniosa.  
+        Si no reconozco el patrón, entonces activo mis herramientas de búsqueda: genero representaciones vectoriales (embeddings) y busco los fragmentos más relevantes entre varios documentos —incluyendo el propio informe, archivos PDF y HTML externos, y sesiones de preguntas y respuestas (QA).  
+        A partir de esa información, creo un resumen que intenta ofrecerte una respuesta coherente y útil basada en el contenido existente.
+      </p>
+
+      <p>
+        Se debe tener en cuenta que este entorno es experimental. No utilizo grandes modelos de lenguaje, por lo que algunas respuestas pueden ser aproximadas o incompletas.  
+        El objetivo principal es facilitar una visualización rápida, comprensible y reproducible de la información contenida en los documentos, permitiendo una exploración más dinámica del informe.
+      </p>
+
+      <p>
+        Actualmente, los resultados pueden variar en precisión, ya que empleo modelos ligeros y locales para asegurar que la aplicación funcione en cualquier entorno sin necesidad de servidores externos.  
+        Sin embargo, la estructura del sistema está preparada para mejorar notablemente su rendimiento en el futuro mediante la integración con modelos más avanzados o APIs externas.  
+        Para comenzar, simplemente escribe tu pregunta en el campo inferior y deja que yo me encargue del resto. ¡Prometo poner todo mi código en ello!
+      </p>
+    </div>
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" placeholder="Escribe tu pregunta..."/>
+    <button id="chat-send" title="Enviar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+```
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  IMPORTACIONES
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+<!-- Incluir Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  TAB 3: ANÁLISIS | 8. ANÁLISIS FUNCIONAL Y DE ENRIQUECIMIENTO -->
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results="hide"}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results="hide"}
+#===================================================================================================================================================
+# CARGA DE LIBRERÍAS
+#===================================================================================================================================================
+
+library(jsonlite)
+library(dplyr)
+library(stringr)
+library(glue)
+library(fs)
+library(purrr)
+library(ggplot2)
+library(tidyr)
+library(plotly)
+library(htmltools)
+library(tidyverse)
+library(magrittr)
+library(DT)
+library(tibble)
+
+
+
+
+
+
+#===================================================================================================================================================
+# CONFIGURACIONES INICIALES
+#===================================================================================================================================================
+
+# Rutas clave
+ruta_qmd <- getwd()
+ruta_sc_rna_seq_pipeline <- file.path("..", "..", "..", "..", "..", "..")
+ruta_sc_rna_seq_pipeline_absoluta <- normalizePath(ruta_sc_rna_seq_pipeline)
+nombre_proyecto <- basename(params$project_path)
+
+
+# Rutas del directorio de resultados de Nextflow
+ruta_nextflow_results <- file.path(ruta_sc_rna_seq_pipeline, "resources", "02-nextflow-results")
+
+# Rutas del directorio de datos del proyecto
+ruta_proyecto <- file.path(params$project_path)
+ruta_proyecto_relativa <- file.path(ruta_sc_rna_seq_pipeline, "resources", "02-nextflow-results", "01-project-data", nombre_proyecto)
+
+
+# Ruta para guardar los resultados de este archivo QMD dentro del directorio temporal para la pestaña "análisis"
+ruta_archives_tmp_enriquecimiento <- file.path(ruta_sc_rna_seq_pipeline, "resources", "01-essential", "02-archives", "02-tmp", "tab3-analisis", "08-enriquecimiento")
+
+# Asegurarse de crear directorio
+dir.create(ruta_archives_tmp_enriquecimiento, recursive = TRUE, showWarnings = FALSE)
+
+
+
+
+
+
+#===================================================================================================================================================
+# DIRECTORIO "ANALYSIS"
+#===================================================================================================================================================
+
+# Rutas de la carpeta "analysis" dentro del directorio del proyecto
+ruta_analysis <- file.path(ruta_proyecto, "analysis")
+ruta_analysis_relativa <- file.path(ruta_proyecto_relativa, "analysis")
+
+
+
+
+#-------------------------------------------------------------------------------------------------------------------------------
+# DIRECTORIO "ENRICHMENT" EN "ANALYSIS"
+#-------------------------------------------------------------------------------------------------------------------------------
+
+ruta_enrichment <- file.path(ruta_analysis, "08_enrichment")
+ruta_enrichment_relativa <- file.path(ruta_analysis_relativa, "08_enrichment")
+
+# Dataframe para almacenar las carpetas principales (Seurat, Automáticas, Manual)
+enrichment_root_dirs_df <- NULL
+
+if (dir.exists(ruta_enrichment)) {
+  subdirs_root <- list.dirs(ruta_enrichment, recursive = FALSE, full.names = FALSE)
+  if (length(subdirs_root) > 0) {
+    # Ordenar alfabéticamente
+    subdirs_root <- sort(subdirs_root)
+    enrichment_root_dirs_df <- data.frame(
+      folder_name = subdirs_root,
+      ruta_absoluta = file.path(ruta_enrichment, subdirs_root),
+      ruta_relativa = file.path(ruta_enrichment_relativa, subdirs_root),
+      stringsAsFactors = FALSE
+    )
+  }
+}
+
+
+
+#------------------------------------------------------------------------
+# DIRECTORIO "ENRICHMENT MANUAL AGGREGATED" (EL NÚCLEO BIOLÓGICO)
+#------------------------------------------------------------------------
+
+ruta_enrich_agg <- file.path(ruta_enrichment, "03_enrichment_manual_aggregated_named_clusters")
+ruta_enrich_agg_relativa <- file.path(ruta_enrichment_relativa, "03_enrichment_manual_aggregated_named_clusters")
+
+versiones_enrich_agg_df <- NULL
+ultima_version_enrich_nombre <- NULL
+ult_ver_enrich_within_df <- NULL
+ult_ver_enrich_wt_between_df <- NULL
+ult_ver_enrich_ko_between_df <- NULL
+
+if (dir.exists(ruta_enrich_agg)) {
+  subcarpetas_versiones <- list.dirs(ruta_enrich_agg, recursive = FALSE, full.names = FALSE)
+
+  if (length(subcarpetas_versiones) > 0) {
+    
+    # Ordenar y detectar la última versión
+    subcarpetas_versiones <- sort(subcarpetas_versiones)
+    ultima_version_enrich_nombre <- subcarpetas_versiones[length(subcarpetas_versiones)]
+
+    versiones_enrich_agg_df <- data.frame(
+      folder_name = subcarpetas_versiones,
+      is_latest = (subcarpetas_versiones == ultima_version_enrich_nombre),
+      ruta_absoluta = file.path(ruta_enrich_agg, subcarpetas_versiones),
+      ruta_relativa = file.path(ruta_enrich_agg_relativa, subcarpetas_versiones),
+      stringsAsFactors = FALSE
+    )
+
+    # --- ESCRUTINIO DE LA ÚLTIMA VERSIÓN ---
+    ruta_ult_abs <- file.path(ruta_enrich_agg, ultima_version_enrich_nombre)
+    ruta_ult_rel <- file.path(ruta_enrich_agg_relativa, ultima_version_enrich_nombre)
+
+    # 1. within_cluster (Donde encontraremos ORA y GSEA)
+    dir_within_abs <- file.path(ruta_ult_abs, "01_degs_wt_vs_ko_within_cluster")
+    if (dir.exists(dir_within_abs)) {
+      # Aquí listamos los directorios (01_ora, 02_gsea) en lugar de archivos
+      carpetas_within <- list.dirs(dir_within_abs, recursive = FALSE, full.names = FALSE)
+      if (length(carpetas_within) > 0) {
+        carpetas_within <- sort(carpetas_within)
+        ult_ver_enrich_within_df <- data.frame(
+          folder_name = carpetas_within,
+          ruta_absoluta = file.path(dir_within_abs, carpetas_within),
+          ruta_relativa = file.path(ruta_ult_rel, "01_degs_wt_vs_ko_within_cluster", carpetas_within),
+          stringsAsFactors = FALSE
+        )
+      }
+    }
+
+    # 2. wt_between_clusters
+    dir_wt_bet_abs <- file.path(ruta_ult_abs, "02_degs_wt_between_clusters_pairwise")
+    if (dir.exists(dir_wt_bet_abs)) {
+      carpetas_wt <- list.dirs(dir_wt_bet_abs, recursive = FALSE, full.names = FALSE)
+      if (length(carpetas_wt) > 0) {
+        carpetas_wt <- sort(carpetas_wt)
+        ult_ver_enrich_wt_between_df <- data.frame(
+          folder_name = carpetas_wt,
+          ruta_absoluta = file.path(dir_wt_bet_abs, carpetas_wt),
+          ruta_relativa = file.path(ruta_ult_rel, "02_degs_wt_between_clusters_pairwise", carpetas_wt),
+          stringsAsFactors = FALSE
+        )
+      }
+    }
+
+    # 3. ko_between_clusters
+    dir_ko_bet_abs <- file.path(ruta_ult_abs, "03_degs_ko_between_clusters_pairwise")
+    if (dir.exists(dir_ko_bet_abs)) {
+      carpetas_ko <- list.dirs(dir_ko_bet_abs, recursive = FALSE, full.names = FALSE)
+      if (length(carpetas_ko) > 0) {
+        carpetas_ko <- sort(carpetas_ko)
+        ult_ver_enrich_ko_between_df <- data.frame(
+          folder_name = carpetas_ko,
+          ruta_absoluta = file.path(dir_ko_bet_abs, carpetas_ko),
+          ruta_relativa = file.path(ruta_ult_rel, "03_degs_ko_between_clusters_pairwise", carpetas_ko),
+          stringsAsFactors = FALSE
+        )
+      }
+    }
+  }
+}
+```
+
+
+<div class="informe-titulo-tab">
+  <h1>Pestaña</h1>
+  <h2>Análisis Bioinformático Completo</h2>
+</div>
+
+<div class="informe-titulo-seccion-unique">
+  <h1>Sección 8</h1>
+  <h2>Análisis Funcional y de Enriquecimiento</h2>
+</div>
+
+<div class="flecha-abajo">
+  ▼
+</div>
+
+
+<div class="informe-resumen">
+  <h2>Resumen</h2>
+
+  <p>
+    En el módulo anterior (<strong><a href="07-expresion-diferencial.html" class="normalink">Expresión diferencial por condición</a></strong>), logramos identificar con precisión estadística el catálogo exacto de genes que se sobreexpresan o se reprimen (DEGs) en cada población celular como consecuencia de la condición <em>Knock-Out</em>. Sin embargo, extraer conclusiones fisiológicas a partir de una lista aislada de cientos de genes individuales resulta una tarea analíticamente inmanejable.
+  </p>
+
+  <p>
+    El objetivo de esta octava y última sección es realizar la <strong>"traducción funcional"</strong> de esos datos cuantitativos. Para lograrlo, las firmas transcripcionales alteradas de cada linaje celular se proyectan sobre bases de conocimiento biológico mundialmente estandarizadas, como <em>Gene Ontology (GO)</em> y <em>KEGG Pathways</em>. 
+  </p>
+
+  <p>
+    Esta aproximación sistémica nos permite abandonar la visión "gen a gen" para comprender la respuesta de la célula en su conjunto. De este modo, podremos descubrir si los genes diferencialmente expresados están actuando de forma coordinada para, por ejemplo, inducir procesos de estrés oxidativo, frenar el ciclo celular o desregular cascadas metabólicas específicas, revelando así el verdadero mecanismo de acción de la mutación.
+  </p>
+</div>
+
+
+
+
+
+
+
+
+<div style="height: 15px; background-color: transparent;"></div>
+
+<div class="titulo-toc">
+  Tabla de contenidos de esta sección
+</div>
+
+<div class="toc">
+  <ul>
+    <li>
+      <a href="#tab3-seccion8">8<span>.</span> Análisis funcional y de enriquecimiento</a>
+      <ul>
+        <li>
+          <a href="#tab3-seccion8.1">8.1. Fundamentos del Análisis de Vías Biológicas</a>
+        </li>
+        <li>
+          <a href="#tab3-seccion8.2">8.2. Exploración Global: Arquitectura del Enriquecimiento</a>
+        </li>
+        <li>
+          <a href="#tab3-seccion8.3">8.3. Análisis Definitivo: Enriquecimiento Intrapoblacional (WT vs KO)</a>
+          <ul>
+            <li><a href="#tab3-seccion8.3.1">8.3.1. Bases de Datos Analizadas (GO y KEGG)</a></li>
+            <li><a href="#tab3-seccion8.3.2">8.3.2. Guía de Interpretación de Archivos (ORA y GSEA)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- REDACCIÓN -->
+<!-- #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<div style="height: 25px; background-color: transparent;"></div>
+
+<div class="titulo1" id="tab3-seccion8">
+  8<span>.</span> Análisis Funcional y de Enriquecimiento
+</div>
+
+<p>
+  En las fases previas de este flujo de trabajo bioinformático, logramos destilar el complejo transcriptoma del tejido hasta aislar las firmas moleculares específicas del impacto experimental, generando catálogos precisos de genes diferencialmente expresados (DEGs). Sin embargo, una matriz tabular repleta de genes, logaritmos de cambio (<code>avg_log2FC</code>) y p-valores representa únicamente las piezas desordenadas de un puzzle biológico. 
+</p>
+
+<p>
+  Para visualizar la imagen completa y comprender el verdadero impacto fenotípico de la mutación <em>Knock-Out</em>, es imperativo elevar el nivel de abstracción: debemos pasar del gen individual al sistema. El análisis funcional y de enriquecimiento es el motor bioinformático que posibilita este salto, cruzando nuestros hallazgos empíricos contra inmensas bibliotecas de conocimiento curado para desvelar qué engranajes celulares han sido manipulados. 
+</p>
+
+<p>
+  Dada la magnitud computacional de este proceso —que multiplica cada población celular por distintos métodos estadísticos y bases de datos ontológicas—, la presente sección se ha diseñado para guiar la exploración de lo teórico a lo particular a través de tres bloques secuenciales:
+</p>
+
+<ul>
+  <li>
+    <strong>8.1. Fundamentos del Análisis de Vías Biológicas &rArr;</strong> Un bloque teórico esencial para fijar los conceptos estadísticos subyacentes. Se detallarán las diferencias mecanísticas entre las dos filosofías de enriquecimiento empleadas (ORA frente a GSEA) y se presentarán las bases de datos de conocimiento ontológico (como GO y KEGG) sobre las que se han proyectado los datos.
+  </li>
+  <li>
+    <strong>8.2. Exploración Global (Arquitectura del Enriquecimiento) &rArr;</strong> Por rigor analítico y trazabilidad computacional, el <em>pipeline</em> ha replicado en esta fase exactamente la misma arquitectura de directorios generada en la sección de expresión diferencial. Esto significa que se ha calculado el enriquecimiento para las proyecciones preliminares (clústeres de Seurat) y algorítmicas (bases de datos automáticas). Aunque sabemos que su utilidad biológica es limitada frente al modelo curado, se exponen aquí como un repositorio pasivo de consulta por si el investigador necesitara auditar el comportamiento de linajes genéricos.
+  </li>
+  <li>
+    <strong>8.3. Análisis Definitivo (Enriquecimiento Intrapoblacional WT vs KO) &rArr;</strong> El verdadero epicentro biológico del informe. Toda la exploración interactiva se focalizará exclusivamente en el subdirectorio <code>01_degs_wt_vs_ko_within_cluster</code> correspondiente a la última versión del modelo manual. La justificación es directa: aislar poblaciones celulares finamente curadas y comparar la funcionalidad de sus células sanas frente a las mutantes es la única vía metodológica válida para desentrañar los verdaderos mecanismos celulares, rutas metabólicas y procesos patológicos inducidos por el <em>Knock-Out</em>. Se incluirá una guía detallada para interpretar gráficas y tablas.
+  </li>
+</ul>
+
+<p>
+  A continuación, iniciaremos este recorrido sentando las bases metodológicas que gobiernan la extracción de vías biológicas.
+</p>
+
+
+
+
+
+
+
+
+<div style="height: 20px; background-color: transparent;"></div>
+
+<div class="titulo2" id="tab3-seccion8.1">
+  8.1. Fundamentos del Análisis de Vías Biológicas
+</div>
+
+<p>
+  El análisis de enriquecimiento funcional actúa como el puente interpretativo definitivo entre la estadística cruda y la biología de sistemas. Su premisa fundamental es que los genes no actúan de forma aislada, sino que colaboran dinámicamente en redes y cascadas complejas para ejecutar las funciones celulares. Para descifrar esta red de interacciones, el presente estudio implementa las dos metodologías algorítmicas más robustas en el campo de la transcriptómica:
+</p>
+
+<ul>
+  <li>
+    <strong>ORA (Over-Representation Analysis) &rArr;</strong> Este enfoque estadístico clásico utiliza exclusivamente la lista de genes que han superado el umbral estricto de significancia (es decir, el subconjunto de DEGs con <code>p_val_adj < 0.05</code>). El algoritmo evalúa matemáticamente (mediante pruebas hipergeométricas o exactas de Fisher) si en esa lista filtrada existe una frecuencia de genes asociados a una ruta biológica concreta que sea significativamente mayor de la que cabría esperar por puro azar frente a un universo de referencia. <br>
+    <em style="color: #0e59a8">Nota metodológica en Single-Cell:</em> ORA es altamente dependiente del tamaño de la lista de entrada. Debido a la naturaleza intrínsecamente ruidosa de la tecnología de célula única (con altas tasas de <em>drop-out</em> o pérdida de señal), una perturbación (KO) puede tener un impacto biológico real pero sutil en un clúster, generando muy pocos genes que logren superar el estricto umbral estadístico individual. En estos escenarios, es completamente normal que ORA carezca de poder estadístico y devuelva resultados vacíos para ciertos linajes.
+  </li>
+  <li>
+    <strong>GSEA (Gene Set Enrichment Analysis) &rArr;</strong> A diferencia de ORA, este método no impone un p-valor de corte arbitrario, por lo que no descarta ningún dato. Utiliza <em>todos</em> los genes detectados en la población celular, ordenándolos en un ranking continuo basado en su magnitud y dirección de cambio (típicamente de mayor a menor <code>avg_log2FC</code>). GSEA recorre este ranking evaluando si los genes pertenecientes a una vía biológica específica tienden a acumularse coordinadamente en los extremos de la lista.  <strong>Dadas las limitaciones de captura en transcriptómica de célula única, GSEA suele ser una aproximación mucho más robusta y relevante que ORA.</strong> Al sortear la necesidad de significancia gen a gen, es capaz de detectar cambios patológicos donde decenas de genes de una misma cascada metabólica se alteran de forma levísima pero sinérgica; un fenómeno biológico crítico que el filtro estricto de ORA pasaría completamente por alto.
+  </li>
+</ul>
+
+<p>
+  Independientemente de la estrategia estadística elegida, la precisión biológica del análisis depende de la calidad de los diccionarios o "vocabularios controlados" empleados para el contraste. En este proyecto, las firmas transcripcionales se han proyectado de manera sistemática contra las dos grandes ontologías de referencia a nivel mundial:
+</p>
+
+<ul>
+  <li>
+    <strong>Gene Ontology (GO) &rArr;</strong> Constituye la base de datos ontológica más extensa e imprescindible a nivel global. Su arquitectura estructura el conocimiento biológico mediante una red jerárquica rigurosa (un grafo acíclico dirigido), donde los conceptos generales se ramifican hacia subcategorías de altísima precisión.  Para lograr una anotación exhaustiva y estandarizada, GO clasifica las propiedades de los genes en tres dominios ortogonales y complementarios. Por un lado, el <strong>Biological Process (GO-BP)</strong> agrupa los procesos biológicos amplios o "programas celulares" que requieren la coordinación de múltiples actividades moleculares, aportando el contexto fisiológico general (por ejemplo, <em>la regulación de la respuesta inmune, la angiogénesis o la apoptosis</em>). En paralelo, el <strong>Cellular Component (GO-CC)</strong> define la anatomía subcelular exacta, indicando la estructura o compartimento físico donde el producto génico ejerce su función, un dato crucial para identificar qué organelas concretas se ven afectadas por la mutación (como <em>la membrana mitocondrial externa, el nucleoplasma o el ribosoma</em>). Finalmente, la <strong>Molecular Function (GO-MF)</strong> describe las actividades bioquímicas elementales y directas que un gen o su proteína realiza a nivel estrictamente individual, con independencia del proceso mayor en el que participe (tales como <em>la actividad proteína quinasa, la unión a factores de transcripción o la capacidad catalítica enzimática</em>).
+  </li>
+  <li>
+    <strong>KEGG (Kyoto Encyclopedia of Genes and Genomes) &rArr;</strong> A diferencia de la compleja jerarquía semántica de GO, KEGG destaca como un repositorio enfocado íntegramente en las redes de interacciones de alto nivel. Este recurso proporciona mapas visuales exhaustivos, estructurados y curados manualmente, que representan rutas metabólicas completas, intrincados mecanismos de señalización intracelular y la patogénesis subyacente de numerosas enfermedades humanas.  Su uso es absolutamente fundamental para rastrear y visualizar gráficamente el efecto en cadena o "dominó" que provoca una perturbación experimental (ilustrando, por ejemplo, cómo el silenciamiento de un único gen es capaz de desestabilizar todo el ciclo de Krebs o de bloquear por completo la vía de señalización del supresor tumoral p53).
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+<div style="height: 20px; background-color: transparent;"></div>
+
+<div class="titulo2" id="tab3-seccion8.2">
+  8.2. Exploración Global: Arquitectura del Enriquecimiento
+</div>
+
+<p>
+  Por motivos de completitud algorítmica y absoluta trazabilidad, el <em>pipeline</em> bioinformático ha replicado de forma exacta la arquitectura de directorios generada en el módulo previo de expresión diferencial. 
+</p>
+
+<p>
+  Esto implica que el motor de enriquecimiento funcional (tanto ORA como GSEA) se ha ejecutado sistemáticamente sobre todos los niveles de agrupación celular evaluados a lo largo del estudio: desde los clústeres numéricos crudos generados por Seurat, hasta los linajes inferidos mediante catálogos automáticos estandarizados (ej. <em>HPCA</em>, <em>Monaco Immune Data</em>, <em>Tabula Muris</em>).
+</p>
+
+<p>
+  Desde el siguiente panel interactivo puede acceder a la raíz absoluta del repositorio (<code>08_enrichment</code>) que aloja todo este histórico masivo de proyecciones funcionales:
+</p>
+
+```{r, echo=FALSE, results="asis"}
+# 1. MOSTRAR BOX-FILES DE LA RAÍZ DE ENRIQUECIMIENTO (Seurat, Automáticas, Manual)
+if (!is.null(enrichment_root_dirs_df) && nrow(enrichment_root_dirs_df) > 0) {
+  
+  cat('<div class="box-files">\n<ul>\n')
+  for (i in 1:nrow(enrichment_root_dirs_df)) {
+    folder <- enrichment_root_dirs_df$folder_name[i]
+    ruta <- enrichment_root_dirs_df$ruta_relativa[i]
+    cat(sprintf('<li class="file-folder"><a href="%s" target="_blank">%s</a></li>\n', ruta, folder))
+  }
+  cat('</ul>\n</div>\n')
+  
+  cat(glue::glue('
+  <p class="text-center">
+    <a href="{ruta_enrichment_relativa}" target="_blank" class="boton-files">
+      <i class="fa-solid fa-folder-open"></i> Explorar directorio raíz de Enriquecimiento Funcional
+    </a>
+  </p>
+  '), sep = "\n")
+  
+} else {
+  cat(glue::glue('
+  <div class="alert-info alert-box" style="margin-top: 20px; margin-bottom: 20px;">
+    <i class="fa-solid fa-circle-info"></i>
+    <b>Directorio vacío</b><br>
+    No se han detectado subdirectorios en la raíz de enriquecimiento funcional.
+  </div>
+  '), sep = "\n")
+}
+```
+
+<p>
+  <em style="color: #666;"><i class="fa-solid fa-circle-info"></i> <strong>Aviso sobre la navegación local:</strong> Dependiendo de las políticas de seguridad de su navegador web, es posible que al intentar abrir alguna de estas carpetas reciba un mensaje de error (como <code>ERR_FILE_NOT_FOUND</code> o "Archivo no encontrado"). Esto no indica un fallo en el informe ni un enlace roto; simplemente significa que el directorio en cuestión se encuentra completamente vacío en este momento (ya sea porque el análisis aún está en curso o porque la base de datos no arrojó resultados para esos parámetros), lo que provoca que el navegador bloquee la vista de exploración local.</em>
+</p>
+
+<p>
+  <strong>Nota metodológica:</strong> Es fundamental destacar que las carpetas de análisis automáticos y numéricos actúan exclusivamente como un repositorio pasivo de consulta. Aunque su evaluación puede resultar útil para auditar el comportamiento de linajes extremadamente genéricos, su fiabilidad biológica es limitada. El verdadero valor traslacional y el rigor analítico de este estudio recaen enteramente sobre el modelo poblacional consolidado por el equipo investigador. Por ello, el escrutinio interactivo abandonará estas aproximaciones preliminares para centrarse en la rama <code>03_enrichment_manual_aggregated_named_clusters</code> a partir de la siguiente subsección.
+</p>
+
+
+
+
+
+
+
+
+
+<div style="height: 20px; background-color: transparent;"></div>
+
+<div class="titulo2" id="tab3-seccion8.3">
+  8.3. Análisis Definitivo: Enriquecimiento Intrapoblacional (WT vs KO)
+</div>
+
+<p>
+  Dejando atrás las proyecciones preliminares, nos adentramos ahora en el verdadero núcleo biológico del estudio. Los resultados que se exponen a continuación corresponden de forma exclusiva a la ruta <code>03_enrichment_manual_aggregated_named_clusters</code> (en su última versión curada) y, más concretamente, al subdirectorio <code>01_degs_wt_vs_ko_within_cluster</code>.
+</p>
+
+<p>
+  En esta ubicación evaluamos, célula a célula, en qué alteraciones fisiológicas y metabólicas se traduce el impacto de la mutación <em>Knock-Out</em>. Dependiendo de la idoneidad estadística de cada linaje, la evaluación se ha ramificado en las dos estrategias algorítmicas detalladas en la sección de fundamentos: <strong>ORA</strong> y <strong>GSEA</strong>. Puede acceder a los directorios principales de ambos motores funcionales a través del siguiente panel:
+</p>
+
+```{r, echo=FALSE, results="asis"}
+# 1. MOSTRAR BOX-FILES DE LA RAÍZ DE ENRIQUECIMIENTO (Seurat, Automáticas, Manual)
+if (!is.null(enrichment_root_dirs_df) && nrow(enrichment_root_dirs_df) > 0) {
+  
+  cat('<div class="box-files">\n<ul>\n')
+  for (i in 1:nrow(enrichment_root_dirs_df)) {
+    folder <- enrichment_root_dirs_df$folder_name[i]
+    ruta <- enrichment_root_dirs_df$ruta_relativa[i]
+    cat(sprintf('<li class="file-folder"><a href="%s" target="_blank">%s</a></li>\n', ruta, folder))
+  }
+  cat('</ul>\n</div>\n')
+  
+  cat(glue::glue('
+  <p class="text-center">
+    <a href="{ruta_enrichment_relativa}" target="_blank" class="boton-files">
+      <i class="fa-solid fa-folder-open"></i> Explorar directorio raíz de Enriquecimiento Funcional
+    </a>
+  </p>
+  '), sep = "\n")
+  
+} else {
+  cat(glue::glue('
+  <div class="alert-info alert-box" style="margin-top: 20px; margin-bottom: 20px;">
+    <i class="fa-solid fa-circle-info"></i>
+    <b>Directorio vacío</b><br>
+    No se han detectado subdirectorios en la raíz de enriquecimiento funcional.
+  </div>
+  '), sep = "\n")
+}
+```
+
+
+
+
+
+
+<div style="height: 15px; background-color: transparent;"></div>
+
+<div class="titulo3" id="tab3-seccion8.3.1">
+  8.3.1. Arquitectura Interna: Bases de Datos Analizadas
+</div>
+
+<p>
+  Al acceder a cualquiera de las dos metodologías anteriores (ya sea a <code>01_ora</code> o a <code>02_gsea</code>), encontrará que la información se ha segmentado ordenadamente en cuatro subdirectorios que hacen referencia a las ontologías evaluadas. Para facilitar su navegación, cada una alberga un nivel de conocimiento específico:
+</p>
+
+<ul>
+  <li>
+    <strong><code>01_go_bp</code> (Biological Process - Procesos Biológicos) &rArr;</strong> Constituye el nivel de mayor abstracción funcional y, frecuentemente, el de mayor relevancia fenotípica. Esta carpeta aloja los resultados asociados a los "grandes programas" que ejecuta la célula para interactuar con su entorno o mantener su homeostasis. Al explorarla, el investigador podrá determinar si la perturbación experimental está empujando a la población celular hacia vías de <em>apoptosis</em>, alterando su <em>ciclo de proliferación</em>, o desencadenando una <em>respuesta inflamatoria aguda</em>.
+  </li>
+  <li>
+    <strong><code>02_go_cc</code> (Cellular Component - Componentes Celulares) &rArr;</strong> Aloja el mapeo puramente espacial y anatómico del impacto transcripcional. A diferencia de los procesos abstractos, esta carpeta responde a "dónde" se focaliza la alteración a nivel físico. Su revisión es indispensable para descubrir si el fenotipo mutante compromete la integridad de macrocomplejos o compartimentos celulares concretos, revelando, por ejemplo, estrés patológico en el <em>retículo endoplasmático</em>, desorganización del <em>citoesqueleto de actina</em> o alteraciones estructurales en la <em>membrana mitocondrial interna</em>.
+  </li>
+  <li>
+    <strong><code>03_go_mf</code> (Molecular Function - Función Molecular) &rArr;</strong> Desciende al nivel bioquímico más estricto y mecanicista. Agrupa los hallazgos basándose exclusivamente en la actividad catalítica, sensora o de unión que ejercen físicamente los productos génicos a escala nanomolecular. Permite diseccionar la actividad intrínseca de los genes alterados, respondiendo a si la población celular ha visto disminuida su <em>actividad proteína quinasa</em>, su capacidad de <em>transporte transmembrana de iones</em> o su afinidad para la <em>unión a factores de transcripción</em> específicos.
+  </li>
+  <li>
+    <strong><code>04_kegg</code> (Rutas Metabólicas y Señalización) &rArr;</strong> Actúa como el repositorio supremo de los "circuitos de cableado" celular. A diferencia de la clasificación conceptual de GO, KEGG mapea los genes sobre diagramas topológicos estandarizados.  Aquí se visualizan redes interconectadas reales, permitiendo rastrear el efecto dominó que la mutación provoca sobre el metabolismo basal (ej. <em>glucólisis</em> o <em>fosforilación oxidativa</em>), sobre intrincadas redes de transducción de señales (ej. <em>cascadas PI3K-Akt o señalización Notch</em>) o incluso sobre rutas específicas asociadas a patologías humanas.
+  </li>
+</ul>
+
+
+
+
+
+
+<div style="height: 15px; background-color: transparent;"></div>
+
+<div class="titulo3" id="tab3-seccion8.3.2">
+  8.3.2. Guía de Interpretación de Archivos
+</div>
+
+<p>
+  Al adentrarse en cualquiera de los cuatro subdirectorios ontológicos, hallará los resultados individualizados para cada tipo celular curado. El formato de entrega consta sistemáticamente de una vertiente estadística tabular y una vertiente de validación visual. A continuación, le ofrecemos las claves analíticas para interpretar correctamente ambos formatos:
+</p>
+
+<ul>
+  <li>
+    <strong>Catálogos de Enriquecimiento (Archivos <code>.tsv</code> / <code>.csv</code>) &rArr;</strong> Constituyen la matriz matemática del análisis. Cada fila representa una ruta biológica o proceso alterado. Para una correcta interpretación biológica, resulta crítico atender a cuatro columnas clave: <strong><code>Description</code></strong> (el nombre biológico de la vía), <strong><code>GeneRatio</code></strong> (la proporción de genes diferenciales que pertenecen a dicha vía respecto al total analizado), el <strong><code>p.adjust</code></strong> (que actúa como el filtro de veracidad estadística, típicamente < 0.05), y las columnas <strong><code>geneID</code></strong> o <strong><code>GenesID_up/dn</code></strong>. Estas últimas son de un inmenso valor, ya que listan los símbolos exactos de los genes de nuestro experimento que han provocado que esa ruta resulte positiva, permitiéndonos saber no solo qué vía cambia, sino por culpa de qué genes específicos.
+  </li>
+  <li>
+    <strong>Reportes Gráficos de Validación (Archivos <code>.pdf</code>) &rArr;</strong> Estos documentos multipágina traducen las métricas tabulares en visualizaciones rápidamente interpretables. Típicamente, inician con un <strong>Gráfico de Barras (<em>Bar Plot</em>)</strong> que clasifica las vías más impactadas según su volumen de genes (<em>Count</em>). A continuación, presentan el <strong>Gráfico de Burbujas (<em>Dot Plot</em>)</strong>, considerado la representación estrella del enriquecimiento.  En él, la intensidad del color de cada burbuja revela la fuerza de la significancia estadística (<em>p.adjust</em>), mientras que su diámetro ilustra la cantidad total de genes de nuestra muestra involucrados en la cascada. Adicionalmente, de forma exclusiva dentro del directorio KEGG, es posible hallar <strong>Mapas Metabólicos Topológicos</strong>.  Estos diagramas ilustran los circuitos reales de la célula, coloreando las cajas de las enzimas y receptores (típicamente para indicar su sobreexpresión o represión), permitiendo rastrear visualmente dónde se interrumpe o acelera un ciclo bioquímico.
+  </li>
+  <li>
+    <strong>Consideración Fisiológica ante Carpetas Vacías &rArr;</strong> Recordamos nuevamente una peculiaridad fundamental de los análisis de célula única. Es completamente normal y biológicamente esperable que, al explorar ciertas carpetas, descubra que están vacías (sin archivos <code>.csv</code> o <code>.pdf</code>) para un tipo celular concreto. Esto no constituye un error de ejecución del <em>pipeline</em>. Simplemente indica que, para ese clúster específico, la mutación <em>Knock-Out</em> no alteró el transcriptoma con la magnitud o densidad estadística suficientes como para perturbar de forma coordinada y significativa una ruta biológica entera.
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+<div class="divider"></div>
+
+<p>
+  Con la caracterización funcional de las firmas transcripcionales y la traducción biológica de los perfiles de expresión celular, damos por concluido el flujo de trabajo bioinformático estandarizado para el análisis de célula única (<em>Single-Cell RNA-Seq</em>) de este proyecto.
+</p>
+
+<p>
+  Sin embargo, la investigación biológica de vanguardia es intrínsecamente dinámica y a menudo plantea interrogantes hiperespecíficos que escapan a las automatizaciones convencionales. Por ello, este informe cuenta con un último módulo complementario: <strong><a href="09-extra.html" class="normalink">9. Análisis personalizados y ad hoc</a></strong>.
+</p>
+
+<p>
+  Esta próxima (y última) sección está diseñada como un espacio analítico a medida destinado a albergar todas aquellas peticiones adicionales solicitadas expresamente por el equipo investigador. Desde la exploración gráfica de dianas génicas particulares o la generación de <em>FeaturePlots</em> específicos, hasta la exportación de matrices de datos atípicas; todo el material extra que complemente este estudio general residirá en dicho repositorio.
+</p>
+
+
+
+
+
+
+
+
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  FOOTER
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+<footer>
+  <a href="#" class="arriba"><i class="fa-solid fa-angles-up"></i></a>
+</footer>
+
+
+
+
+
+
+
+
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  CARGAR SCRIPTS DE JAVASCRIPT
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+<script type="module" src="../../../04-javascript/chatbot.js"></script>
+<script type="module" src="../../../04-javascript/script.js"></script>

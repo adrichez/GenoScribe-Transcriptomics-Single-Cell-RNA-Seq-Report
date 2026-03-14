@@ -1,0 +1,19 @@
+{
+    "timestamp": "2024-11-14T18:36:51.443527687+01:00",
+    "paths": [
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/WRITE_GENE_INDEX/fork0/chnk0-u51213634b6/files/gene_index.json"
+    ],
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2024-11-14T18:34:46.627244541+01:00",
+            "DeltaBytes": 103760613
+        },
+        {
+            "Timestamp": "2024-11-14T18:36:51.443527687+01:00",
+            "DeltaBytes": -103755611
+        }
+    ],
+    "count": 1,
+    "size": 103755611
+}

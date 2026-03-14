@@ -1,0 +1,144 @@
+{
+    "name": "ID.SCS003_24_WT_S1.SC_RNA_COUNTER_CS.SC_MULTI_CORE.MULTI_GEM_WELL_PROCESSOR.COUNT_GEM_WELL_PROCESSOR._BASIC_SC_RNA_COUNTER._MATRIX_COMPUTER.BARCODE_CORRECTION.fork0.chnk10",
+    "type": "local",
+    "cwd": "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk10-u5121364521/files",
+    "rusage": {
+        "self": {
+            "ru_maxrss": 60632,
+            "ru_ixrss": 0,
+            "ru_idrss": 0,
+            "ru_minflt": 2434,
+            "ru_majflt": 72,
+            "ru_nswap": 0,
+            "ru_utime": 0.009793,
+            "ru_stime": 0.02938,
+            "ru_inblock": 5681,
+            "ru_oublock": 5,
+            "ru_msgsnd": 0,
+            "ru_msgrcv": 0,
+            "ru_nsignals": 0,
+            "ru_nivcsw": 80
+        },
+        "children": {
+            "ru_maxrss": 900964,
+            "ru_ixrss": 0,
+            "ru_idrss": 0,
+            "ru_minflt": 113876,
+            "ru_majflt": 212,
+            "ru_nswap": 0,
+            "ru_utime": 12.490958,
+            "ru_stime": 12.880492,
+            "ru_inblock": 467875,
+            "ru_oublock": 229083,
+            "ru_msgsnd": 0,
+            "ru_msgrcv": 0,
+            "ru_nsignals": 0,
+            "ru_nivcsw": 3153
+        }
+    },
+    "used_bytes": {
+        "rss": 850227200,
+        "shared": 2433024,
+        "vmem": 2900590592,
+        "text": 20201472,
+        "stack": 2857648128,
+        "proc_count": 1
+    },
+    "io": {
+        "total": {
+            "read": {
+                "sysc": 72679,
+                "bytes": 2368
+            },
+            "write": {
+                "sysc": 600,
+                "bytes": 0
+            }
+        },
+        "max": {
+            "read": {
+                "sysc": 2278.122634675477,
+                "bytes": 4717.360952100499
+            },
+            "write": {
+                "sysc": 1195.2772682687075,
+                "bytes": 0
+            }
+        },
+        "dev": {
+            "read": {
+                "sysc": 758.9318611571985,
+                "bytes": 467.33157400450057
+            },
+            "write": {
+                "sysc": 118.41171638627549,
+                "bytes": 0
+            }
+        }
+    },
+    "wallclock": {
+        "start": "2024-11-14T19:44:50.417991892+01:00",
+        "end": "2024-11-14T19:45:45.137236414+01:00",
+        "duration_seconds": 54.719244599
+    },
+    "profile_mode": "disable",
+    "stackvars_flag": "disable",
+    "monitor_flag": "disable",
+    "invocation": {
+        "call": "SC_RNA_COUNTER_CS",
+        "args": {
+            "aligner": null,
+            "check_library_compatibility": true,
+            "chemistry": "auto",
+            "disable_ab_aggregate_detection": false,
+            "emptydrops_minimum_umis": null,
+            "feature_reference": null,
+            "filter_probes": null,
+            "force_cells": null,
+            "global_minimum_umis": null,
+            "include_introns": true,
+            "max_mito_percent": null,
+            "no_bam": true,
+            "no_secondary_analysis": false,
+            "no_target_umi_filter": false,
+            "r1_length": null,
+            "r2_length": null,
+            "recovered_cells": null,
+            "reference_path": "/mnt/beegfs/Bioinformatica/datasets/CellRanger/Mouse/refdata-gex-GRCm39-2024-A",
+            "sample_def": [
+                {
+                    "fastq_id": null,
+                    "fastq_mode": "ILMN_BCL2FASTQ",
+                    "gem_group": null,
+                    "lanes": null,
+                    "library_type": "Gene Expression",
+                    "read_path": "/mnt/beegfs/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads",
+                    "sample_indices": [
+                        "any"
+                    ],
+                    "sample_names": [
+                        "SCS003_24_WT_"
+                    ],
+                    "subsample_rate": null,
+                    "target_set": null,
+                    "target_set_name": null
+                }
+            ],
+            "sample_desc": "",
+            "sample_id": "SCS003_24_WT_S1",
+            "targeting_method": null,
+            "trim_polya_min_score": 20,
+            "trim_tso_min_score": 20
+        },
+        "mro_file": "rna/sc_rna_counter_cs.mro"
+    },
+    "version": {
+        "martian": "v4.0.12",
+        "pipelines": "cellranger-8.0.0"
+    },
+    "host": "nodo06",
+    "pid": 29552,
+    "threads": 1,
+    "memGB": 4,
+    "vmemGB": 7
+}

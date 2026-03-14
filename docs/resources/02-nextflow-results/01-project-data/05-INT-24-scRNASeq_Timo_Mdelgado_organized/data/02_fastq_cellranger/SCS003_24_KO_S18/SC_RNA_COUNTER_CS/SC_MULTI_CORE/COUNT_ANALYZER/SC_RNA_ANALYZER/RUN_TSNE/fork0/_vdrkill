@@ -1,0 +1,30 @@
+{
+    "timestamp": "2024-11-14T20:38:01.619804047+01:00",
+    "paths": [
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_TSNE/fork0/chnk0-u3c06365128/files/tsne_csv",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_TSNE/fork0/chnk0-u3c06365128/files/tsne_h5.h5",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_TSNE/fork0/join-u3c06365128/files/tsne_csv",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/RUN_TSNE/fork0/join-u3c06365128/files/tsne_h5.h5"
+    ],
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2024-11-14T20:36:08.301745249+01:00",
+            "DeltaBytes": 798626
+        },
+        {
+            "Timestamp": "2024-11-14T20:36:29.927455827+01:00",
+            "DeltaBytes": 790099
+        },
+        {
+            "Timestamp": "2024-11-14T20:36:30.04198251+01:00",
+            "DeltaBytes": -782036
+        },
+        {
+            "Timestamp": "2024-11-14T20:38:01.619804047+01:00",
+            "DeltaBytes": -782036
+        }
+    ],
+    "count": 8,
+    "size": 1564072
+}

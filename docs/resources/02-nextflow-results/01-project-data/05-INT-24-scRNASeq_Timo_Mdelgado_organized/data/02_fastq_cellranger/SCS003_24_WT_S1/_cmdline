@@ -1,0 +1,1 @@
+cellranger count --id SCS003_24_WT_S1 --fastqs . --transcriptome /mnt/beegfs/Bioinformatica/datasets/CellRanger/Mouse/refdata-gex-GRCm39-2024-A/ --sample SCS003_24_WT_ --create-bam false

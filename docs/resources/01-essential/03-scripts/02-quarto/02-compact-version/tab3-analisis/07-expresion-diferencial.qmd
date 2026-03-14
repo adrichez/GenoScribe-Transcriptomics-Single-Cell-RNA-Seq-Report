@@ -1,0 +1,996 @@
+---
+title: "IPBLN Bioinformatics Report"
+
+include-in-header:
+  text: |
+    <link rel="shortcut icon" href="../../../../01-images/icons/favicon.svg"/>
+    <link rel="icon" type="image/x-icon" href="../../../../01-images/icons/favicon.ico">
+
+params:
+  project_path: ""
+  report_version: ""
+---
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  CHATBOT
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+```{=html}
+<!-- Contenedor del chat -->
+<div id="chat-container">
+  <button id="chat-toggle"></button>
+  <div id="chat-box">
+    <div id="chat-info" class="chat-info">
+      <h1>
+        Mini Chat RAG (beta)
+      </h1>
+
+      <p>
+        ¡Hola! Soy <strong>Geni</strong>, el asistente inteligente de <strong>GenoScribe</strong>.  
+        Estoy aquí para ayudarte a explorar de forma interactiva el contenido de este informe bioinformático.
+      </p>
+
+      <p>
+        Cuando me haces una pregunta, primero intento reconocer si coincide con alguno de los patrones o expresiones que conozco.  
+        Si encuentro una coincidencia, te responderé directamente con una respuesta predefinida, diseñada para ser rápida, clara e incluso un poco ingeniosa.  
+        Si no reconozco el patrón, entonces activo mis herramientas de búsqueda: genero representaciones vectoriales (embeddings) y busco los fragmentos más relevantes entre varios documentos —incluyendo el propio informe, archivos PDF y HTML externos, y sesiones de preguntas y respuestas (QA).  
+        A partir de esa información, creo un resumen que intenta ofrecerte una respuesta coherente y útil basada en el contenido existente.
+      </p>
+
+      <p>
+        Se debe tener en cuenta que este entorno es experimental. No utilizo grandes modelos de lenguaje, por lo que algunas respuestas pueden ser aproximadas o incompletas.  
+        El objetivo principal es facilitar una visualización rápida, comprensible y reproducible de la información contenida en los documentos, permitiendo una exploración más dinámica del informe.
+      </p>
+
+      <p>
+        Actualmente, los resultados pueden variar en precisión, ya que empleo modelos ligeros y locales para asegurar que la aplicación funcione en cualquier entorno sin necesidad de servidores externos.  
+        Sin embargo, la estructura del sistema está preparada para mejorar notablemente su rendimiento en el futuro mediante la integración con modelos más avanzados o APIs externas.  
+        Para comenzar, simplemente escribe tu pregunta en el campo inferior y deja que yo me encargue del resto. ¡Prometo poner todo mi código en ello!
+      </p>
+    </div>
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" placeholder="Escribe tu pregunta..."/>
+    <button id="chat-send" title="Enviar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+```
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  IMPORTACIONES
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+<!-- Incluir Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  TAB 3: ANÁLISIS | 7. EXPRESIÓN DIFERENCIAL POR CONDICIÓN (WT vs KO) -->
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results="hide"}
+#===================================================================================================================================================
+# CARGA DE LIBRERÍAS
+#===================================================================================================================================================
+
+library(jsonlite)
+library(dplyr)
+library(stringr)
+library(glue)
+library(fs)
+library(purrr)
+library(ggplot2)
+library(tidyr)
+library(plotly)
+library(htmltools)
+library(tidyverse)
+library(magrittr)
+library(DT)
+library(tibble)
+
+
+
+
+
+
+#===================================================================================================================================================
+# CONFIGURACIONES INICIALES
+#===================================================================================================================================================
+
+# Rutas clave
+ruta_qmd <- getwd()
+ruta_sc_rna_seq_pipeline <- file.path("..", "..", "..", "..", "..", "..")
+ruta_sc_rna_seq_pipeline_absoluta <- normalizePath(ruta_sc_rna_seq_pipeline)
+nombre_proyecto <- basename(params$project_path)
+
+
+# Rutas del directorio de resultados de Nextflow
+ruta_nextflow_results <- file.path(ruta_sc_rna_seq_pipeline, "resources", "02-nextflow-results")
+
+# Rutas del directorio de datos del proyecto
+ruta_proyecto <- file.path(params$project_path)
+ruta_proyecto_relativa <- file.path(ruta_sc_rna_seq_pipeline, "resources", "02-nextflow-results", "01-project-data", nombre_proyecto)
+
+
+# Ruta para guardar los resultados de este archivo QMD dentro del directorio temporal
+ruta_archives_tmp_expresion_diferencial <- file.path(ruta_sc_rna_seq_pipeline, "resources", "01-essential", "02-archives", "02-tmp", "tab3-analisis", "07-expresion-diferencial")
+
+# Asegurarse de crear directorio
+dir.create(ruta_archives_tmp_expresion_diferencial, recursive = TRUE, showWarnings = FALSE)
+
+
+
+
+
+
+#===================================================================================================================================================
+# DIRECTORIO "ANALYSIS"
+#===================================================================================================================================================
+
+# Rutas de la carpeta "analysis" dentro del directorio del proyecto
+ruta_analysis <- file.path(ruta_proyecto, "analysis")
+ruta_analysis_relativa <- file.path(ruta_proyecto_relativa, "analysis")
+
+
+
+
+#-------------------------------------------------------------------------------------------------------------------------------
+# DIRECTORIO "DEG" EN "ANALYSIS"
+#-------------------------------------------------------------------------------------------------------------------------------
+
+# Rutas al directorio "07_deg_conditions" dentro de "analysis"
+ruta_deg <- file.path(ruta_analysis, "07_deg_conditions")
+ruta_deg_relativa <- file.path(ruta_analysis_relativa, "07_deg_conditions")
+
+
+
+#------------------------------------------------------------------------
+# DIRECTORIO 1: "DEG SEURAT NUMERIC" 
+#------------------------------------------------------------------------
+
+ruta_deg_seurat <- file.path(ruta_deg, "01_degs_seurat_numeric_clusters")
+ruta_deg_seurat_relativa <- file.path(ruta_deg_relativa, "01_degs_seurat_numeric_clusters")
+
+ruta_deg_seurat_within <- file.path(ruta_deg_seurat, "01_degs_wt_vs_ko_within_cluster")
+ruta_deg_seurat_within_relativa <- file.path(ruta_deg_seurat_relativa, "01_degs_wt_vs_ko_within_cluster")
+
+files_deg_seurat_within_df <- NULL
+
+if (dir.exists(ruta_deg_seurat_within)) {
+  archivos_seurat <- list.files(ruta_deg_seurat_within, full.names = FALSE)
+  if (length(archivos_seurat) > 0) {
+    files_deg_seurat_within_df <- data.frame(
+      file_name = archivos_seurat,
+      ruta_absoluta = file.path(ruta_deg_seurat_within, archivos_seurat),
+      ruta_relativa = file.path(ruta_deg_seurat_within_relativa, archivos_seurat),
+      stringsAsFactors = FALSE
+    )
+  }
+}
+
+
+
+#------------------------------------------------------------------------
+# DIRECTORIO 2: "DEG AUTOMATIC DBS" 
+#------------------------------------------------------------------------
+
+ruta_deg_dbs <- file.path(ruta_deg, "02_degs_automatic_dbs_clusters")
+ruta_deg_dbs_relativa <- file.path(ruta_deg_relativa, "02_degs_automatic_dbs_clusters")
+
+dbs_subdirs_df <- NULL
+files_deg_dbs_list <- list() # Lista para almacenar un dataframe por cada base de datos
+
+if (dir.exists(ruta_deg_dbs)) {
+  subdirs_dbs <- list.dirs(ruta_deg_dbs, recursive = FALSE, full.names = FALSE)
+  
+  if (length(subdirs_dbs) > 0) {
+    dbs_subdirs_df <- data.frame(
+      db_name = subdirs_dbs,
+      ruta_absoluta = file.path(ruta_deg_dbs, subdirs_dbs),
+      ruta_relativa = file.path(ruta_deg_dbs_relativa, subdirs_dbs),
+      stringsAsFactors = FALSE
+    )
+    
+    # Bucle para extraer archivos de cada carpeta de base de datos
+    for (db in subdirs_dbs) {
+      ruta_db_abs <- file.path(ruta_deg_dbs, db)
+      ruta_db_rel <- file.path(ruta_deg_dbs_relativa, db)
+      
+      archivos_db <- list.files(ruta_db_abs, full.names = FALSE)
+      if (length(archivos_db) > 0) {
+        files_deg_dbs_list[[db]] <- data.frame(
+          file_name = archivos_db,
+          ruta_absoluta = file.path(ruta_db_abs, archivos_db),
+          ruta_relativa = file.path(ruta_db_rel, archivos_db),
+          stringsAsFactors = FALSE
+        )
+      }
+    }
+  }
+}
+
+
+
+#------------------------------------------------------------------------
+# DIRECTORIO 3: "DEG MANUAL AGGREGATED" (EL PLATO FUERTE)
+#------------------------------------------------------------------------
+
+ruta_deg_agg <- file.path(ruta_deg, "03_degs_manual_aggregated_named_clusters")
+ruta_deg_agg_relativa <- file.path(ruta_deg_relativa, "03_degs_manual_aggregated_named_clusters")
+
+versiones_deg_agg_df <- NULL
+ultima_version_nombre <- NULL
+ult_ver_within_df <- NULL
+ult_ver_wt_between_df <- NULL
+ult_ver_ko_between_df <- NULL
+deg_agg_wr_vs_ko_summary_df <- NULL
+
+if (dir.exists(ruta_deg_agg)) {
+  subcarpetas_versiones <- list.dirs(ruta_deg_agg, recursive = FALSE, full.names = FALSE)
+
+  if (length(subcarpetas_versiones) > 0) {
+    
+    # Ordenar y detectar la última versión
+    subcarpetas_versiones <- sort(subcarpetas_versiones)
+    ultima_version_nombre <- subcarpetas_versiones[length(subcarpetas_versiones)]
+
+    versiones_deg_agg_df <- data.frame(
+      folder_name = subcarpetas_versiones,
+      is_latest = (subcarpetas_versiones == ultima_version_nombre),
+      ruta_absoluta = file.path(ruta_deg_agg, subcarpetas_versiones),
+      ruta_relativa = file.path(ruta_deg_agg_relativa, subcarpetas_versiones),
+      stringsAsFactors = FALSE
+    )
+
+    # --- ESCRUTINIO DE LA ÚLTIMA VERSIÓN ---
+    ruta_ult_abs <- file.path(ruta_deg_agg, ultima_version_nombre)
+    ruta_ult_rel <- file.path(ruta_deg_agg_relativa, ultima_version_nombre)
+
+    # 1. within_cluster
+    dir_within_abs <- file.path(ruta_ult_abs, "01_degs_wt_vs_ko_within_cluster")
+    if (dir.exists(dir_within_abs)) {
+      archivos <- list.files(dir_within_abs, full.names = FALSE)
+      if (length(archivos) > 0) {
+        ult_ver_within_df <- data.frame(
+          file_name = archivos,
+          ruta_absoluta = file.path(dir_within_abs, archivos),
+          ruta_relativa = file.path(ruta_ult_rel, "01_degs_wt_vs_ko_within_cluster", archivos),
+          stringsAsFactors = FALSE
+        )
+      }
+    }
+
+    # 2. wt_between_clusters
+    dir_wt_bet_abs <- file.path(ruta_ult_abs, "02_degs_wt_between_clusters_pairwise")
+    if (dir.exists(dir_wt_bet_abs)) {
+      archivos <- list.files(dir_wt_bet_abs, full.names = FALSE)
+      if (length(archivos) > 0) {
+        ult_ver_wt_between_df <- data.frame(
+          file_name = archivos,
+          ruta_absoluta = file.path(dir_wt_bet_abs, archivos),
+          ruta_relativa = file.path(ruta_ult_rel, "02_degs_wt_between_clusters_pairwise", archivos),
+          stringsAsFactors = FALSE
+        )
+      }
+    }
+
+    # 3. ko_between_clusters
+    dir_ko_bet_abs <- file.path(ruta_ult_abs, "03_degs_ko_between_clusters_pairwise")
+    if (dir.exists(dir_ko_bet_abs)) {
+      archivos <- list.files(dir_ko_bet_abs, full.names = FALSE)
+      if (length(archivos) > 0) {
+        ult_ver_ko_between_df <- data.frame(
+          file_name = archivos,
+          ruta_absoluta = file.path(dir_ko_bet_abs, archivos),
+          ruta_relativa = file.path(ruta_ult_rel, "03_degs_ko_between_clusters_pairwise", archivos),
+          stringsAsFactors = FALSE
+        )
+      }
+    }
+
+    # --- GENERACIÓN DE TABLA RESUMEN UP/DOWN (Basado solo en within_cluster) ---
+    if (!is.null(ult_ver_within_df) && nrow(ult_ver_within_df) > 0) {
+      
+      tsvs_df <- ult_ver_within_df[grepl("\\.tsv$", ult_ver_within_df$file_name, ignore.case = TRUE), ]
+      
+      if (nrow(tsvs_df) > 0) {
+        deg_agg_wr_vs_ko_summary_list <- list()
+
+        for (i in 1:nrow(tsvs_df)) {
+          tsv_abs <- tsvs_df$ruta_absoluta[i]
+          nombre_archivo <- tsvs_df$file_name[i]
+          
+          # Lectura protegida contra fallos
+          tryCatch({
+            deg_df <- read.delim(tsv_abs, stringsAsFactors = FALSE)
+            
+            # Comprobar que existen las columnas necesarias
+            if("p_val_adj" %in% colnames(deg_df) && "avg_log2FC" %in% colnames(deg_df)) {
+              
+              deg_sig <- deg_df %>% filter(p_val_adj < 0.05)
+              up_count   <- sum(deg_sig$avg_log2FC > 0, na.rm = TRUE)
+              down_count <- sum(deg_sig$avg_log2FC < 0, na.rm = TRUE)
+              total_deg  <- nrow(deg_sig)
+              
+              # Extraer el nombre del clúster limpiando prefijos/sufijos
+              cluster_name <- gsub("^DEG_|_KO_vs_WT_cell_annot\\.tsv$|_WT_vs_KO_Integrated\\.tsv$", "", nombre_archivo)
+              
+              deg_agg_wr_vs_ko_summary_list[[cluster_name]] <- data.frame(
+                Cluster = cluster_name,
+                Up = up_count,
+                Down = down_count,
+                Total = total_deg,
+                stringsAsFactors = FALSE
+              )
+            }
+          }, error = function(e) {
+            # Si un TSV está vacío o roto, el bucle ignora el error y sigue adelante
+          })
+        }
+
+        # Consolidar el dataframe maestro
+        if (length(deg_agg_wr_vs_ko_summary_list) > 0) {
+          deg_agg_wr_vs_ko_summary_df <- bind_rows(deg_agg_wr_vs_ko_summary_list)
+          deg_agg_wr_vs_ko_summary_df <- deg_agg_wr_vs_ko_summary_df %>% arrange(Cluster)
+
+          # Guardar archivo resumen en temporal
+          ruta_out_summary <- file.path(ruta_archives_tmp_expresion_diferencial, "deg_agg_wr_vs_ko_summary.tsv")
+          write.table(deg_agg_wr_vs_ko_summary_df, file = ruta_out_summary, sep = "\t", quote = FALSE, row.names = FALSE)
+        }
+      }
+    }
+  }
+}
+```
+
+
+<div class="informe-titulo-tab">
+  <h1>Pestaña</h1>
+  <h2>Análisis Bioinformático Completo</h2>
+</div>
+
+<div class="informe-titulo-seccion-unique">
+  <h1>Sección 7</h1>
+  <h2>Expresión Diferencial por Condición (WT vs KO)</h2>
+</div>
+
+<div class="flecha-abajo">
+  ▼
+</div>
+
+
+<div class="informe-resumen">
+  <h2>Resumen</h2>
+
+  <p>
+    Una vez definido y consensuado el mapa celular en el módulo anterior, esta sección aborda la pregunta central del diseño experimental: <strong>¿Qué impacto tiene el <em>Knock-Out</em> (KO) sobre el transcriptoma de cada tipo celular en comparación con el fenotipo salvaje (WT)?</strong>
+  </p>
+
+  <p>
+    Para responder a esto con máximo rigor estadístico, el análisis de Expresión Diferencial se ha ejecutado en múltiples niveles evolutivos: desde los clústeres algorítmicos más crudos hasta las poblaciones curadas manualmente. 
+  </p>
+
+  <p>
+    Dado el volumen masivo de datos generados (cientos de tablas y reportes gráficos), esta pestaña se ha diseñado como un "embudo". Se ha priorizado la limpieza visual, empaquetando los análisis preliminares y automáticos en repositorios de descarga rápida, y reservando el despliegue interactivo completo (tablas dinámicas y gráficas integradas) exclusivamente para la <strong>versión definitiva y consensuada</strong> del modelo poblacional.
+  </p>
+</div>
+
+
+
+
+
+
+
+
+<div style="height: 15px; background-color: transparent;"></div>
+
+<div class="titulo-toc">
+  Tabla de contenidos de esta sección
+</div>
+
+<div class="toc">
+  <ul>
+    <li>
+      <a href="#tab3-seccion7">7<span>.</span> Expresión diferencial por condición (WT vs KO)</a>
+      <ul>
+        <li>
+          <a href="#tab3-seccion7.1">7.1. Fundamentos de la Expresión Diferencial</a>
+        </li>
+        <li>
+          <a href="#tab3-seccion7.2">7.2. Exploración Preliminar en Clústeres Numéricos (Seurat)</a>
+        </li>
+        <li>
+          <a href="#tab3-seccion7.3">7.3. Exploración en Anotaciones Automáticas (Bases de Datos)</a>
+        </li>
+        <li>
+          <a href="#tab3-seccion7.4">7.4. Análisis Definitivo en Poblaciones Consolidadas (Manual)</a>
+          <ul>
+            <li><a href="#tab3-seccion7.4.1">7.4.1. Histórico de Versiones y Tipos de Contraste</a></li>
+            <li><a href="#tab3-seccion7.4.2">7.4.2. Contraste Intrapoblacional (WT vs KO): Evaluación Detallada</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- REDACCIÓN -->
+<!-- #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<div style="height: 25px; background-color: transparent;"></div>
+
+<div class="titulo1" id="tab3-seccion7">
+  7<span>.</span> Expresión Diferencial por Condición (WT vs KO)
+</div>
+
+<p>
+  En las fases anteriores del <em>pipeline</em> bioinformático, el esfuerzo analítico se centró en resolver la heterogeneidad intrínseca de la muestra: determinar la identidad de las células, descubrir sus huellas génicas basales y agruparlas de forma coherente. Sin embargo, para extraer el verdadero valor biológico del experimento, ahora debemos introducir la variable de perturbación.
+</p>
+
+<p>
+  
+  Es fundamental establecer una diferencia conceptual clara entre los <strong>marcadores de linaje</strong> (explorados en la Sección 4) y los <strong>Genes Diferencialmente Expresados o DEGs</strong> (que analizaremos aquí). Mientras que los marcadores nos responden a <em>"¿qué hace que esta célula sea un Macrófago y no un Linfocito?"</em>, los DEGs nos responden a <em>"¿qué le ocurre a este Macrófago cuando le eliminamos este gen específico frente a un Macrófago sano?"</em>.
+</p>
+
+<p>
+  Para que la navegación por este vasto conjunto de resultados sea intuitiva, la presente sección se ha estructurado en cuatro bloques secuenciales que van de lo preliminar a lo definitivo:
+</p>
+
+<ul>
+  <li><strong>7.1. Fundamentos teóricos:</strong> Breve repaso a los umbrales estadísticos y estrategias de comparación empleadas en los algoritmos subyacentes.</li>
+  <li><strong>7.2. Exploración en Clústeres Numéricos (Seurat):</strong> Repositorio de consulta con los resultados obtenidos sobre las agrupaciones matemáticas crudas. Actúa como nuestro control de calidad basal.</li>
+  <li><strong>7.3. Exploración en Anotaciones Automáticas:</strong> Cajón de descarga organizado por bases de datos (ej. HPCA, Monaco). Permite evaluar el impacto del KO sobre linajes estandarizados generales.</li>
+  <li><strong>7.4. Análisis Definitivo (Poblaciones Consolidadas):</strong> El núcleo de esta pestaña. Aquí desplegaremos de forma interactiva e individualizada los resultados estadísticos (tablas <em>Up/Down</em>, reportes y gráficas) aplicados al modelo poblacional que curamos manualmente en la Sección 6.</li>
+</ul>
+
+<p>
+  A continuación, iniciaremos este recorrido comenzando por sentar las bases estadísticas del contraste.
+</p>
+
+
+
+
+
+
+
+
+<div style="height: 20px; background-color: transparent;"></div>
+
+<div class="titulo2" id="tab7-seccion7.1">
+  7.1. Fundamentos de la Expresión Diferencial
+</div>
+
+<p>
+  El análisis de expresión diferencial es el motor estadístico que nos permite cuantificar el impacto de una variable experimental (en este caso, la condición <em>Knock-Out</em> frente a la <em>Wild-Type</em>) sobre el transcriptoma celular. Matemáticamente, el algoritmo evalúa la expresión media de cada gen entre dos grupos de células y determina si la diferencia observada es significativa o si, por el contrario, podría deberse al azar o al ruido técnico de la secuenciación.
+</p>
+
+<p>
+  Para catalogar un gen como <strong>Diferencialmente Expresado (DEG)</strong> de forma rigurosa, se evalúan dos métricas fundamentales en tándem:
+</p>
+
+<ul>
+  <li><strong>Significancia Estadística (<code>p_val_adj</code>) &rArr;</strong> Dado que estamos evaluando miles de genes simultáneamente, existe un alto riesgo de obtener falsos positivos. Por ello, se aplica una corrección por comparaciones múltiples (típicamente la corrección de Bonferroni). En este análisis, consideramos estadísticamente significativo un gen cuyo <strong>p-valor ajustado sea estrictamente inferior a 0.05</strong>.</li>
+  <li><strong>Magnitud del Cambio (<code>avg_log2FC</code>) &rArr;</strong> El <em>Log2 Fold Change</em> mide la intensidad y la dirección del cambio. Un valor positivo indica que el gen está sobreexpresado <em>(Up-regulated)</em> en el primer grupo frente al segundo, mientras que un valor negativo indica que su expresión ha sido reprimida <em>(Down-regulated)</em>.</li>
+</ul>
+
+<p>
+  A la hora de aplicar este motor estadístico sobre un tejido heterogéneo, es de vital importancia distinguir entre las dos estrategias de contraste que se han calculado a lo largo del proyecto:
+</p>
+
+<ul>
+  <li><strong>Contraste Intrapoblacional <em>(WT vs KO within cluster)</em> &rArr;</strong> Este es el contraste experimental por excelencia. Consiste en fijar la identidad biológica (por ejemplo, aislar exclusivamente a los Linfocitos T CD8) y comparar las células sanas frente a las mutantes dentro de esa misma subpoblación. Permite responder a la pregunta central: <em>"¿Qué rutas moleculares se alteran en esta célula concreta por la falta del gen?"</em>.</li>
+  <li><strong>Contraste Interpoblacional <em>(WT/KO between clusters pairwise)</em> &rArr;</strong> Consiste en comparar dos identidades distintas dentro de una misma condición (ej. Linfocitos T sanos frente a Macrófagos sanos). Aunque computacionalmente es idéntico, biológicamente equivale a la búsqueda de marcadores de linaje. Se ha calculado para verificar las distancias basales entre clústeres, pero no revela el impacto directo de la perturbación experimental.</li>
+</ul>
+
+<p>
+  Con estos cimientos teóricos establecidos, comenzaremos la exploración empírica. Siguiendo un enfoque progresivo, la <strong>sección 7.2</strong> presentará en primer lugar los contrastes diferenciales ejecutados sobre las agrupaciones matemáticas crudas (clústeres numéricos de Seurat), sirviendo como nuestro primer control técnico de calidad basal.
+</p>
+
+
+
+
+
+
+
+
+<div style="height: 20px; background-color: transparent;"></div>
+
+<div class="titulo2" id="tab3-seccion7.2">
+  7.2. Exploración Preliminar en Clústeres Numéricos (Seurat)
+</div>
+
+<p>
+  Para garantizar una trazabilidad analítica absoluta, el primer contraste de expresión diferencial se ejecutó sobre la topología más primaria del proyecto: los <strong>clústeres numéricos crudos</strong> (Clúster 0, Clúster 1, Clúster 2...) identificados algorítmicamente por Seurat en las fases iniciales del <em>pipeline</em>.
+</p>
+
+<p>
+  Dado que en este punto de la línea temporal del análisis las agrupaciones aún carecen de identidad fenotípica (nomenclatura biológica), esta fase actúa estrictamente como un <strong>control técnico basal</strong>. Nos permite verificar de forma temprana e imparcial si la perturbación (KO) tiene un impacto lo suficientemente fuerte como para alterar drásticamente el transcriptoma antes de imponer cualquier sesgo de anotación humana.
+</p>
+
+<p>
+  Para mantener la fluidez del informe interactivo y evitar redundancias visuales, las tablas estadísticas completas y los reportes gráficos generados en esta etapa no se han incrustado en el documento. Sin embargo, puede explorar, consultar y descargar todo este material preliminar (archivos <code>.tsv</code>, <code>.csv</code> y <code>.pdf</code>) desde el siguiente explorador de archivos:
+</p>
+
+```{r, echo=FALSE, results="asis"}
+# MOSTRAR BOX-FILES DEL DIRECTORIO NUMÉRICO
+if (!is.null(files_deg_seurat_within_df) && nrow(files_deg_seurat_within_df) > 0) {
+  
+  # Asegurar orden alfabético/numérico
+  df_sorted <- files_deg_seurat_within_df[order(files_deg_seurat_within_df$file_name), ]
+  
+  cat('<div class="box-files">\n<ul>\n')
+  for (i in 1:nrow(df_sorted)) {
+    f <- df_sorted$file_name[i]
+    ruta <- df_sorted$ruta_relativa[i]
+    
+    # Asignación de clases según extensión
+    clase <- if (!grepl("\\.", f)) {
+      "file-folder"
+    } else if (grepl("\\.pdf$", f, ignore.case = TRUE)) {
+      "file-pdf"
+    } else if (grepl("\\.csv$|\\.tsv$", f, ignore.case = TRUE)) {
+      "file-csv"
+    } else {
+      "file-default"
+    }
+    
+    cat(sprintf('<li class="%s"><a href="%s" target="_blank">%s</a></li>\n', clase, ruta, f))
+  }
+  cat('</ul>\n</div>\n')
+  
+  cat(glue::glue('
+  <p class="text-center"">
+    <a href="{ruta_deg_seurat_within_relativa}" target="_blank" class="boton-files">
+      <i class="fa-solid fa-folder-open"></i> Explorar directorio de DEGs (Clústeres Numéricos)
+    </a>
+  </p>
+  '))
+  
+} else {
+  cat(glue::glue('
+  <div class="alert-info alert-box" style="margin-top: 20px;">
+    <i class="fa-solid fa-circle-info"></i>
+    <b>Nota Metodológica</b><br>
+    No se detectaron archivos de expresión diferencial preliminar en clústeres numéricos.
+  </div>
+  '), sep = "\n")
+}
+```
+
+<p>
+  Aunque matemáticamente correctos, interpretar los DEGs de un "Clúster 5" abstracto aporta poca utilidad al investigador. Por ello, el siguiente paso evolutivo en el análisis consistió en aplicar estos mismos algoritmos sobre poblaciones etiquetadas mediante bases de datos de referencia (Anotación Automática), cuyos resultados se exponen en la siguiente subsección.
+</p>
+
+
+
+
+
+
+
+
+<div style="height: 20px; background-color: transparent;"></div>
+
+<div class="titulo2" id="tab3-seccion7.3">
+  7.3. Exploración en Anotaciones Automáticas (Bases de Datos)
+</div>
+
+<p>
+  De forma paralela al análisis sobre los clústeres numéricos, el motor de expresión diferencial se ejecutó utilizando las identidades fenotípicas proyectadas por algoritmos de anotación automática (alineamiento contra atlas de referencia como <em>Human Primary Cell Atlas</em>, <em>Monaco Immune Data</em> o <em>Tabula Muris</em>). 
+</p>
+
+<p>
+  Si bien sabemos que estas identidades algorítmicas no constituyen el modelo biológico definitivo ni poseen la resolución fina exigida por el proyecto, su evaluación diferencial cruzada (WT vs KO) es una herramienta heurística de inmenso valor. Nos permite observar de forma rápida, imparcial y estandarizada cómo reaccionan los grandes linajes celulares genéricos (por ejemplo, el compartimento global de células T, estroma o células B) frente a la perturbación experimental.
+</p>
+
+<p>
+  En el siguiente explorador puede visualizar las carpetas correspondientes a cada uno de los atlas transcriptómicos empleados durante esta fase analítica:
+</p>
+
+```{r, echo=FALSE, results="asis"}
+# 1. MOSTRAR BOX-FILES GLOBAL DE CARPETAS DE BASES DE DATOS
+if (!is.null(dbs_subdirs_df) && nrow(dbs_subdirs_df) > 0) {
+  
+  # Ordenar alfabéticamente
+  df_sorted <- dbs_subdirs_df[order(dbs_subdirs_df$db_name), ]
+  
+  cat('<div class="box-files">\n<ul>\n')
+  for (i in 1:nrow(df_sorted)) {
+    db <- df_sorted$db_name[i]
+    ruta <- df_sorted$ruta_relativa[i]
+    cat(sprintf('<li class="file-folder"><a href="%s" target="_blank">%s</a></li>\n', ruta, db))
+  }
+  cat('</ul>\n</div>\n')
+  
+  cat(glue::glue('
+  <p class="text-center">
+    <a href="{ruta_deg_dbs_relativa}" target="_blank" class="boton-files">
+      <i class="fa-solid fa-folder-open"></i> Explorar directorio raíz de Anotaciones Automáticas
+    </a>
+  </p>
+  '), sep = "\n")
+  
+} else {
+  cat(glue::glue('
+  <div class="alert-info alert-box" style="margin-top: 20px;">
+    <i class="fa-solid fa-circle-info"></i>
+    <b>Nota Metodológica</b><br>
+    No se detectaron directorios de bases de datos automáticas en este análisis.
+  </div>
+  '), sep = "\n")
+}
+```
+
+<p>
+  Dependiendo de las poblaciones identificadas por cada atlas, dentro de cada subdirectorio encontrará sistemáticamente el siguiente par de resultados analíticos para cada linaje inferido:
+</p>
+
+<ul>
+  <li>
+    <strong>Catálogos Estadísticos Tabulares (<code>.tsv</code>):</strong> Constituyen el escrutinio matemático completo de la comparativa. Cada fila representa un gen y sus respectivas métricas de expresión diferencial, destacando la magnitud y dirección del cambio (<strong><code>avg_log2FC</code></strong>), la significancia estadística tras corrección múltiple (<strong><code>p_val_adj</code></strong>), y la proporción de células que expresan el gen en cada condición (<strong><code>pct.1</code></strong> y <strong><code>pct.2</code></strong>). Esta última métrica es crucial para distinguir entre un cambio absoluto de presencia/ausencia frente a una simple modulación cuantitativa.
+  </li>
+  <li>
+    <strong>Reportes Gráficos Multipágina (<code>.pdf</code>):</strong> Actúan como la validación visual de los datos tabulares. Estos documentos inician con proyecciones topológicas (UMAP) que resaltan la ubicación exclusiva de la población diana (ej. Astrocitos) dentro del tejido, seguidas de gráficas avanzadas (como <em>Dot Plots</em> o <em>Feature Plots</em>) que ilustran comparativamente los niveles de expresión y detección de los genes diferenciales más significativos.
+  </li>
+</ul>
+
+<p>
+  A continuación, se desglosan de forma individualizada los repositorios de archivos para cada una de las bases de datos de referencia detectadas en el proyecto:
+</p>
+
+```{r, echo=FALSE, results="asis"}
+# 2. BUCLE DINÁMICO PARA DESGLOSAR LOS ARCHIVOS DE CADA BASE DE DATOS
+if (!is.null(dbs_subdirs_df) && nrow(dbs_subdirs_df) > 0) {
+  
+  # Iterar sobre las bases de datos encontradas
+  for (i in 1:nrow(dbs_subdirs_df)) {
+    db <- dbs_subdirs_df$db_name[i]
+    ruta_db_carpeta <- dbs_subdirs_df$ruta_relativa[i] # Ruta específica de esta BD
+    
+    # 2.1. Crear el subtítulo (titulo3) - TODO EN UNA LÍNEA PARA EVITAR QUE PANDOC AÑADA <p>
+    cat(glue::glue('
+      <div style="height: 15px; background-color: transparent;"></div>
+      <div class="titulo3" id="tab3-seccion7.3.{i}" style="padding-bottom: 8px; line-height: 1.2;">7.3.{i}. Atlas de Referencia: {db}</div>
+    '), sep = "\n")
+    
+    # 2.2. Párrafo descriptivo introductorio
+    cat(glue::glue('
+      <p style="margin-top: 15px; margin-bottom: 15px;">
+        En este repositorio se recogen los contrastes diferenciales intrapoblacionales (WT vs KO) ejecutados sobre los linajes celulares inferidos matemáticamente mediante el catálogo <strong>{db}</strong>.
+      </p>
+    '), sep = "\n")
+    
+    # Extraer los archivos asociados a esta BD desde la lista que creamos en la cabecera
+    df_files <- files_deg_dbs_list[[db]]
+    
+    # 2.3. Imprimir el box-files local o la alerta si está vacío
+    if (!is.null(df_files) && nrow(df_files) > 0) {
+      
+      # Ordenar alfabéticamente para mantener consistencia
+      df_files <- df_files[order(df_files$file_name), ]
+      
+      cat('<div class="box-files">\n<ul>\n')
+      for (j in 1:nrow(df_files)) {
+        f <- df_files$file_name[j]
+        ruta <- df_files$ruta_relativa[j]
+        
+        clase <- if (grepl("\\.pdf$", f, ignore.case = TRUE)) {
+          "file-pdf"
+        } else if (grepl("\\.csv$|\\.tsv$", f, ignore.case = TRUE)) {
+          "file-csv"
+        } else {
+          "file-default"
+        }
+        
+        cat(sprintf('<li class="%s"><a href="%s" target="_blank">%s</a></li>\n', clase, ruta, f))
+      }
+      cat('</ul>\n</div>\n\n')
+      
+    } else {
+      cat(glue::glue('
+      <div class="alert-info alert-box" style="margin-top: 20px; margin-bottom: 20px;">
+        <i class="fa-solid fa-circle-info"></i>
+        <b>Directorio vacío</b><br>
+        No se han detectado archivos de expresión diferencial para la base de datos {db}.
+      </div>
+      '), sep = "\n")
+    }
+    
+    # 2.4. Botón para explorar la carpeta específica de esta base de datos
+    cat(glue::glue('
+      <p class="text-center">
+        <a href="{ruta_db_carpeta}" target="_blank" class="boton-files">
+          <i class="fa-solid fa-folder-open"></i> Explorar directorio de {db}
+        </a>
+      </p>
+    '), sep = "\n")
+    
+    # 2.5. Breve párrafo de cierre
+    cat(glue::glue('
+      <p>
+        <i class="fa-solid fa-circle-info" style="color: #276DC3;"></i> <strong>Nota:</strong> Los archivos <code>.tsv</code> pueden utilizarse para inspeccionar rangos amplios de genes, mientras que los reportes <code>.pdf</code> proporcionan una instantánea de los DEGs con mayor magnitud de cambio.
+      </p>
+    '), sep = "\n")
+  }
+}
+```
+
+<div class="divider"></div>
+
+<p>
+  Como se ha documentado, los análisis previos nos otorgan una perspectiva analítica global muy útil. Sin embargo, para responder a las preguntas más intrincadas de la investigación (como qué ocurre en estadios de maduración específicos o en poblaciones exclusivas del tejido), es imperativo someter a contraste el modelo poblacional de alta resolución desarrollado empíricamente por los investigadores.
+</p>
+
+<p>
+  En la siguiente y última subsección, abandonaremos las proyecciones algorítmicas preliminares para adentrarnos en la joya de la corona del estudio diferencial: <strong>el análisis de perturbación sobre las identidades biológicas definitivas y curadas manualmente</strong>.
+</p>
+
+
+
+
+
+
+
+
+<div style="height: 20px; background-color: transparent;"></div>
+
+<div class="titulo2" id="tab3-seccion7.4">
+  7.4. Análisis Definitivo en Poblaciones Consolidadas (Manual)
+</div>
+
+<p>
+  Superados los cribados preliminares, nos adentramos en el núcleo analítico de esta sección. Los resultados que se presentan a continuación se han calculado tomando como base el modelo topológico de alta resolución curado manualmente por el equipo investigador. Este modelo agrupado dota al algoritmo diferencial del poder estadístico y la coherencia biológica necesarios para extraer conclusiones sólidas.
+</p>
+
+<p>
+  Al igual que ocurrió en la fase de agrupación poblacional, la definición de este modelo requirió varias iteraciones (versiones). En el siguiente directorio puede explorar el histórico completo de análisis diferenciales ejecutados para cada una de esas propuestas topológicas:
+</p>
+
+```{r, echo=FALSE, results="asis"}
+# 1. MOSTRAR BOX-FILES CON LAS CARPETAS DE VERSIONES (01_version, 02_version...)
+if (!is.null(versiones_deg_agg_df) && nrow(versiones_deg_agg_df) > 0) {
+  
+  cat('<div class="box-files">\n<ul>\n')
+  for (i in 1:nrow(versiones_deg_agg_df)) {
+    v <- versiones_deg_agg_df$folder_name[i]
+    ruta <- versiones_deg_agg_df$ruta_relativa[i]
+    cat(sprintf('<li class="file-folder"><a href="%s" target="_blank">%s</a></li>\n', ruta, v))
+  }
+  cat('</ul>\n</div>\n')
+  
+  cat(glue::glue('
+  <p class="text-center">
+    <a href="{ruta_deg_agg_relativa}" target="_blank" class="boton-files">
+      <i class="fa-solid fa-folder-open"></i> Explorar directorio histórico de Agrupaciones Manuales
+    </a>
+  </p>
+  '), sep = "\n")
+  
+} else {
+  cat(glue::glue('
+  <div class="alert-info alert-box" style="margin-top: 20px; margin-bottom: 20px;">
+    <i class="fa-solid fa-circle-info"></i>
+    <b>Nota Metodológica</b><br>
+    No se detectaron versiones de análisis para el modelo manual consolidado.
+  </div>
+  '), sep = "\n")
+}
+```
+
+<p>
+  Para mantener la claridad del informe y evitar redundancias, todo el despliegue interactivo subsiguiente se centrará <strong>exclusivamente en la última versión generada</strong>, la cual representa el consenso biológico definitivo.
+</p>
+
+
+
+
+
+
+<div style="height: 15px; background-color: transparent;"></div>
+
+<div class="titulo3" id="tab3-seccion7.4.1">
+  7.4.1. Histórico de Versiones y Tipos de Contraste
+</div>
+
+<p>
+  Dentro de la versión definitiva elegida, el algoritmo de expresión diferencial no solo comparó la condición mutante contra la sana, sino que ejecutó una matriz completa de contrastes para mapear todas las posibles distancias transcripcionales del tejido. Esto generó tres estrategias de comparación documentadas en tres subcarpetas distintas:
+</p>
+
+<ul>
+  <li><code>01_degs_wt_vs_ko_within_cluster</code> &rArr; <strong>Contraste Intrapoblacional:</strong> Compara células sanas vs mutantes dentro del mismo tipo celular (ej. <em>DPre WT vs DPre KO</em>). Es el objetivo primario de la investigación.</li>
+  <li><code>02_degs_wt_between_clusters_pairwise</code> &rArr; <strong>Contraste Interpoblacional Basal:</strong> Compara los distintos linajes entre sí utilizando únicamente la muestra sana (WT), sirviendo como atlas de marcadores fisiológicos.</li>
+  <li><code>03_degs_ko_between_clusters_pairwise</code> &rArr; <strong>Contraste Interpoblacional Mutante:</strong> Idéntico al anterior, pero empleando únicamente la muestra perturbada (KO), útil para ver si el fenotipo fusiona o aleja poblaciones que normalmente son distintas.</li>
+</ul>
+
+<p>
+  Puede acceder y descargar las tablas de todos estos contrastes cruzados desde sus respectivos repositorios:
+</p>
+
+```{r, echo=FALSE, results="asis"}
+# 2. MOSTRAR BOX-FILES CON LAS 3 SUBCARPETAS DE LA ÚLTIMA VERSIÓN
+if (!is.null(ultima_version_nombre)) {
+  
+  ruta_ult_ver_relativa <- file.path(ruta_deg_agg_relativa, ultima_version_nombre)
+  
+  cat('<div class="box-files">\n<ul>\n')
+  cat(sprintf('<li class="file-folder"><a href="%s" target="_blank">%s</a></li>\n', file.path(ruta_ult_ver_relativa, "01_degs_wt_vs_ko_within_cluster"), "01_degs_wt_vs_ko_within_cluster"))
+  cat(sprintf('<li class="file-folder"><a href="%s" target="_blank">%s</a></li>\n', file.path(ruta_ult_ver_relativa, "02_degs_wt_between_clusters_pairwise"), "02_degs_wt_between_clusters_pairwise"))
+  cat(sprintf('<li class="file-folder"><a href="%s" target="_blank">%s</a></li>\n', file.path(ruta_ult_ver_relativa, "03_degs_ko_between_clusters_pairwise"), "03_degs_ko_between_clusters_pairwise"))
+  cat('</ul>\n</div>\n')
+  
+  # Añadir el botón de explorar directorio
+  cat(glue::glue('
+  <p class="text-center">
+    <a href="{ruta_ult_ver_relativa}" target="_blank" class="boton-files">
+      <i class="fa-solid fa-folder-open"></i> Explorar subcarpetas de la versión definitiva
+    </a>
+  </p>
+  '), sep = "\n")
+  
+} else {
+  # Añadir alerta corporativa por si el directorio no existe
+  cat(glue::glue('
+  <div class="alert-info alert-box" style="margin-top: 20px; margin-bottom: 20px;">
+    <i class="fa-solid fa-circle-info"></i>
+    <b>Nota Metodológica</b><br>
+    No se detectó la última versión para mostrar sus subcarpetas de contraste.
+  </div>
+  '), sep = "\n")
+}
+```
+
+
+
+
+
+
+
+<div style="height: 15px; background-color: transparent;"></div>
+
+<div class="titulo3" id="tab3-seccion7.4.2">
+  7.4.2. Contraste Intrapoblacional (WT vs KO): Evaluación Detallada
+</div>
+
+<p>
+  A continuación, presentamos el repositorio principal de este módulo: la carpeta <code>01_degs_wt_vs_ko_within_cluster</code>. Aquí se evalúa el impacto directo e individualizado del <em>Knock-Out</em> población a población, aislando cada identidad celular curada y comparando sus células mutantes frente a sus contrapartes sanas.
+</p>
+
+<p>
+  Debido a la inmensa densidad de los datos generados (matrices tabulares con miles de genes por linaje y reportes gráficos vectoriales de alta resolución), la incrustación simultánea de todos estos elementos comprometería severamente el rendimiento y la fluidez de este documento web. Por ello, <strong>le invitamos a explorar, abrir y descargar los archivos específicos de su interés directamente desde el siguiente panel interactivo:</strong>
+</p>
+
+```{r, echo=FALSE, results="asis"}
+# 3. MOSTRAR BOX-FILES DE LOS ARCHIVOS WITHIN CLUSTER DE LA ÚLTIMA VERSIÓN
+if (!is.null(ult_ver_within_df) && nrow(ult_ver_within_df) > 0) {
+  
+  # Extraer la ruta de la carpeta para el botón
+  ruta_directorio_within <- dirname(ult_ver_within_df$ruta_relativa[1])
+  
+  # Ordenar alfabéticamente
+  df_sorted <- ult_ver_within_df[order(ult_ver_within_df$file_name), ]
+  
+  cat('<div class="box-files">\n<ul>\n')
+  for (i in 1:nrow(df_sorted)) {
+    f <- df_sorted$file_name[i]
+    ruta <- df_sorted$ruta_relativa[i]
+    
+    clase <- if (grepl("\\.pdf$", f, ignore.case = TRUE)) {
+      "file-pdf"
+    } else if (grepl("\\.csv$|\\.tsv$", f, ignore.case = TRUE)) {
+      "file-csv"
+    } else {
+      "file-default"
+    }
+    
+    cat(sprintf('<li class="%s"><a href="%s" target="_blank">%s</a></li>\n', clase, ruta, f))
+  }
+  cat('</ul>\n</div>\n')
+  
+  # Añadir el botón de explorar directorio
+  cat(glue::glue('
+  <p class="text-center">
+    <a href="{ruta_directorio_within}" target="_blank" class="boton-files">
+      <i class="fa-solid fa-folder-open"></i> Explorar directorio de DEGs Intrapoblacionales
+    </a>
+  </p>
+  '), sep = "\n")
+  
+} else {
+  cat(glue::glue('
+  <div class="alert-info alert-box" style="margin-top: 20px; margin-bottom: 20px;">
+    <i class="fa-solid fa-circle-info"></i>
+    <b>Nota Metodológica</b><br>
+    No se detectaron archivos de contraste intrapoblacional (within_cluster) en la versión definitiva.
+  </div>
+  '), sep = "\n")
+}
+```
+
+<p>
+  <strong><i class="fa-solid fa-book-open" style="color: #276DC3;"></i> Guía de Interpretación de Resultados:</strong> Para cada población curada (ej. <em>CD8_exhausted_naive</em>), el repositorio proporciona un par de archivos definitivos. A diferencia de las exploraciones preliminares, estos documentos capturan el efecto exacto de la mutación dentro de un nicho biológico validado, y se estructuran de la siguiente manera:
+</p>
+
+<ul>
+  <li style="margin-bottom: 15px;">
+    <strong>Catálogo Diferencial Tabular (<code>.tsv</code>):</strong> Constituye la matriz estadística final del contraste intrapoblacional. En este caso particular, la direccionalidad del logaritmo del cambio (<strong><code>avg_log2FC</code></strong>) es la brújula analítica fundamental: los valores positivos revelan los genes que el <em>Knock-Out</em> ha sobreexpresado, mientras que los negativos identifican las rutas transcripcionales reprimidas respecto al control sano. Combinando esta métrica con el filtro estricto de significancia (<strong><code>p_val_adj < 0.05</code></strong>) y las tasas de detección para el fenotipo mutante (<strong><code>pct.1</code></strong>) y el <em>Wild-Type</em> (<strong><code>pct.2</code></strong>), el investigador puede aislar de forma precisa la firma molecular inducida por la perturbación.
+  </li>
+  <li>
+    <strong>Reporte Gráfico de Validación (<code>.pdf</code>):</strong> Documento diseñado para corroborar espacial y visualmente la biología detrás de las matemáticas.  La primera página presenta siempre un contexto topológico segregado <em>(Split UMAP: WT vs KO)</em> que ilumina en color <strong>únicamente</strong> a la población evaluada frente al fondo gris del resto del tejido. Esta vista es vital para detectar a simple vista si la mutación ha provocado una expansión masiva o una depleción de ese subtipo celular.  Las páginas subsiguientes actúan como un atlas de validación: despliegan mapas de calor espaciales <em>(FeaturePlots)</em> paralelos para los genes que han sufrido la mayor alteración (ej. <em>Malat1</em>, <em>Kif1b</em>), permitiendo confirmar cualitativamente que la nube de puntos del KO "brilla" con una intensidad drásticamente distinta a la del tejido sano.
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+<div class="divider"></div>
+
+<p>
+  La identificación de este catálogo de genes diferencialmente expresados (DEGs) representa el clímax analítico a nivel transcripcional. Sin embargo, una simple lista de cientos de genes <em>Up</em> o <em>Down</em> regulados resulta extremadamente compleja de interpretar desde una perspectiva fisiológica y sistémica.
+</p>
+
+<p>
+  Para dotar de significado biológico a este vasto mar de alteraciones genéticas, es necesario dar un paso más allá de la estadística pura y adentrarnos en la minería de vías metabólicas y procesos celulares. Al proyectar estos DEGs contra bases de datos ontológicas (como <em>Gene Ontology</em> o <em>KEGG Pathways</em>), podremos descubrir si la mutación está induciendo estrés oxidativo, inhibiendo el ciclo celular o alterando la señalización inmunológica del tejido.
+</p>
+
+<p>
+  Este escrutinio sistémico se detalla en el siguiente y último módulo analítico del informe: <strong><a href="08-enriquecimiento.html" class="normalink">8. Análisis funcional y de enriquecimiento</a></strong>.
+</p>
+
+
+
+
+
+
+
+
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  FOOTER
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+<footer>
+  <a href="#" class="arriba"><i class="fa-solid fa-angles-up"></i></a>
+</footer>
+
+
+
+
+
+
+
+
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  CARGAR SCRIPTS DE JAVASCRIPT
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+<script type="module" src="../../../04-javascript/chatbot.js"></script>
+<script type="module" src="../../../04-javascript/script.js"></script>

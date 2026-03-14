@@ -1,0 +1,13 @@
+{
+    "timestamp": "2024-11-14T21:00:05.49380894+01:00",
+    "paths": null,
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2024-11-14T21:00:05.063949829+01:00",
+            "DeltaBytes": 5854
+        }
+    ],
+    "count": 0,
+    "size": 0
+}

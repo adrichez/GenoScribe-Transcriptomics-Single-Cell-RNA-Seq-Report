@@ -1,0 +1,43 @@
+{
+    "timestamp": "2024-11-14T20:38:18.049749898+01:00",
+    "paths": [
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/chnk0-u3c06364f31/files/co_mitochondrial_summary.csv",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/chnk0-u3c06364f31/files/filtered_bcs_groups.bincode",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/chnk0-u3c06364f31/files/filtered_metrics_groups.json",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/chnk0-u3c06364f31/files/nonambient_calls.csv",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/chnk0-u3c06364f31/files/summary.json",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/join-u3c06364f1e/files/mitochondrial_summary.csv",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/join-u3c06364f1e/files/nonambient_calls.csv",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/join-u3c06364f1e/files/summary.json",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/join-u3c06364f1e/files/filtered_barcodes.csv"
+    ],
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2024-11-14T20:27:26.399894604+01:00",
+            "DeltaBytes": 10423
+        },
+        {
+            "Timestamp": "2024-11-14T20:27:45.521054797+01:00",
+            "DeltaBytes": 1103945
+        },
+        {
+            "Timestamp": "2024-11-14T20:33:15.328524298+01:00",
+            "DeltaBytes": 141155747
+        },
+        {
+            "Timestamp": "2024-11-14T20:33:53.137299617+01:00",
+            "DeltaBytes": -1849052
+        },
+        {
+            "Timestamp": "2024-11-14T20:37:45.380074907+01:00",
+            "DeltaBytes": -1314
+        },
+        {
+            "Timestamp": "2024-11-14T20:38:18.049749898+01:00",
+            "DeltaBytes": -276796
+        }
+    ],
+    "count": 9,
+    "size": 2127162
+}

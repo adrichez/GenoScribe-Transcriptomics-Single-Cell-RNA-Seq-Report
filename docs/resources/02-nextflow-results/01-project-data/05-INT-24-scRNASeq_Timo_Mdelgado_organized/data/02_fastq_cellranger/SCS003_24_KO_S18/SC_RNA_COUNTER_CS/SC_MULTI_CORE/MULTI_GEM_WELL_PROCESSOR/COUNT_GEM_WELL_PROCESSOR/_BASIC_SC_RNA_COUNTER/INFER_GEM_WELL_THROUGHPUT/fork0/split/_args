@@ -1,0 +1,45 @@
+{
+    "barcode_summary_h5": "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_MATRIX_COMPUTER/WRITE_BARCODE_SUMMARY/fork0/chnk0-u3c06364ef6/files/barcode_summary.h5",
+    "chemistry_defs": {
+        "Gene Expression": {
+            "barcode": [
+                {
+                    "kind": "gel_bead",
+                    "length": 16,
+                    "offset": 0,
+                    "read_type": "R1",
+                    "whitelist": {
+                        "name": "3M-february-2018",
+                        "part": null,
+                        "slide": null,
+                        "translation_whitelist_path": null
+                    }
+                }
+            ],
+            "barcode_extraction": null,
+            "description": "Single Cell 3' v3",
+            "endedness": "three_prime",
+            "name": "SC3Pv3",
+            "rna": {
+                "length": null,
+                "min_length": null,
+                "offset": 0,
+                "read_type": "R2"
+            },
+            "rna2": null,
+            "strandedness": "+",
+            "umi": [
+                {
+                    "length": 12,
+                    "min_length": 10,
+                    "offset": 16,
+                    "read_type": "R1",
+                    "whitelist": null
+                }
+            ]
+        }
+    },
+    "filtered_feature_counts_matrix": "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/FILTER_BARCODES/fork0/join-u3c06364f1e/files/filtered_matrices_h5.h5",
+    "reference_path": "/mnt/beegfs/Bioinformatica/datasets/CellRanger/Mouse/refdata-gex-GRCm39-2024-A",
+    "throughput": null
+}

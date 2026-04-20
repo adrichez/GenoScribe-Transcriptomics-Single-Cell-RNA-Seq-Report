@@ -1,0 +1,1214 @@
+[
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "AAGGGCAGTAGCAATA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": null
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "AATGCCAAACATTGGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "AAGGGCAGTAGCAATA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ACATCACTGCTGTCTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "AATGCCAAACATTGGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ACCGTTCGTTATCGGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ACATCACTGCTGTCTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ACTACGACTTTTACTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ACCGTTCGTTATCGGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "AGAACAATATTCGACC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ACTACGACTTTTACTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "AGCCAATTCACACGCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "AGAACAATATTCGACC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "AGGATCTGAACCCGAC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "AGCCAATTCACACGCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "AGTAACCAGTACAGTG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "AGGATCTGAACCCGAC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ATACCGAACAAAAACA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "AGTAACCAGTACAGTG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ATCCCCCGTGAGCGAT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ATACCGAACAAAAACA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ATGATCGTCTACAGGC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ATCCCCCGTGAGCGAT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ATTCCCGCCTTGCTGG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ATGATCGTCTACAGGC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CAACATCCAAGGTATT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ATTCCCGCCTTGCTGG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CACATTCCTTTAAGTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CAACATCCAAGGTATT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CAGCAATTAAAAAGAA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CACATTCCTTTAAGTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CATACCAGCTCATACA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CAGCAATTAAAAAGAA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CATGCCTAGCTGCCCG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CATACCAGCTCATACA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CATTGTTTCCAATCGT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CATGCCTAGCTGCCCG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CCATCACGTATAAATC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CATTGTTTCCAATCGT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CCCTCCCAGGTATCTC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CCATCACGTATAAATC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CCGTTCACTACCAACT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CCCTCCCAGGTATCTC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CCTCCTCTCATACATC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CCGTTCACTACCAACT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CCTGCTTAGCCCTCGC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CCTCCTCTCATACATC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CGAGTTAGTAACCCCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CCTGCTTAGCCCTCGC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CGGGCATTCCGGTGTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CGAGTTAGTAACCCCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CTAACCCCCGCCTACG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CGGGCATTCCGGTGTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CTCAAGACCGTCCCGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CTAACCCCCGCCTACG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CTCCCAACCTTGCTCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CTCAAGACCGTCCCGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CTCTCCTACGAGACGC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CTCCCAACCTTGCTCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CTGGAGCCTTAGGCTG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CTCTCCTACGAGACGC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CTTCCTCATCCTCCGT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CTGGAGCCTTAGGCTG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GAACTGTAGTGTAAAG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CTTCCTCATCCTCCGT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GACCGTGATGCCCATA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GAACTGTAGTGTAAAG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GAGAGGGTGTAAATCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GACCGTGATGCCCATA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GATCCCACTGCACGGT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GAGAGGGTGTAAATCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GCACACACTAAAACAC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GATCCCACTGCACGGT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GCATCGGCCCATATGG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GCACACACTAAAACAC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GCCTCCTGAACATACG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GCATCGGCCCATATGG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GCTTGGGGTATCCACG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GCCTCCTGAACATACG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GGCCAATAGTCATAGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GCTTGGGGTATCCACG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GGGCCATTCTCTCCTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GGCCAATAGTCATAGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GGTCAACGAGTGGTGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GGGCCATTCTCTCCTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GTAACCACATTCTCAG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GGTCAACGAGTGGTGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GTCAGCGCAATCAGTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GTAACCACATTCTCAG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GTGACACCAGATTTCG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GTCAGCGCAATCAGTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GTGTCCTAGTTGCCCC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GTGACACCAGATTTCG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GTTGCTTTCCCTCGAT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GTGTCCTAGTTGCCCC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TACACCCTCTAGTATT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GTTGCTTTCCCTCGAT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TACTTCAGACCAGACC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TACACCCTCTAGTATT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TATGTTCGACCGTCTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TACTTCAGACCAGACC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCACGCTTTTTGCTTC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TATGTTCGACCGTCTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCATCACGTTTCGGCG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCACGCTTTTTGCTTC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCATTCCTCCATGTTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCATCACGTTTCGGCG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCCCCGTGTTCGATTG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCATTCCTCCATGTTT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCCTCTTGCACCCCGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCCCCGTGTTCGATTG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCGGGCAGTAGCAGGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCCTCTTGCACCCCGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCTCCGACCGATCTTC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCGGGCAGTAGCAGGA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCTTGTGTAAGGCAGG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCTCCGACCGATCTTC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TGATCTTGCAGGATCC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCTTGTGTAAGGCAGG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TGCTCTTTCTATCTTC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TGATCTTGCAGGATCC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TGGTGATGTGAGACCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TGCTCTTTCTATCTTC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TGTTCTCAGCTGTTCA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TGGTGATGTGAGACCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TTATTTTATTCACTCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TGTTCTCAGCTGTTCA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TTCCTCTCTGCAATAC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TTATTTTATTCACTCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TTCTTCCTCTCTCTCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TTCCTCTCTGCAATAC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TTTACATCCATCCGTA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TTCTTCCTCTCTCTCT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    },
+    {
+        "range": {
+            "end": null,
+            "start": {
+                "content": {
+                    "Sequence": "TTTACATCCATCCGTA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        }
+    }
+]

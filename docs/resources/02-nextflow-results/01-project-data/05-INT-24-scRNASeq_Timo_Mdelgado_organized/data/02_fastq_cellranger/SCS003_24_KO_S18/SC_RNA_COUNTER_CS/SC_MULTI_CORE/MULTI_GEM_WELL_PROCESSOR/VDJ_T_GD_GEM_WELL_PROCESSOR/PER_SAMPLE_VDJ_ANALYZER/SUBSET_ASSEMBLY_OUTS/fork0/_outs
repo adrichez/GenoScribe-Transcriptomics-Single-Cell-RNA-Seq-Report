@@ -1,0 +1,10 @@
+{
+    "assemblable_reads_per_bc": null,
+    "barcode_brief": null,
+    "barcode_support": null,
+    "contig_annotations": null,
+    "contig_summary": null,
+    "corrected_barcode_counts": null,
+    "total_read_pairs": null,
+    "umi_summary": null
+}

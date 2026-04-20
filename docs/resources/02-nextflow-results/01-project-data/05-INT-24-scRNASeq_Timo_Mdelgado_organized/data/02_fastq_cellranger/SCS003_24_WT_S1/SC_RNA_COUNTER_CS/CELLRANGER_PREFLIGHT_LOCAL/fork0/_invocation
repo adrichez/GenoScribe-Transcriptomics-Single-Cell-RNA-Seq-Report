@@ -1,0 +1,34 @@
+@include "rna/_common_stages.mro"
+
+call CELLRANGER_PREFLIGHT as CELLRANGER_PREFLIGHT_LOCAL(
+    full_check        = false,
+    chemistry         = "auto",
+    sample_def        = [
+        {
+            "fastq_id": null,
+            "fastq_mode": "ILMN_BCL2FASTQ",
+            "gem_group": null,
+            "lanes": null,
+            "library_type": "Gene Expression",
+            "read_path": "/mnt/beegfs/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads",
+            "sample_indices": ["any"],
+            "sample_names": ["SCS003_24_WT_"],
+            "subsample_rate": null,
+            "target_set": null,
+            "target_set_name": null,
+        },
+    ],
+    reference_path    = "/mnt/beegfs/Bioinformatica/datasets/CellRanger/Mouse/refdata-gex-GRCm39-2024-A",
+    feature_reference = null,
+    recovered_cells   = {
+        per_gem_well: null,
+        per_sample:   null,
+    },
+    force_cells       = {
+        per_gem_well: null,
+        per_sample:   null,
+    },
+    r1_length         = null,
+    r2_length         = null,
+    targeting_method  = null,
+)

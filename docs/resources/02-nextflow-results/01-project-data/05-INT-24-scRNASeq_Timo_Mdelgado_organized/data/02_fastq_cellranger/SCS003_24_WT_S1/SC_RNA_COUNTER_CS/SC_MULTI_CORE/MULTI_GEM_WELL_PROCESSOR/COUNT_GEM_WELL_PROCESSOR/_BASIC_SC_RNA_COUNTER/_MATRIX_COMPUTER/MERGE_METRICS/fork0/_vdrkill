@@ -1,0 +1,19 @@
+{
+    "timestamp": "2024-11-14T21:02:42.865494466+01:00",
+    "paths": [
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_MATRIX_COMPUTER/MERGE_METRICS/fork0/chnk0-u5121365547/files/summary.json"
+    ],
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2024-11-14T20:53:43.411175101+01:00",
+            "DeltaBytes": 12711
+        },
+        {
+            "Timestamp": "2024-11-14T21:02:42.865494466+01:00",
+            "DeltaBytes": -6448
+        }
+    ],
+    "count": 1,
+    "size": 6448
+}

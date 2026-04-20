@@ -1,0 +1,84 @@
+[stdout]
+2024-11-14 19:36:10 [cr_ana::stages::graph_clustering] computing k-nearest neighbors with k = 253
+2024-11-14 19:36:10 [scan_rs::nn] constructing ball tree of 10646 points
+2024-11-14 19:36:10 [scan_rs::nn] querying points for 253 neighbors
+2024-11-14 19:36:10 [cr_ana::stages::graph_clustering] running louvain
+2024-11-14 19:36:10 [cr_ana::louvain] building network for neighbor matrix of shape: (10646,253)
+2024-11-14 19:36:11 [cr_ana::louvain] louvain starting cpm score: -0.000097
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 0
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.565707
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 1
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.634589
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 2
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.646227
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 3
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.654746
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 4
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.662523
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 5
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.667072
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 6
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.670049
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 7
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.677889
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 8
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.679668
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 9
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.680582
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 10
+2024-11-14 19:36:11 [cr_ana::louvain]     cpm score: 0.681863
+2024-11-14 19:36:11 [cr_ana::louvain]   iteration 11
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.685576
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 12
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.690033
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 13
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.692685
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 14
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.697555
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 15
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.699881
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 16
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.701276
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 17
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.702995
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 18
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.703567
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 19
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.703763
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 20
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.703854
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 21
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.703946
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 22
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.704023
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 23
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.704063
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 24
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.704087
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 25
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.704091
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 26
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.704098
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 27
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.704107
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 28
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.704140
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 29
+2024-11-14 19:36:12 [cr_ana::louvain]     cpm score: 0.704165
+2024-11-14 19:36:12 [cr_ana::louvain]   iteration 30
+2024-11-14 19:36:13 [cr_ana::louvain]     cpm score: 0.704165
+2024-11-14 19:36:13 [cr_ana::louvain] louvain optimized in 31 iterations
+2024-11-14 19:36:13 [cr_ana::louvain] louvain final cpm score: 0.704165
+optimization time: 1.74s
+2024-11-14 19:36:13 [cr_ana::stages::graph_clustering] merging clusters
+2024-11-14 19:36:13 [scan_rs::merge_clusters] computing DE params on 23211 x 2589 matrix
+2024-11-14 19:36:14 [scan_rs::merge_clusters] computing DE on 1448 vs 1141 cells
+2024-11-14 19:36:15 [scan_rs::merge_clusters] found 0 DE genes, merging clusters 1 and 2.
+2024-11-14 19:36:15 [scan_rs::merge_clusters] computing DE params on 23211 x 3534 matrix
+2024-11-14 19:36:16 [scan_rs::merge_clusters] computing DE on 2589 vs 945 cells
+2024-11-14 19:36:18 [scan_rs::merge_clusters] computing DE params on 23211 x 1673 matrix
+2024-11-14 19:36:19 [scan_rs::merge_clusters] computing DE on 990 vs 683 cells
+2024-11-14 19:36:20 [scan_rs::merge_clusters] computing DE params on 23211 x 1904 matrix
+2024-11-14 19:36:21 [scan_rs::merge_clusters] computing DE on 1088 vs 816 cells
+2024-11-14 19:36:22 [scan_rs::merge_clusters] computing DE params on 23211 x 975 matrix
+2024-11-14 19:36:23 [scan_rs::merge_clusters] computing DE on 797 vs 178 cells

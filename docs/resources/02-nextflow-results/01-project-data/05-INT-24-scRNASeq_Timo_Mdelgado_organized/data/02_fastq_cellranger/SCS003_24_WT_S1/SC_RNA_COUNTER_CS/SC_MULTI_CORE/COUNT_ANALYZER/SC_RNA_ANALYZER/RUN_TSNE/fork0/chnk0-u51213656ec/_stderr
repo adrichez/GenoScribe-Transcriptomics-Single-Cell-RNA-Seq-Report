@@ -1,0 +1,30 @@
+[stderr]
+Using random seed: 209652396
+Using no_dims = 2, perplexity = 30.000000, and theta = 0.500000
+Using max_iter = 1000, stop_lying_iter = 250, mom_switch_iter = 250
+Computing input similarities...
+Building tree...
+ - point 0 of 7392
+Input similarities computed in 0.79 seconds (sparsity = 0.016556)!
+Learning embedding...
+Iteration 50: error is 94.097866 (50 iterations in 0.67 seconds)
+Iteration 100: error is 78.845715 (50 iterations in 0.65 seconds)
+Iteration 150: error is 76.211629 (50 iterations in 0.59 seconds)
+Iteration 200: error is 75.562717 (50 iterations in 0.63 seconds)
+Iteration 250: error is 3.787254 (50 iterations in 0.61 seconds)
+Iteration 300: error is 2.610412 (50 iterations in 0.60 seconds)
+Iteration 350: error is 2.201301 (50 iterations in 0.65 seconds)
+Iteration 400: error is 1.981664 (50 iterations in 0.62 seconds)
+Iteration 450: error is 1.842739 (50 iterations in 0.59 seconds)
+Iteration 500: error is 1.745461 (50 iterations in 0.62 seconds)
+Iteration 550: error is 1.675026 (50 iterations in 0.60 seconds)
+Iteration 600: error is 1.621823 (50 iterations in 0.61 seconds)
+Iteration 650: error is 1.583049 (50 iterations in 0.60 seconds)
+Iteration 700: error is 1.555037 (50 iterations in 0.62 seconds)
+Iteration 750: error is 1.534822 (50 iterations in 0.61 seconds)
+Iteration 800: error is 1.522349 (50 iterations in 0.62 seconds)
+Iteration 850: error is 1.516608 (50 iterations in 0.70 seconds)
+Iteration 900: error is 1.513172 (50 iterations in 0.63 seconds)
+Iteration 950: error is 1.510657 (50 iterations in 0.64 seconds)
+Iteration 999: error is 1.507717 (50 iterations in 0.63 seconds)
+Fitting performed in 12.49 seconds.

@@ -1,0 +1,10 @@
+{
+    "__mem_gb": 1,
+    "__threads": 1,
+    "__vmem_gb": 4,
+    "is_spatial": false,
+    "matrix_h5": "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/PREPROCESS_MATRIX/fork0/join-u51213656ca/files/preprocessed_matrix_h5.h5",
+    "num_pca_genes": null,
+    "num_principal_comps": null,
+    "pca_map": null
+}

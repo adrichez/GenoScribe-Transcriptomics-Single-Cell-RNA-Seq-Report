@@ -1,0 +1,465 @@
+[
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ATGGGGGTTCTAACGC"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": null
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CCTCCCATCTACCCCA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ATGGGGGTTCTAACGC"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GAATAGCTGTCCCGCA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CCTCCCATCTACCCCA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GTCCTCCTGTACTCTG"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GAATAGCTGTCCCGCA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCCTTTCCTCTGAACA"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GTCCTCCTGTACTCTG"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TTGTTTGTCTCCCACT"
+                },
+                "gem_group": 1,
+                "valid": false
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCCTTTCCTCTGAACA"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ACAAGCTTCCGCGATG"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TTGTTTGTCTCCCACT"
+                },
+                "gem_group": 1,
+                "valid": false
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "AGAACCTCAAATGGCG"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ACAAGCTTCCGCGATG"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "AGGTAGGGTTGTCAGT"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "AGAACCTCAAATGGCG"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "ATGGAGGCAGGCGATA"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "AGGTAGGGTTGTCAGT"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CACGAATCATCGCTAA"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "ATGGAGGCAGGCGATA"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CATTGAGCATTAGGAA"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CACGAATCATCGCTAA"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CCTCTCCAGGGTCACA"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CATTGAGCATTAGGAA"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CTACCTGGTAGACAGC"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CCTCTCCAGGGTCACA"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "CTTACCGTCGGTCAGC"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CTACCTGGTAGACAGC"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GAGACCCGTCTCAGAT"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "CTTACCGTCGGTCAGC"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GCCAACGAGTCTGACC"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GAGACCCGTCTCAGAT"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GGGACTCTCCTGCCAT"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GCCAACGAGTCTGACC"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GTCATGAGTTCTCTCG"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GGGACTCTCCTGCCAT"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "GTTGTAGAGCAGGGAG"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GTCATGAGTTCTCTCG"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCAATTCTCAAGCGTT"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "GTTGTAGAGCAGGGAG"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TCCTGCATCGTACACA"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCAATTCTCAAGCGTT"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TGATTCTCACCTGCAG"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TCCTGCATCGTACACA"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": {
+                "content": {
+                    "Sequence": "TTAGGCAAGTCGAAAT"
+                },
+                "gem_group": 1,
+                "valid": true
+            },
+            "start": {
+                "content": {
+                    "Sequence": "TGATTCTCACCTGCAG"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    },
+    {
+        "range": {
+            "end": null,
+            "start": {
+                "content": {
+                    "Sequence": "TTAGGCAAGTCGAAAT"
+                },
+                "gem_group": 1,
+                "valid": true
+            }
+        },
+        "read_ann_subsample_rate": 0.13070987164974213
+    }
+]

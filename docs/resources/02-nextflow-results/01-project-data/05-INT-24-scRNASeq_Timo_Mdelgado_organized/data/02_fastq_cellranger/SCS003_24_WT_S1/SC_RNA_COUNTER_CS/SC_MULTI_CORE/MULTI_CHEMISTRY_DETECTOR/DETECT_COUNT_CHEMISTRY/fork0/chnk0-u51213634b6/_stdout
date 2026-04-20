@@ -1,0 +1,30 @@
+[stdout]
+Number of fastq units = 1
+Sampling reads from: Sample SCS003_24_WT_ in "/mnt/beegfs/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads"
+Potential chemistries: SFRP, SC5P-R2, SC5P-PE, SC5P-R2-v3, SC5P-PE-v3, SC3Pv1, SC3Pv2, SC3Pv3, SC3Pv3LT, SC3Pv3HT, SC3Pv4, SC3Pv4HT, ARC-v1
+
+Length based filtering for Sample SCS003_24_WT_ in "/mnt/beegfs/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads"
+LengthStats {
+    median: {
+        R2: 150,
+        R1: 150,
+        I1: 0,
+    },
+}
+Compatible chemistries: SFRP, SC5P-R2, SC5P-PE, SC5P-R2-v3, SC5P-PE-v3, SC3Pv2, SC3Pv3, SC3Pv3LT, SC3Pv3HT, SC3Pv4, SC3Pv4HT, ARC-v1
+Result: SFRP, SC5P-R2, SC5P-PE, SC5P-R2-v3, SC5P-PE-v3, SC3Pv2, SC3Pv3, SC3Pv3LT, SC3Pv3HT, SC3Pv4, SC3Pv4HT, ARC-v1
+After length filter: SC5P-PE, SC5P-R2-v3, SC3Pv2, SC3Pv3, SC3Pv3LT, SC3Pv3HT, SC3Pv4, ARC-v1
+
+Whitelist based filtering for Sample SCS003_24_WT_ in "/mnt/beegfs/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads"
+{
+    ThreePrimeV3LT: 0.00257,
+    ArcV1: 0.00082,
+    ThreePrimeV3HT: 0.92418,
+    ThreePrimeV4: 0.0111,
+    FivePrimePE: 0.01366,
+    ThreePrimeV2: 0.01366,
+    ThreePrimeV3: 0.92418,
+    FivePrimeR2V3: 0.00279,
+}
+Compatible chemistries: SC3Pv3, SC3Pv3HT
+Result: SC3Pv3, SC3Pv3HT

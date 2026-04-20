@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>IPBLN Bioinformatics Report</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../../../../">
+<script src="../../../../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../../../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../../../../site_libs/bootstrap/bootstrap-c27fce070f9e1faf5b65ec12c04f7688.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="../../../../../../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../../../../../../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../../../../../../../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../../../../../../../site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="../../../../../../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../../../../../../../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../../../../../../../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../../../../../../../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../../../../../../../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="../../../../../../../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link rel="shortcut icon" href="../../../../../01-images/icons/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../../../../../01-images/icons/favicon.ico">
+
+
+<link rel="stylesheet" href="../../../../../../../resources/01-essential/03-scripts/03-css/styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../../../../index.html">
+    <span class="navbar-title"><img class="brand-logo" src="../../../../../../../resources/01-essential/01-images/icons/ipbln.png"> <a class="brand-text" href="https://www.ipb.csic.es/servicios/Bioinformatica/index.html">IPBLN</a></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../../index_es.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab1-metodologia/metodologia.html"> <i class="bi bi-wrench" role="img">
+</i> 
+<span class="menu-text">Metodología</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab2-resumen/resumen.html"> <i class="bi bi-clipboard-data" role="img">
+</i> 
+<span class="menu-text">Resumen</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-bar-chart" role="img">
+</i> 
+ <span class="menu-text">Análisis</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-análisis">    
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/00-contexto.html">
+ <span class="dropdown-text">➤ Introducción contextual</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/01-revision-inicial.html">
+ <span class="dropdown-text">1. Revisión inicial de muestras y metadatos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/02-control-calidad.html">
+ <span class="dropdown-text">2. Control de calidad y filtrado (QC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/03-clustering.html">
+ <span class="dropdown-text">3. Reducción de dimensionalidad y clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/04-marcadores.html">
+ <span class="dropdown-text">4. Identificación de marcadores (clusters ciegos)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/05-anotacion.html">
+ <span class="dropdown-text">5. Anotación celular (automática y manual)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/06-agrupacion.html">
+ <span class="dropdown-text">6. Agrupación de poblaciones biológicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/07-expresion-diferencial.html">
+ <span class="dropdown-text">7. Análisis de expresión diferencial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/08-enriquecimiento.html">
+ <span class="dropdown-text">8. Análisis funcional y de enriquecimiento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/09-extra.html">
+ <span class="dropdown-text">9. Análisis personalizados y ad hoc</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/10-conclusiones.html">
+ <span class="dropdown-text">10. Conclusiones y perspectivas</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IPBLN Bioinformatics Report</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  TAB 3: ANÁLISIS | 2. CONTROL DE CALIDAD Y FILTRADO (QC) -->
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  CHATBOT -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- Contenedor del chat -->
+<div id="chat-container">
+  <button id="chat-toggle"></button>
+  <div id="chat-box">
+    <div id="chat-info" class="chat-info">
+      <h1>
+        Mini Chat RAG (beta)
+      </h1>
+
+      <p>
+        ¡Hola! Soy <strong>Geni</strong>, el asistente inteligente de <strong>GenoScribe</strong>.  
+        Estoy aquí para ayudarte a explorar de forma interactiva el contenido de este informe bioinformático.
+      </p>
+
+      <p>
+        Cuando me haces una pregunta, primero intento reconocer si coincide con alguno de los patrones o expresiones que conozco.  
+        Si encuentro una coincidencia, te responderé directamente con una respuesta predefinida, diseñada para ser rápida, clara e incluso un poco ingeniosa.  
+        Si no reconozco el patrón, entonces activo mis herramientas de búsqueda: genero representaciones vectoriales (embeddings) y busco los fragmentos más relevantes entre varios documentos —incluyendo el propio informe, archivos PDF y HTML externos, y sesiones de preguntas y respuestas (QA).  
+        A partir de esa información, creo un resumen que intenta ofrecerte una respuesta coherente y útil basada en el contenido existente.
+      </p>
+
+      <p>
+        Se debe tener en cuenta que este entorno es experimental. No utilizo grandes modelos de lenguaje, por lo que algunas respuestas pueden ser aproximadas o incompletas.  
+        El objetivo principal es facilitar una visualización rápida, comprensible y reproducible de la información contenida en los documentos, permitiendo una exploración más dinámica del informe.
+      </p>
+
+      <p>
+        Actualmente, los resultados pueden variar en precisión, ya que empleo modelos ligeros y locales para asegurar que la aplicación funcione en cualquier entorno sin necesidad de servidores externos.  
+        Sin embargo, la estructura del sistema está preparada para mejorar notablemente su rendimiento en el futuro mediante la integración con modelos más avanzados o APIs externas.  
+        Para comenzar, simplemente escribe tu pregunta en el campo inferior y deja que yo me encargue del resto. ¡Prometo poner todo mi código en ello!
+      </p>
+    </div>
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" placeholder="Escribe tu pregunta...">
+    <button id="chat-send" title="Enviar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  IMPORTACIONES -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- Incluir Font Awesome -->
+<p><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"></p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  CÓDIGO GLOBAL -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  TÍTULO Y RESUMEN CONTEXTUAL -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="informe-titulo-tab">
+<h1>
+Pestaña
+</h1>
+<h2>
+Análisis Bioinformático Completo
+</h2>
+</div>
+<div class="informe-titulo-seccion-unique">
+<h1>
+Sección 2
+</h1>
+<h2>
+Control de calidad y Filtrado (QC)
+</h2>
+</div>
+<div class="flecha-abajo">
+<p>▼</p>
+</div>
+<div class="informe-resumen">
+<h2>
+Resumen
+</h2>
+<p>
+En esta pestaña se documenta exhaustivamente el proceso integral de <strong>Control de Calidad (QC) y Filtrado</strong> aplicado a los datos de secuenciación de célula única (<em>Single-Cell RNA-Seq</em>). A diferencia de la transcriptómica masiva (<em>Bulk RNA-Seq</em>), donde el ruido técnico se diluye en el promedio del tejido, la tecnología de célula única presenta desafíos analíticos únicos derivados de la encapsulación microfluídica y la bajísima cantidad de material genético de partida. Por ello, es imperativo aplicar un enfoque analítico secuencial y multinivel que garantice la <strong>máxima fidelidad biológica</strong> de cada célula evaluada.
+</p>
+<p>
+El flujo de validación se estructura en tres ejes fundamentales. En primer lugar, se audita el rendimiento técnico del procesamiento primario mediante el <em>pipeline</em> <strong>Cell Ranger</strong> (estándar para la plataforma de <em>10x Genomics</em>). Esta fase inicial es crucial para verificar el éxito de la partición celular, evaluar la saturación y profundidad de la secuenciación, y discriminar estadísticamente aquellas gotas lipídicas (<em>droplets</em>) que encapsularon células reales intactas frente a las que únicamente atraparon “sopa de ARN” ambiental.
+</p>
+<p>
+En segundo lugar, de forma opcional pero rigurosa, se realiza una inspección independiente de la química de secuenciación bruta (archivos FASTQ) empleando herramientas forenses como <strong>FastQC</strong> o <strong>Fastp</strong>. Esto permite descartar anomalías a nivel de nucleótido, tales como caídas abruptas en la calidad de las bases (<em>Phred scores</em>) o contaminación persistente por secuencias adaptadoras.
+</p>
+<p>
+Finalmente, el proceso culmina con el <strong>Filtrado Celular Biológico utilizando Seurat</strong>. Esta es la etapa más crítica del embudo, donde el enfoque computacional da paso al escrutinio biológico individualizado. A través de la inspección detallada de distribuciones estadísticas, se definen umbrales precisos para eliminar tres tipos de artefactos intrínsecos al protocolo: <strong>células muertas o apoptóticas</strong> (caracterizadas por un desproporcionado porcentaje de transcritos mitocondriales residuales), <strong>gotas vacías o perfiles de muy baja calidad</strong> (detectados por un número ínfimo de genes expresados) y <strong>dobletes celulares</strong> (errores de encapsulación donde dos células comparten el mismo código de barras, revelados por una sobreabundancia anómala de conteos génicos).
+</p>
+<p>
+El propósito último de esta rigurosa depuración secuencial es aislar el conjunto de datos de cualquier artefacto técnico que pudiera emerger erróneamente como una subpoblación celular falsa o enmascarar señales biológicas sutiles. El resultado de esta fase es una matriz de expresión prístina, que constituye el cimiento indispensable para acometer con total seguridad los análisis posteriores de reducción de dimensionalidad, agrupación fenotípica y expresión génica diferencial.
+</p>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  TABLA DE CONTENIDOS -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div class="titulo-toc">
+<p>Tabla de contenidos de esta sección</p>
+</div>
+<div class="toc">
+<ul>
+<li>
+<a href="#tab3-seccion2">2<span>.</span> Control de calidad y filtrado (QC)</a>
+<ul>
+<li>
+<a href="#tab3-seccion2.1">2.1. Calidad del procesamiento primario (Cell Ranger)</a>
+<ul>
+<li>
+<a href="#tab3-seccion2.1.1">2.1.1. Evaluación técnica individualizada</a>
+</li>
+<li>
+<a href="#tab3-seccion2.1.2">2.1.2. Consolidación de métricas globales</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#tab3-seccion2.2">2.2. Evaluación de lecturas crudas (Opcional: FastQC / Fastp)</a>
+<ul>
+<li>
+<a href="#tab3-seccion2.2.1">2.2.1. Control de calidad mediante Fastp</a>
+</li>
+<li>
+<a href="#tab3-seccion2.2.2">2.2.2. Control de calidad mediante FastQC</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#tab3-seccion2.3">2.3. Control de calidad y filtrado celular (Seurat)</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  REDACCIÓN -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="height: 25px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2" class="titulo1">
+<p>2<span>.</span> Control de calidad y filtrado (QC)</p>
+</div>
+<p>
+En esta sección se documentan los resultados empíricos y las métricas exactas derivadas del proceso de Control de Calidad (QC) aplicado a las muestras de este estudio. El objetivo analítico fundamental de esta etapa es depurar los datos crudos para construir una matriz de expresión robusta y fiable, garantizando que cada “código de barras” (<em>barcode</em>) retenido para el análisis downstream corresponda inequívocamente a una única célula biológicamente viable.
+</p>
+<p>
+Para lograr este nivel de pureza, se presenta un flujo de trabajo que audita la calidad en tres niveles secuenciales:
+</p>
+<ul>
+<li>
+<strong>Nivel de plataforma y alineamiento (Cell Ranger):</strong> Se audita la eficiencia de la demultiplexación primaria y el alineamiento contra el genoma de referencia, confirmando que la captura microfluídica, la recuperación celular y la profundidad de secuenciación han sido óptimas.
+</li>
+<li>
+<strong>Nivel de lectura cruda (Fastp/FastQC):</strong> Se evalúa la integridad química de los archivos FASTQ base por base, descartando sesgos del secuenciador, contaminación por adaptadores o caídas de calidad.
+</li>
+<li>
+<strong>Nivel de integridad celular (Seurat):</strong> Se interroga el perfil transcriptómico individual de cada célula. Evaluando métricas como la complejidad génica (número de genes y UMIs detectados) y el estrés celular (fracción de transcritos mitocondriales), se establecen cortes para eliminar células apoptóticas, gotas vacías y dobletes.
+</li>
+</ul>
+<p>
+A continuación, se exponen de forma transparente los informes interactivos, las tablas de validación y las distribuciones estadísticas que han guiado este proceso. En lugar de aplicar umbrales estáticos universales, las decisiones tomadas responden a un enfoque adaptativo (<em>data-driven</em>) ajustado a la naturaleza específica de este tejido, comenzando por el diagnóstico del procesamiento primario.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.1" class="titulo2">
+<p>2.1. Calidad del procesamiento primario (Cell Ranger)</p>
+</div>
+<p>
+El primer nivel de control de calidad recae en el procesamiento computacional primario mediante el <em>pipeline</em> oficial <strong>Cell Ranger</strong>, el estándar bioinformático para la tecnología de 10x Genomics. Este software centraliza operaciones críticas: la <strong>demultiplexación</strong> de secuencias crudas (conversión de BCL a FASTQ), el <strong>alineamiento genómico</strong>, la corrección de <strong>códigos de barras celulares (<em>Barcodes</em>)</strong> y el conteo de <strong>Identificadores Moleculares Únicos (UMIs)</strong> para neutralizar los sesgos de amplificación PCR.
+</p>
+<p>
+A diferencia del <em>Bulk RNA-Seq</em>, la secuenciación de célula única impone un desafío bioinformático principal: <strong>discriminar computacionalmente las células reales de las gotas vacías</strong>. Durante la partición microfluídica, la inmensa mayoría de las gotas lipídicas (<em>droplets</em>) no encapsulan una célula intacta, sino únicamente <strong>ARN ambiente extracelular</strong> (ruido de fondo liberado por lisis celular durante la disgregación del tejido).
+</p>
+<p>
+Para aislar las células viables, Cell Ranger evalúa la distribución global de transcritos generando el gráfico <strong>Barcode Rank Plot</strong>. Mediante este análisis, el algoritmo identifica el <strong>punto de inflexión exacto</strong> (o caída abrupta) que separa los <em>barcodes</em> asociados a células viables —con alto contenido transcripcional— del ruido de fondo del sistema. La correcta definición de este umbral es indispensable para la validez de todo el estudio.
+</p>
+<p>
+A continuación, se exponen los directorios resultantes de esta fase computacional. Estos repositorios albergan las <strong>matrices de expresión dispersas</strong> (tanto crudas como filtradas), los análisis secundarios de clústeres y los <strong>reportes HTML de validación técnica</strong> de cada librería procesada:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-folder">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_KO_S18" target="_blank">SCS003_24_KO_S18</a>
+</li>
+<li class="file-folder">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_WT_S1" target="_blank">SCS003_24_WT_S1</a>
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar el directorio de Cell Ranger aquí </a>
+</p>
+<p>
+Aunque la exploración manual de estos directorios resulta de gran utilidad para acceder a los datos crudos, la evaluación bioinformática exige una inspección visual estructurada de los estadísticos de rendimiento. Por este motivo, en los siguientes apartados se han extraído e incrustado los informes técnicos más relevantes de cada directorio, permitiendo una revisión exhaustiva del comportamiento de cada muestra de forma secuencial y sin necesidad de abandonar el presente documento.
+</p>
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.1.1" class="titulo3">
+<p>2.1.1. Evaluación técnica individualizada</p>
+</div>
+<p>
+Para evaluar pormenorizadamente la salud técnica de cada librería secuenciada, a continuación se presentan de forma dinámica e interactiva los reportes de calidad globales (<code>web_summary.html</code>) generados nativamente por el <em>pipeline</em>. Estos paneles visuales son la herramienta de diagnóstico de primer nivel, permitiendo revisar la eficiencia de la captura celular, detectar problemas masivos en el mapeo genómico o advertir sobre alertas tempranas emitidas por el secuenciador.
+</p>
+<p>
+Inmediatamente debajo de cada informe gráfico interactivo, se despliega la tabla matriz correspondiente a su archivo <code>metrics_summary.csv</code>. Esta disposición dual facilita la inspección de la gráfica y la posterior copia de los valores estadísticos exactos (como la fracción de lecturas en células o la saturación de secuenciación) para cada muestra individualizada.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+  <div style="height: 15px; background-color: transparent;"></div>
+
+  <div class="titulo4" id="tab3-seccion2.1.1.1" style="padding-bottom: 8px; line-height: 1.2;">
+    2.1.1.1. Muestra: SCS003_24_KO_S18
+  </div>
+
+  <p style="margin-top: 20px;">
+    En este apartado se desglosa el perfil técnico individual de la librería correspondiente a la muestra <strong>SCS003_24_KO_S18</strong>. La revisión aislada de esta réplica resulta fundamental para certificar la integridad de su proceso de partición celular y secuenciación, permitiendo descartar anomalías específicas de este lote antes de proceder a la integración global de los datos del experimento.
+  </p>
+
+  <p style="margin-top: 20px; margin-bottom: 18px;">
+    <i class="fa-solid fa-microchip" style="color: #276DC3;"></i> 
+    <strong>Reporte Cell Ranger:</strong> <code>web_summary.html</code>
+  </p>
+  
+  <p style="margin-bottom: 18px;">
+    El siguiente <em>dashboard</em> interactivo resume los indicadores técnicos clave de la muestra. Se recomienda prestar especial atención al gráfico de rango de códigos de barras (curva azul) para asegurar que la caída <em>(cliff)</em> entre las células identificadas y el ruido de fondo sea pronunciada y clara.
+  </p>
+
+  <div class="iframe-container" style="margin-top: 25px; margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_KO_S18/outs/web_summary.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 40px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_KO_S18/outs/web_summary.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Reporte en pestaña nueva
+    </a>
+
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_KO_S18/outs/web_summary.html" download="SCS003_24_KO_S18_web_summary.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar Reporte HTML
+    </a>
+  </div>
+  
+  <p style="margin-top: 20px; margin-bottom: 18px;">
+    <i class="fa-solid fa-table" style="color: #276DC3;"></i> 
+    <strong>Tabla de Métricas exactas (<code>metrics_summary.csv</code>):</strong>
+  </p>
+  
+  <p style="margin-bottom: 20px;">
+    Para complementar el análisis visual superior, esta tabla expone de forma directa y copiable todos los estadísticos de mapeo, profundidad y rendimiento celular consolidados para esta librería específica.
+  </p>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-44961f6766b1d05d58ae" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-44961f6766b1d05d58ae">{"x":{"filter":"none","vertical":false,"data":[["10,646"],["35,931"],["2,210"],["382,526,607"],["95.3%"],["67.3%"],["94.8%"],["93.9%"],["96.1%"],["95.1%"],["93.1%"],["6.2%"],["30.1%"],["56.8%"],["71.6%"],["14.9%"],["93.9%"],["23,211"],["4,613"]],"container":"<table class=\"stripe hover row-border order-column compact\">\n  <thead>\n    <tr>\n      <th>Estimated Number of Cells<\/th>\n      <th>Mean Reads per Cell<\/th>\n      <th>Median Genes per Cell<\/th>\n      <th>Number of Reads<\/th>\n      <th>Valid Barcodes<\/th>\n      <th>Sequencing Saturation<\/th>\n      <th>Q30 Bases in Barcode<\/th>\n      <th>Q30 Bases in RNA Read<\/th>\n      <th>Q30 Bases in UMI<\/th>\n      <th>Reads Mapped to Genome<\/th>\n      <th>Reads Mapped Confidently to Genome<\/th>\n      <th>Reads Mapped Confidently to Intergenic Regions<\/th>\n      <th>Reads Mapped Confidently to Intronic Regions<\/th>\n      <th>Reads Mapped Confidently to Exonic Regions<\/th>\n      <th>Reads Mapped Confidently to Transcriptome<\/th>\n      <th>Reads Mapped Antisense to Gene<\/th>\n      <th>Fraction Reads in Cells<\/th>\n      <th>Total Genes Detected<\/th>\n      <th>Median UMI Counts per Cell<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"150px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"t","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"name":"Estimated Number of Cells","targets":0},{"name":"Mean Reads per Cell","targets":1},{"name":"Median Genes per Cell","targets":2},{"name":"Number of Reads","targets":3},{"name":"Valid Barcodes","targets":4},{"name":"Sequencing Saturation","targets":5},{"name":"Q30 Bases in Barcode","targets":6},{"name":"Q30 Bases in RNA Read","targets":7},{"name":"Q30 Bases in UMI","targets":8},{"name":"Reads Mapped to Genome","targets":9},{"name":"Reads Mapped Confidently to Genome","targets":10},{"name":"Reads Mapped Confidently to Intergenic Regions","targets":11},{"name":"Reads Mapped Confidently to Intronic Regions","targets":12},{"name":"Reads Mapped Confidently to Exonic Regions","targets":13},{"name":"Reads Mapped Confidently to Transcriptome","targets":14},{"name":"Reads Mapped Antisense to Gene","targets":15},{"name":"Fraction Reads in Cells","targets":16},{"name":"Total Genes Detected","targets":17},{"name":"Median UMI Counts per Cell","targets":18}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+  <div style="text-align: center; margin-top: 16px; margin-bottom: 25px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_KO_S18/outs/metrics_summary.csv" download="SCS003_24_KO_S18_metrics_summary.csv" class="boton-file-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar métricas (.csv)
+    </a>
+  </div>
+  <div style="height: 15px; background-color: transparent;"></div>
+
+  <div class="titulo4" id="tab3-seccion2.1.1.2" style="padding-bottom: 8px; line-height: 1.2;">
+    2.1.1.2. Muestra: SCS003_24_WT_S1
+  </div>
+
+  <p style="margin-top: 20px;">
+    En este apartado se desglosa el perfil técnico individual de la librería correspondiente a la muestra <strong>SCS003_24_WT_S1</strong>. La revisión aislada de esta réplica resulta fundamental para certificar la integridad de su proceso de partición celular y secuenciación, permitiendo descartar anomalías específicas de este lote antes de proceder a la integración global de los datos del experimento.
+  </p>
+
+  <p style="margin-top: 20px; margin-bottom: 18px;">
+    <i class="fa-solid fa-microchip" style="color: #276DC3;"></i> 
+    <strong>Reporte Cell Ranger:</strong> <code>web_summary.html</code>
+  </p>
+  
+  <p style="margin-bottom: 18px;">
+    El siguiente <em>dashboard</em> interactivo resume los indicadores técnicos clave de la muestra. Se recomienda prestar especial atención al gráfico de rango de códigos de barras (curva azul) para asegurar que la caída <em>(cliff)</em> entre las células identificadas y el ruido de fondo sea pronunciada y clara.
+  </p>
+
+  <div class="iframe-container" style="margin-top: 25px; margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_WT_S1/outs/web_summary.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 40px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_WT_S1/outs/web_summary.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Reporte en pestaña nueva
+    </a>
+
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_WT_S1/outs/web_summary.html" download="SCS003_24_WT_S1_web_summary.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar Reporte HTML
+    </a>
+  </div>
+  
+  <p style="margin-top: 20px; margin-bottom: 18px;">
+    <i class="fa-solid fa-table" style="color: #276DC3;"></i> 
+    <strong>Tabla de Métricas exactas (<code>metrics_summary.csv</code>):</strong>
+  </p>
+  
+  <p style="margin-bottom: 20px;">
+    Para complementar el análisis visual superior, esta tabla expone de forma directa y copiable todos los estadísticos de mapeo, profundidad y rendimiento celular consolidados para esta librería específica.
+  </p>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-84561a21333f3e6fb4a4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-84561a21333f3e6fb4a4">{"x":{"filter":"none","vertical":false,"data":[["7,392"],["59,812"],["2,213"],["442,131,242"],["95.4%"],["80.9%"],["95.2%"],["93.7%"],["96.3%"],["94.2%"],["92.2%"],["6.3%"],["31.2%"],["54.7%"],["70.7%"],["14.9%"],["94.3%"],["22,432"],["4,642"]],"container":"<table class=\"stripe hover row-border order-column compact\">\n  <thead>\n    <tr>\n      <th>Estimated Number of Cells<\/th>\n      <th>Mean Reads per Cell<\/th>\n      <th>Median Genes per Cell<\/th>\n      <th>Number of Reads<\/th>\n      <th>Valid Barcodes<\/th>\n      <th>Sequencing Saturation<\/th>\n      <th>Q30 Bases in Barcode<\/th>\n      <th>Q30 Bases in RNA Read<\/th>\n      <th>Q30 Bases in UMI<\/th>\n      <th>Reads Mapped to Genome<\/th>\n      <th>Reads Mapped Confidently to Genome<\/th>\n      <th>Reads Mapped Confidently to Intergenic Regions<\/th>\n      <th>Reads Mapped Confidently to Intronic Regions<\/th>\n      <th>Reads Mapped Confidently to Exonic Regions<\/th>\n      <th>Reads Mapped Confidently to Transcriptome<\/th>\n      <th>Reads Mapped Antisense to Gene<\/th>\n      <th>Fraction Reads in Cells<\/th>\n      <th>Total Genes Detected<\/th>\n      <th>Median UMI Counts per Cell<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"150px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"t","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"name":"Estimated Number of Cells","targets":0},{"name":"Mean Reads per Cell","targets":1},{"name":"Median Genes per Cell","targets":2},{"name":"Number of Reads","targets":3},{"name":"Valid Barcodes","targets":4},{"name":"Sequencing Saturation","targets":5},{"name":"Q30 Bases in Barcode","targets":6},{"name":"Q30 Bases in RNA Read","targets":7},{"name":"Q30 Bases in UMI","targets":8},{"name":"Reads Mapped to Genome","targets":9},{"name":"Reads Mapped Confidently to Genome","targets":10},{"name":"Reads Mapped Confidently to Intergenic Regions","targets":11},{"name":"Reads Mapped Confidently to Intronic Regions","targets":12},{"name":"Reads Mapped Confidently to Exonic Regions","targets":13},{"name":"Reads Mapped Confidently to Transcriptome","targets":14},{"name":"Reads Mapped Antisense to Gene","targets":15},{"name":"Fraction Reads in Cells","targets":16},{"name":"Total Genes Detected","targets":17},{"name":"Median UMI Counts per Cell","targets":18}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+  <div style="text-align: center; margin-top: 16px; margin-bottom: 25px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_WT_S1/outs/metrics_summary.csv" download="SCS003_24_WT_S1_metrics_summary.csv" class="boton-file-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar métricas (.csv)
+    </a>
+  </div>
+</div>
+</div>
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.1.2" class="titulo3">
+<p>2.1.2. Consolidación de métricas globales</p>
+</div>
+<p>
+Como complemento a la exploración individualizada expuesta anteriormente, resulta de gran utilidad disponer de una visión panorámica de todo el experimento. A continuación se presenta la <strong>tabla unificada</strong> que recopila las métricas de todas las muestras simultáneamente. Esta matriz consolidada facilita enormemente la detección rápida de discrepancias entre réplicas biológicas (por ejemplo, diferencias drásticas en la viabilidad celular o en la profundidad de secuenciación) antes de adentrarse en las fases analíticas avanzadas.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-7f37f432bf7fc9592786" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7f37f432bf7fc9592786">{"x":{"filter":"none","vertical":false,"data":[["SCS003_24_KO_S18","SCS003_24_WT_S1"],["10,646","7,392"],["35,931","59,812"],["2,210","2,213"],["382,526,607","442,131,242"],["95.3%","95.4%"],["67.3%","80.9%"],["94.8%","95.2%"],["93.9%","93.7%"],["96.1%","96.3%"],["95.1%","94.2%"],["93.1%","92.2%"],["6.2%","6.3%"],["30.1%","31.2%"],["56.8%","54.7%"],["71.6%","70.7%"],["14.9%","14.9%"],["93.9%","94.3%"],["23,211","22,432"],["4,613","4,642"]],"container":"<table class=\"stripe hover row-border order-column compact\">\n  <thead>\n    <tr>\n      <th>Sample<\/th>\n      <th>Estimated Number of Cells<\/th>\n      <th>Mean Reads per Cell<\/th>\n      <th>Median Genes per Cell<\/th>\n      <th>Number of Reads<\/th>\n      <th>Valid Barcodes<\/th>\n      <th>Sequencing Saturation<\/th>\n      <th>Q30 Bases in Barcode<\/th>\n      <th>Q30 Bases in RNA Read<\/th>\n      <th>Q30 Bases in UMI<\/th>\n      <th>Reads Mapped to Genome<\/th>\n      <th>Reads Mapped Confidently to Genome<\/th>\n      <th>Reads Mapped Confidently to Intergenic Regions<\/th>\n      <th>Reads Mapped Confidently to Intronic Regions<\/th>\n      <th>Reads Mapped Confidently to Exonic Regions<\/th>\n      <th>Reads Mapped Confidently to Transcriptome<\/th>\n      <th>Reads Mapped Antisense to Gene<\/th>\n      <th>Fraction Reads in Cells<\/th>\n      <th>Total Genes Detected<\/th>\n      <th>Median UMI Counts per Cell<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"400px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"t","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"name":"Sample","targets":0},{"name":"Estimated Number of Cells","targets":1},{"name":"Mean Reads per Cell","targets":2},{"name":"Median Genes per Cell","targets":3},{"name":"Number of Reads","targets":4},{"name":"Valid Barcodes","targets":5},{"name":"Sequencing Saturation","targets":6},{"name":"Q30 Bases in Barcode","targets":7},{"name":"Q30 Bases in RNA Read","targets":8},{"name":"Q30 Bases in UMI","targets":9},{"name":"Reads Mapped to Genome","targets":10},{"name":"Reads Mapped Confidently to Genome","targets":11},{"name":"Reads Mapped Confidently to Intergenic Regions","targets":12},{"name":"Reads Mapped Confidently to Intronic Regions","targets":13},{"name":"Reads Mapped Confidently to Exonic Regions","targets":14},{"name":"Reads Mapped Confidently to Transcriptome","targets":15},{"name":"Reads Mapped Antisense to Gene","targets":16},{"name":"Fraction Reads in Cells","targets":17},{"name":"Total Genes Detected","targets":18},{"name":"Median UMI Counts per Cell","targets":19}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div style="text-align: center;">
+<p><a href="../../../../../../../resources/01-essential/02-archives/02-tmp/tab3-analisis/02-control-calidad/cellranger_metrics_summary_all_samples.csv" download="cellranger_metrics_summary_all_samples.csv" class="boton-file-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar métricas globales unificadas (.csv) </a></p>
+</div>
+<p style="margin-bottom: 40px;">
+Si bien el reporte global de <em>Cell Ranger</em> confirma la eficiencia de la captura celular y el éxito general del mapeo, el rigor metodológico permite complementar este análisis con una evaluación estructural de las lecturas crudas de secuenciación (archivos FASTQ). En la siguiente sección, se inspeccionan métricas intrínsecas a la plataforma de secuenciación —tales como los valores de calidad <em>Phred</em> por base, la distribución del contenido GC, las tasas de duplicación y la presencia de secuencias adaptadoras remanentes— garantizando así la máxima integridad técnica de los datos de partida.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.2" class="titulo2">
+<p>2.2. Evaluación de lecturas crudas (Opcional: FastQC / Fastp)</p>
+</div>
+<p>
+Aunque los algoritmos integrados en <em>Cell Ranger</em> aplican un control de calidad y un filtrado interno extraordinariamente robustos para las librerías de 10x Genomics, el rigor metodológico aconseja, siempre que el diseño del proyecto lo requiera, realizar una inspección forense independiente de las lecturas crudas de secuenciación (archivos FASTQ). Esta fase actúa como una auditoría de la integridad de la secuenciación a nivel de nucleótido, evaluando métricas primarias que preceden al mapeo celular.
+</p>
+<p>
+El objetivo principal de esta evaluación es detectar posibles anomalías intrínsecas a la plataforma de secuenciación (Illumina, singularidades de la <em>flow cell</em>, etc.) antes de que sus sesgos puedan propagarse a la cuantificación de la expresión. Entre los parámetros críticos analizados se incluyen la puntuación de calidad <em>Phred</em> por base (que permite identificar caídas de fiabilidad en los extremos de las lecturas), la distribución del contenido GC, las tasas de duplicación inusuales y la presencia de secuencias adaptadoras residuales.
+</p>
+<p>
+En las subsecciones a continuación, se presentarán los reportes interactivos generados por las herramientas especializadas <strong>Fastp</strong> y <strong>FastQC</strong>. Dado que la ejecución de estos pre-procesamientos es una decisión modular (y frecuentemente opcional en los flujos de trabajo modernos de <em>Single-Cell</em>, que confían este paso a Cell Ranger), el documento se adaptará dinámicamente: si las herramientas fueron ejecutadas, se mostrarán sus respectivos paneles interactivos (<em>MultiQC</em>) y reportes individuales; de lo contrario, se notificará explícitamente que el proyecto ha delegado esta validación a las rutinas del procesamiento primario.
+</p>
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.2.1" class="titulo3">
+<p>2.2.1. Control de calidad mediante Fastp</p>
+</div>
+<p>
+El primer paso de esta evaluación técnica de las secuencias crudas se realiza mediante <strong>Fastp</strong>, una herramienta bioinformática ultrarrápida diseñada para proporcionar perfiles de calidad exhaustivos y ejecutar el filtrado de lecturas en un único paso computacional. Su implementación resulta de gran utilidad para detectar anomalías químicas y evaluar la calidad global de la librería antes de proceder al alineamiento.
+</p>
+<p>
+Es crucial comprender una particularidad técnica del protocolo de <em>Single-Cell</em> de 10x Genomics frente a la secuenciación <em>Bulk</em>. En este diseño, las lecturas emparejadas (<em>paired-end</em>) no son biológicamente simétricas. La lectura 1 (<strong>R1</strong>) actúa como una etiqueta de metadatos, conteniendo el código de barras celular (habitualmente de 16 pares de bases) y el Identificador Molecular Único o UMI (12 pares de bases). Por el contrario, la lectura 2 (<strong>R2</strong>) es la que alberga la secuencia biológica real correspondiente al ARN capturado.
+</p>
+<p>
+Al procesar computacionalmente ambas lecturas de forma simultánea, Fastp integra la información espacial (R1) y biológica (R2), evaluando la integridad del par en su conjunto. Por este motivo, la herramienta genera <strong>un único informe de calidad consolidado por muestra</strong>, fusionando las estadísticas de ambas secuencias para ofrecer un diagnóstico global del fragmento secuenciado.
+</p>
+<p>
+A continuación, se listan los archivos generados durante este proceso de control de calidad primario:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-folder">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/multiqc_data" target="_blank">multiqc_data</a>
+</li>
+<li class="file-html">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/multiqc_report.html" target="_blank">multiqc_report.html</a>
+</li>
+<li class="file-html">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_KO_S18_fastp.html" target="_blank">SCS003_24_KO_S18_fastp.html</a>
+</li>
+<li class="file-default">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_KO_S18_fastp.json" target="_blank">SCS003_24_KO_S18_fastp.json</a>
+</li>
+<li class="file-html">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_WT__S1_fastp.html" target="_blank">SCS003_24_WT__S1_fastp.html</a>
+</li>
+<li class="file-default">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_WT__S1_fastp.json" target="_blank">SCS003_24_WT__S1_fastp.json</a>
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar el directorio de Fastp aquí </a>
+</p>
+<div style="height: 12px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.2.1.1" class="titulo4">
+<p>2.2.1.1. Reportes interactivos por muestra</p>
+</div>
+<p>
+En este apartado se incrustan dinámicamente los informes de calidad individuales generados por Fastp para cada librería emparejada. Estos paneles interactivos permiten explorar métricas intrínsecas de la plataforma Illumina, tales como las distribuciones del contenido GC, la calidad <em>Phred</em> por base geométrica y las estimaciones de duplicación técnica para cada réplica biológica de forma independiente.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+  <div style="height: 10px; background-color: transparent;"></div>
+
+  <div class="titulo5" id="tab3-seccion2.2.1.1.1" style="padding-bottom: 6px; line-height: 1.2;">
+    2.2.1.1. Muestra: SCS003_24_KO_S18
+  </div>
+
+  <p style="margin-top: 15px;">
+    A continuación, se presenta la auditoría de calidad a nivel de nucleótido para las lecturas crudas de la muestra <strong>SCS003_24_KO_S18</strong>. La inspección individual de este reporte interactivo es clave para identificar de forma temprana anomalías específicas durante la secuenciación de esta librería, tales como caídas abruptas en la calidad <em>Phred</em> o la presencia de secuencias adaptadoras residuales, garantizando que los datos de partida sean óptimos.
+  </p>
+  
+  <p style="margin-top: 20px; margin-bottom: 18px;">
+    <i class="fa-solid fa-file-code" style="color: #276DC3;"></i> 
+    <strong>Reporte Fastp:</strong> <code>SCS003_24_KO_S18_fastp.html</code>
+  </p>
+  
+  <div class="iframe-container" style="margin-top: 25px; margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_KO_S18_fastp.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 40px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_KO_S18_fastp.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Reporte en pestaña nueva
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_KO_S18_fastp.html" download="SCS003_24_KO_S18_fastp.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar Reporte HTML
+    </a>
+  </div>
+  <div style="height: 10px; background-color: transparent;"></div>
+
+  <div class="titulo5" id="tab3-seccion2.2.1.1.2" style="padding-bottom: 6px; line-height: 1.2;">
+    2.2.1.2. Muestra: SCS003_24_WT__S1
+  </div>
+
+  <p style="margin-top: 15px;">
+    A continuación, se presenta la auditoría de calidad a nivel de nucleótido para las lecturas crudas de la muestra <strong>SCS003_24_WT__S1</strong>. La inspección individual de este reporte interactivo es clave para identificar de forma temprana anomalías específicas durante la secuenciación de esta librería, tales como caídas abruptas en la calidad <em>Phred</em> o la presencia de secuencias adaptadoras residuales, garantizando que los datos de partida sean óptimos.
+  </p>
+  
+  <p style="margin-top: 20px; margin-bottom: 18px;">
+    <i class="fa-solid fa-file-code" style="color: #276DC3;"></i> 
+    <strong>Reporte Fastp:</strong> <code>SCS003_24_WT__S1_fastp.html</code>
+  </p>
+  
+  <div class="iframe-container" style="margin-top: 25px; margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_WT__S1_fastp.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 40px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_WT__S1_fastp.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Reporte en pestaña nueva
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/SCS003_24_WT__S1_fastp.html" download="SCS003_24_WT__S1_fastp.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar Reporte HTML
+    </a>
+  </div>
+</div>
+</div>
+<div style="height: 12px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.2.1.2" class="titulo4">
+<p>2.2.1.2. Consolidación de métricas (MultiQC)</p>
+</div>
+<p>
+Para facilitar la interpretación comparativa de todo el lote experimental, se emplea la herramienta de integración <strong>MultiQC</strong>. Este software rastrea recursivamente los resultados estadísticos individuales producidos por Fastp (archivos JSON subyacentes) y los amalgama en un único panel de control interactivo. Esta superposición de datos es vital para detectar efectos de lote (<em>batch effects</em>) durante la secuenciación o muestras que difieran drásticamente del comportamiento general.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+  <p style="margin-top: 25px; margin-bottom: 18px;">
+    <i class="fa-solid fa-chart-line" style="color: #276DC3;"></i> 
+    <strong>Reporte global:</strong> <code>multiqc_report.html</code>
+  </p>
+
+  <div class="iframe-container" style="margin-top: 25px; margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/multiqc_report.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 50px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/multiqc_report.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir MultiQC en pestaña nueva
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastp/multiqc_report.html" download="multiqc_fastp_report.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar MultiQC HTML
+    </a>
+  </div>
+</div>
+</div>
+<p>
+Una vez evaluado el comportamiento unificado de los pares de lecturas, la siguiente subsección desciende un nivel adicional en la granularidad técnica. Para ello, se revisarán los reportes de <strong>FastQC</strong>, los cuales permitirán diseccionar de forma independiente el comportamiento exacto de las lecturas de metadatos (R1) frente a las secuencias transcriptómicas (R2).
+</p>
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.2.2" class="titulo3">
+<p>2.2.2. Control de calidad mediante FastQC</p>
+</div>
+<p>
+Tras la evaluación consolidada realizada por Fastp, esta subsección desciende al máximo nivel de detalle empleando <strong>FastQC</strong>, el estándar de la industria bioinformática para la auditoría de lecturas crudas. A diferencia de Fastp —que procesa y colapsa la información de ambas lecturas de forma simultánea— o de Cell Ranger —que utiliza esta información para reconstruir la matriz de expresión—, FastQC interroga cada archivo FASTQ de manera estrictamente independiente.
+</p>
+<p>
+Analizar las lecturas por separado es crítico en la secuenciación de <em>Single-Cell</em> (10x Genomics) debido a la profunda asimetría de los datos. En un experimento <em>Bulk RNA-Seq</em>, tanto R1 como R2 corresponden a fragmentos genómicos aleatorios. Sin embargo, en célula única, la estructura obedece a un diseño de biología sintética:
+</p>
+<ul>
+<li>
+<strong>Lectura 1 (R1 - Metadatos):</strong> Contiene el código de barras celular (<em>Barcode</em>) y el Identificador Molecular Único (UMI). Dado que su secuencia obedece a un diseño de cebadores predefinido (y no a la aleatoriedad del genoma), <strong>es completamente esperado y biológicamente normal que FastQC reporte advertencias (WARNING) o fallos (FAIL)</strong> en módulos como el contenido de GC, la sobre-representación de secuencias o el contenido de bases (sesgos de secuencia).
+</li>
+<li>
+<strong>Lectura 2 (R2 - Transcrito):</strong> Contiene el fragmento de ADNc real correspondiente a la molécula de ARN capturada. Su comportamiento estadístico sí debe asemejarse al de una lectura transcriptómica estándar, siendo el verdadero indicador de la calidad de secuenciación de la librería.
+</li>
+</ul>
+<p>
+A nivel interpretativo, FastQC estructura su evaluación en varios módulos analíticos, cada uno calificado como <strong style="color: green;">PASS</strong>, <strong style="color: orange;">WARNING</strong> o <strong style="color: red;">FAIL</strong>. A continuación se detallan los parámetros más relevantes evaluados en estos informes, basándonos en los estándares de calidad:
+</p>
+<ul>
+<li>
+<strong>Basic Statistics:</strong> Información general sobre las secuencias, incluyendo el número total de lecturas, su longitud media y el contenido GC.
+</li>
+<li>
+<strong>Per base sequence quality:</strong> Evalúa la calidad <em>Phred</em> en cada posición de las lecturas. Las caídas de calidad (típicas en los extremos 3’) son el principal indicador de la eficiencia óptica del secuenciador.
+</li>
+<li>
+<strong>Per sequence quality scores:</strong> Muestra la distribución de puntuaciones de calidad agregadas para todas las lecturas.
+</li>
+<li>
+<strong>Sequence Duplication Levels:</strong> Informa sobre la proporción de lecturas idénticas. En R2 (Single-Cell), altas tasas de duplicación son habituales debido a la amplificación por PCR de los genes más expresados.
+</li>
+<li>
+<strong>Adapter Content:</strong> Detecta la presencia de secuencias adaptadoras residuales de Illumina que requieran ser descartadas.
+</li>
+</ul>
+<p>
+A continuación, se listan los archivos individuales generados durante este escrutinio técnico:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-folder">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/multiqc_data" target="_blank">multiqc_data</a>
+</li>
+<li class="file-html">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/multiqc_report.html" target="_blank">multiqc_report.html</a>
+</li>
+<li class="file-html">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R1_001_fastqc.html" target="_blank">SCS003_24_KO_S18_L005_R1_001_fastqc.html</a>
+</li>
+<li class="file-zip">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R1_001_fastqc.zip" target="_blank">SCS003_24_KO_S18_L005_R1_001_fastqc.zip</a>
+</li>
+<li class="file-html">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R2_001_fastqc.html" target="_blank">SCS003_24_KO_S18_L005_R2_001_fastqc.html</a>
+</li>
+<li class="file-zip">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R2_001_fastqc.zip" target="_blank">SCS003_24_KO_S18_L005_R2_001_fastqc.zip</a>
+</li>
+<li class="file-html">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R1_001_fastqc.html" target="_blank">SCS003_24_WT__S1_L001_R1_001_fastqc.html</a>
+</li>
+<li class="file-zip">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R1_001_fastqc.zip" target="_blank">SCS003_24_WT__S1_L001_R1_001_fastqc.zip</a>
+</li>
+<li class="file-html">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R2_001_fastqc.html" target="_blank">SCS003_24_WT__S1_L001_R2_001_fastqc.html</a>
+</li>
+<li class="file-zip">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R2_001_fastqc.zip" target="_blank">SCS003_24_WT__S1_L001_R2_001_fastqc.zip</a>
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar el directorio de FastQC aquí </a>
+</p>
+<div style="height: 12px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.2.2.1" class="titulo4">
+<p>2.2.2.1. Reportes interactivos por muestra</p>
+</div>
+<p>
+En esta sección se integran de manera secuencial los informes de FastQC para cada muestra. Con el fin de facilitar la inspección lógica del experimento, los paneles interactivos correspondientes a la etiqueta molecular (R1) y al transcrito biológico (R2) de una misma réplica se presentan agrupados.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+  <div style="height: 8px; background-color: transparent;"></div>
+
+  <div class="titulo5" id="tab3-seccion2.2.2.1.1" style="padding-bottom: 6px; line-height: 1.2;">
+    2.2.2.1.1. Muestra: SCS003_24_KO_S18_L005
+  </div>
+  
+  <p style="margin-top: 15px;">
+    A continuación se presentan los perfiles de calidad independientes para las lecturas de metadatos (R1) y transcripcionales (R2) de la muestra <strong>SCS003_24_KO_S18_L005</strong>. Recuerde interpretar las alarmas de FastQC sobre el archivo R1 con la cautela propia de un diseño de célula única, focalizando el análisis de calidad Phred y fragmentación sobre el archivo R2.
+  </p>
+  <p style="margin-top: 20px; margin-bottom: 10px;">
+    <i class="fa-solid fa-barcode" style="color: #276DC3;"></i> 
+    <strong>Lectura R1 (Barcode + UMI):</strong> <code>SCS003_24_KO_S18_L005_R1_001_fastqc.html</code>
+  </p>
+  
+  <div class="iframe-container" style="margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R1_001_fastqc.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 30px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R1_001_fastqc.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir FastQC R1
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R1_001_fastqc.html" download="SCS003_24_KO_S18_L005_R1_001_fastqc.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar HTML
+    </a>
+  </div>
+  <p style="margin-top: 25px; margin-bottom: 10px;">
+    <i class="fa-solid fa-dna" style="color: #276DC3;"></i> 
+    <strong>Lectura R2 (Transcrito ADNc):</strong> <code>SCS003_24_KO_S18_L005_R2_001_fastqc.html</code>
+  </p>
+  
+  <div class="iframe-container" style="margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R2_001_fastqc.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 50px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R2_001_fastqc.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir FastQC R2
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_KO_S18_L005_R2_001_fastqc.html" download="SCS003_24_KO_S18_L005_R2_001_fastqc.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar HTML
+    </a>
+  </div>
+  <div style="height: 8px; background-color: transparent;"></div>
+
+  <div class="titulo5" id="tab3-seccion2.2.2.1.2" style="padding-bottom: 6px; line-height: 1.2;">
+    2.2.2.1.2. Muestra: SCS003_24_WT__S1_L001
+  </div>
+  
+  <p style="margin-top: 15px;">
+    A continuación se presentan los perfiles de calidad independientes para las lecturas de metadatos (R1) y transcripcionales (R2) de la muestra <strong>SCS003_24_WT__S1_L001</strong>. Recuerde interpretar las alarmas de FastQC sobre el archivo R1 con la cautela propia de un diseño de célula única, focalizando el análisis de calidad Phred y fragmentación sobre el archivo R2.
+  </p>
+  <p style="margin-top: 20px; margin-bottom: 10px;">
+    <i class="fa-solid fa-barcode" style="color: #276DC3;"></i> 
+    <strong>Lectura R1 (Barcode + UMI):</strong> <code>SCS003_24_WT__S1_L001_R1_001_fastqc.html</code>
+  </p>
+  
+  <div class="iframe-container" style="margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R1_001_fastqc.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 30px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R1_001_fastqc.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir FastQC R1
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R1_001_fastqc.html" download="SCS003_24_WT__S1_L001_R1_001_fastqc.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar HTML
+    </a>
+  </div>
+  <p style="margin-top: 25px; margin-bottom: 10px;">
+    <i class="fa-solid fa-dna" style="color: #276DC3;"></i> 
+    <strong>Lectura R2 (Transcrito ADNc):</strong> <code>SCS003_24_WT__S1_L001_R2_001_fastqc.html</code>
+  </p>
+  
+  <div class="iframe-container" style="margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R2_001_fastqc.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 50px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R2_001_fastqc.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir FastQC R2
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/SCS003_24_WT__S1_L001_R2_001_fastqc.html" download="SCS003_24_WT__S1_L001_R2_001_fastqc.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar HTML
+    </a>
+  </div>
+</div>
+</div>
+<div style="height: 10px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.2.2.2" class="titulo4">
+<p>2.2.2.2. Consolidación de métricas (MultiQC)</p>
+</div>
+<p>
+Para obtener una visión integral del experimento en su conjunto, se emplea nuevamente <strong>MultiQC</strong>. Esta herramienta captura el exhaustivo desglose generado por FastQC y lo proyecta sobre un lienzo consolidado. De esta manera, es posible superponer las curvas de calidad (por ejemplo, las curvas <em>Phred</em> de todos los archivos R2 simultáneamente) para confirmar que no existen muestras con comportamientos técnicos desviados respecto a la media del lote secuenciado.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+  <p style="margin-top: 18px; margin-bottom: 18px;">
+    <i class="fa-solid fa-layer-group" style="color: #276DC3;"></i> 
+    <strong>Reporte global (FastQC):</strong> <code>multiqc_report.html</code>
+  </p>
+
+  <div class="iframe-container" style="margin-top: 25px; margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/multiqc_report.html" frameborder="0" style="height: 700px; width: 100%;"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 30px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/multiqc_report.html" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir MultiQC en pestaña nueva
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/01_reads_qc/fastqc/multiqc_report.html" download="multiqc_fastqc_report.html" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar MultiQC HTML
+    </a>
+  </div>
+</div>
+</div>
+<p>
+Concluidas las auditorías del procesamiento primario (Cell Ranger) y la validación a nivel de nucleótido de la química de secuenciación (Fastp y FastQC), se da por certificada la integridad técnica y estructural de las lecturas crudas. Este hito marca el final del pre-procesamiento puramente informático, confirmando que la matriz de expresión generada es técnicamente sólida y libre de sesgos severos derivados de la plataforma.
+</p>
+<p>
+El siguiente y último eslabón de esta fase da el salto hacia el escrutinio estrictamente biológico, el cual se desarrolla en la sección <strong>2.3. Control de calidad y filtrado celular (Seurat)</strong>. En esta etapa crítica, el enfoque algorítmico da paso a la evaluación fenotípica de cada célula individual. Se interrogarán métricas intrínsecas —como la complejidad transcripcional y la fracción de ARN mitocondrial— para identificar y descartar eventos aberrantes (células muertas, dobletes o gotas vacías). Todo este proceso de depuración se documentará de forma visual y comparativa, exponiendo las distribuciones del conjunto de datos antes (<em>Pre-Quality</em>) y después (<em>Post-Quality</em>) de aplicar los umbrales de exclusión, garantizando así la máxima pureza para el análisis posterior de poblaciones celulares.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.3" class="titulo2">
+<p>2.3. Control de calidad y filtrado celular (Seurat)</p>
+</div>
+<p>
+Superadas las fases de validación técnica de la secuenciación y el mapeo, el análisis se adentra en la etapa más crítica del pre-procesamiento: el filtrado biológico a nivel de célula individual. Para llevar a cabo esta tarea de forma robusta e integrada, se ha empleado el ecosistema <strong>Seurat</strong>, el estándar bioinformático actual para la exploración de transcriptómica de célula única.
+</p>
+<p>
+A diferencia de Cell Ranger, cuyo objetivo principal es distinguir las gotas con células viables de aquellas que solo contienen ruido de fondo, Seurat permite un escrutinio fenotípico profundo basado en la distribución real de los transcritos de cada célula detectada. El propósito de esta fase es establecer umbrales adaptativos para aislar perfiles transcriptómicos prístinos y eliminar artefactos biológicos o técnicos que podrían introducir clústeres artificiales en el análisis posterior.
+</p>
+<p>
+Para ello, se evalúan tres covariables fundamentales a nivel unicelular:
+</p>
+<ul>
+<li>
+<strong>Complejidad génica (<code>nFeature_RNA</code>):</strong> Representa el número de genes únicos detectados en cada célula. Células con valores atípicamente bajos suelen corresponder a perfiles de muy baja calidad o gotas vacías residuales. Por el contrario, aquellas con valores extraordinariamente altos son claras candidatas a ser <strong>dobletes celulares</strong> (dos o más células encapsuladas simultáneamente en la misma gota microfluídica).
+</li>
+<li>
+<strong>Profundidad transcripcional (<code>nCount_RNA</code>):</strong> Cuantifica el número total de moléculas de ARN (UMIs) detectadas. Este valor está fuertemente correlacionado con la complejidad génica y ayuda a ratificar la presencia de dobletes o de células hiperactivas.
+</li>
+<li>
+<strong>Fracción mitocondrial (<code>percent.mt</code>):</strong> Indica el porcentaje de lecturas que mapean contra el genoma mitocondrial. Un alto contenido mitocondrial es el principal biomarcador de <strong>estrés celular, lisis o apoptosis</strong>. Cuando la membrana plasmática se rompe durante la preparación del tejido, el ARN citoplasmático se pierde en la suspensión, reteniendo únicamente el ARN mitocondrial al estar encapsulado y protegido en sus propios orgánulos.
+</li>
+</ul>
+<p>
+A continuación, se listan los archivos gráficos generados en este módulo de evaluación, los cuales consolidan las distribuciones de todas las muestras del experimento:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-pdf">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc/Post_Quality_mergeSeurat.pdf" target="_blank">Post_Quality_mergeSeurat.pdf</a>
+</li>
+<li class="file-pdf">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc/Pre_Quality_mergeSeurat.pdf" target="_blank">Pre_Quality_mergeSeurat.pdf</a>
+</li>
+</ul>
+</div>
+<p class="text-center">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar el directorio de control celular (Seurat) </a>
+</p>
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.3.1" class="titulo3">
+<p>2.3.1. Evaluación pre-filtrado (Pre-Quality)</p>
+</div>
+<p>
+Antes de aplicar cualquier umbral de exclusión, es imprescindible visualizar la distribución natural (cruda) de las métricas celulares para el conjunto completo de datos. Esta inspección visual es la que permite al investigador definir cortes precisos y adaptativos (<em>data-driven</em>) basados en la realidad biológica del tejido analizado, evitando la aplicación ciega de parámetros estándar que podrían eliminar poblaciones celulares legítimas pero quiescentes.
+</p>
+<p>
+El siguiente reporte en formato PDF compila múltiples representaciones gráficas del estado basal del experimento. Entre ellas, destacan los <strong>gráficos de violín (<em>Violin Plots</em>)</strong>, que muestran la densidad poblacional para cada covariable (genes, UMIs y porcentaje mitocondrial) separada por condiciones biológicas o réplicas. Asimismo, se incluyen <strong>gráficos de dispersión (<em>Scatter Plots</em>)</strong> que correlacionan estas variables para identificar visualmente nubes de células apoptóticas o dobletes, junto con diagramas de caja (<em>Boxplots</em>) que revelan los genes transcripcionalmente más dominantes de la muestra.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+  <p>
+    <i class="fa-solid fa-chart-area" style="color: #276DC3;"></i> 
+    <strong>Gráficos de distribución basal:</strong> <code>Pre_Quality_mergeSeurat.pdf</code>
+  </p>
+
+  <div class="iframe-container" style="margin-top: 25px; margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc/Pre_Quality_mergeSeurat.pdf" frameborder="0" width="100%" height="700"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 40px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc/Pre_Quality_mergeSeurat.pdf" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir PDF en pestaña nueva
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc/Pre_Quality_mergeSeurat.pdf" download="Pre_Quality_mergeSeurat.pdf" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF
+    </a>
+  </div>
+</div>
+</div>
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion2.3.2" class="titulo3">
+<p>2.3.2. Evaluación post-filtrado (Post-Quality)</p>
+</div>
+<p>
+Una vez definidos empíricamente los umbrales de corte —acotando habitualmente un porcentaje mitocondrial máximo y limitando los valores extremos de genes únicos detectados—, se procede a la poda de la matriz de expresión. El documento gráfico expuesto a continuación ilustra las distribuciones de las mismas covariables tras la purga efectiva de células muertas, gotas vacías y presuntos dobletes.
+</p>
+<p>
+Comparar el estado <em>Post-Quality</em> frente al perfil crudo previo (<em>Pre-Quality</em>) es el método definitivo para certificar la efectividad del filtrado. Este proceso demuestra la obtención de un conjunto celular homogéneo, limpio y de altísima calidad biológica. Esta matriz prístina constituirá el cimiento sobre el cual se ejecutarán, con plenas garantías, los posteriores algoritmos de normalización, reducción de dimensionalidad (PCA/UMAP) y descubrimiento de clústeres fenotípicos.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+  <p>
+    <i class="fa-solid fa-filter" style="color: #276DC3;"></i> 
+    <strong>Gráficos tras filtrado riguroso:</strong> <code>Post_Quality_mergeSeurat.pdf</code>
+  </p>
+
+  <div class="iframe-container" style="margin-top: 25px; margin-bottom: 10px;">
+    <iframe src="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc/Post_Quality_mergeSeurat.pdf" frameborder="0" width="100%" height="700"></iframe>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 25px; margin-top: 15px; margin-bottom: 20px;">
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc/Post_Quality_mergeSeurat.pdf" target="_blank" class="boton-iframe">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir PDF en pestaña nueva
+    </a>
+    <a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/01_qc/02_cells_qc/Post_Quality_mergeSeurat.pdf" download="Post_Quality_mergeSeurat.pdf" class="boton-iframe-download">
+      <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF
+    </a>
+  </div>
+</div>
+</div>
+<div class="divider">
+
+</div>
+<p>
+Habiendo concluido el exhaustivo proceso de evaluación técnica y filtrado biológico, disponemos de una matriz de expresión depurada y estadísticamente robusta. La eliminación rigurosa del ruido ambiental, las células apoptóticas y los dobletes garantiza que la heterogeneidad transcripcional retenida en este punto responde exclusivamente a la variabilidad biológica real del tejido analizado, sentando unos cimientos sólidos para las fases posteriores.
+</p>
+<p>
+El siguiente paso en el flujo de trabajo analítico consiste en simplificar y descifrar esta inmensa complejidad matricial —donde cada gen representa una dimensión independiente— mediante técnicas matemáticas avanzadas. Esta exploración topológica, que abarca desde la evaluación de la varianza global mediante PCA hasta la identificación de subpoblaciones fenotípicas mediante proyecciones UMAP y algoritmos basados en grafos, se desarrollará en el siguiente módulo del informe: <strong><a href="03-clustering.html" class="normalink">Reducción de dimensionalidad y clustering</a></strong>.
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  FOOTER -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<footer>
+<a href="#" class="arriba"><i class="fa-solid fa-angles-up"></i></a>
+</footer>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  CARGAR SCRIPTS DE JAVASCRIPT -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<script type="module" src="../../../../04-javascript/chatbot.js"></script>
+<script type="module" src="../../../../04-javascript/script.js"></script>
+
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../../../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

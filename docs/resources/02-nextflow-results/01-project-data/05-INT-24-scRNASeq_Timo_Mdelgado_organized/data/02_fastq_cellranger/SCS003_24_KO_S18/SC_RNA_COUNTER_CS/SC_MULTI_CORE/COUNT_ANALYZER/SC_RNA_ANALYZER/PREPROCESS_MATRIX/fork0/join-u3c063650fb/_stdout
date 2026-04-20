@@ -1,0 +1,32 @@
+[stdout]
+load	self_postmaxrss_mb	140.2
+load	children_postmaxrss_mb	81.8
+load	self_postmaxrss_mb	563.8
+load	children_postmaxrss_mb	81.8
+load	elapsed_sec	2
+select	self_postmaxrss_mb	563.8
+select	children_postmaxrss_mb	81.8
+ff	self_postmaxrss_mb	563.8
+ff	children_postmaxrss_mb	81.8
+ff	self_postmaxrss_mb	570.6
+ff	children_postmaxrss_mb	81.8
+ff	elapsed_sec	0
+select	self_postmaxrss_mb	570.6
+select	children_postmaxrss_mb	81.8
+select	elapsed_sec	0
+Martian runtime detected. Try Num. = 1
+w1	self_postmaxrss_mb	570.6
+w1	children_postmaxrss_mb	81.8
+w1	self_postmaxrss_mb	676.3
+w1	children_postmaxrss_mb	81.8
+w1	elapsed_sec	4
+selnz	self_postmaxrss_mb	676.3
+selnz	children_postmaxrss_mb	81.8
+selnz	self_postmaxrss_mb	806.1
+selnz	children_postmaxrss_mb	81.8
+selnz	elapsed_sec	1
+w2	self_postmaxrss_mb	806.1
+w2	children_postmaxrss_mb	81.8
+w2	self_postmaxrss_mb	806.1
+w2	children_postmaxrss_mb	81.8
+w2	elapsed_sec	4

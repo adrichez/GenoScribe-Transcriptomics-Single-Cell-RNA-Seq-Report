@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>IPBLN Bioinformatics Report</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../../../../">
+<script src="../../../../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../../../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../../../../site_libs/bootstrap/bootstrap-c27fce070f9e1faf5b65ec12c04f7688.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="../../../../../../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../../../../../../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../../../../../../../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../../../../../../../site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="../../../../../../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../../../../../../../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../../../../../../../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../../../../../../../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../../../../../../../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="../../../../../../../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link rel="shortcut icon" href="../../../../../01-images/icons/favicon.svg">
+<link rel="icon" type="image/x-icon" href="../../../../../01-images/icons/favicon.ico">
+
+
+<link rel="stylesheet" href="../../../../../../../resources/01-essential/03-scripts/03-css/styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../../../../index.html">
+    <span class="navbar-title"><img class="brand-logo" src="../../../../../../../resources/01-essential/01-images/icons/ipbln.png"> <a class="brand-text" href="https://www.ipb.csic.es/servicios/Bioinformatica/index.html">IPBLN</a></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../../index_es.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab1-metodologia/metodologia.html"> <i class="bi bi-wrench" role="img">
+</i> 
+<span class="menu-text">Metodología</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab2-resumen/resumen.html"> <i class="bi bi-clipboard-data" role="img">
+</i> 
+<span class="menu-text">Resumen</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-bar-chart" role="img">
+</i> 
+ <span class="menu-text">Análisis</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-análisis">    
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/00-contexto.html">
+ <span class="dropdown-text">➤ Introducción contextual</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/01-revision-inicial.html">
+ <span class="dropdown-text">1. Revisión inicial de muestras y metadatos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/02-control-calidad.html">
+ <span class="dropdown-text">2. Control de calidad y filtrado (QC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/03-clustering.html">
+ <span class="dropdown-text">3. Reducción de dimensionalidad y clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/04-marcadores.html">
+ <span class="dropdown-text">4. Identificación de marcadores (clusters ciegos)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/05-anotacion.html">
+ <span class="dropdown-text">5. Anotación celular (automática y manual)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/06-agrupacion.html">
+ <span class="dropdown-text">6. Agrupación de poblaciones biológicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/07-expresion-diferencial.html">
+ <span class="dropdown-text">7. Análisis de expresión diferencial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/08-enriquecimiento.html">
+ <span class="dropdown-text">8. Análisis funcional y de enriquecimiento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/09-extra.html">
+ <span class="dropdown-text">9. Análisis personalizados y ad hoc</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../../../../resources/01-essential/03-scripts/02-quarto/01-spanish-language/01-full-version/tab3-analisis/10-conclusiones.html">
+ <span class="dropdown-text">10. Conclusiones y perspectivas</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IPBLN Bioinformatics Report</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!--  TAB 3: ANÁLISIS | 1. REVISIÓN INICIAL DE MUESTRAS Y METADATOS -->
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  CHATBOT -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- Contenedor del chat -->
+<div id="chat-container">
+  <button id="chat-toggle"></button>
+  <div id="chat-box">
+    <div id="chat-info" class="chat-info">
+      <h1>
+        Mini Chat RAG (beta)
+      </h1>
+
+      <p>
+        ¡Hola! Soy <strong>Geni</strong>, el asistente inteligente de <strong>GenoScribe</strong>.  
+        Estoy aquí para ayudarte a explorar de forma interactiva el contenido de este informe bioinformático.
+      </p>
+
+      <p>
+        Cuando me haces una pregunta, primero intento reconocer si coincide con alguno de los patrones o expresiones que conozco.  
+        Si encuentro una coincidencia, te responderé directamente con una respuesta predefinida, diseñada para ser rápida, clara e incluso un poco ingeniosa.  
+        Si no reconozco el patrón, entonces activo mis herramientas de búsqueda: genero representaciones vectoriales (embeddings) y busco los fragmentos más relevantes entre varios documentos —incluyendo el propio informe, archivos PDF y HTML externos, y sesiones de preguntas y respuestas (QA).  
+        A partir de esa información, creo un resumen que intenta ofrecerte una respuesta coherente y útil basada en el contenido existente.
+      </p>
+
+      <p>
+        Se debe tener en cuenta que este entorno es experimental. No utilizo grandes modelos de lenguaje, por lo que algunas respuestas pueden ser aproximadas o incompletas.  
+        El objetivo principal es facilitar una visualización rápida, comprensible y reproducible de la información contenida en los documentos, permitiendo una exploración más dinámica del informe.
+      </p>
+
+      <p>
+        Actualmente, los resultados pueden variar en precisión, ya que empleo modelos ligeros y locales para asegurar que la aplicación funcione en cualquier entorno sin necesidad de servidores externos.  
+        Sin embargo, la estructura del sistema está preparada para mejorar notablemente su rendimiento en el futuro mediante la integración con modelos más avanzados o APIs externas.  
+        Para comenzar, simplemente escribe tu pregunta en el campo inferior y deja que yo me encargue del resto. ¡Prometo poner todo mi código en ello!
+      </p>
+    </div>
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" placeholder="Escribe tu pregunta...">
+    <button id="chat-send" title="Enviar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  IMPORTACIONES -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- Incluir Font Awesome -->
+<p><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"></p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  CÓDIGO GLOBAL -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  TÍTULO Y RESUMEN CONTEXTUAL -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="informe-titulo-tab">
+<h1>
+Pestaña
+</h1>
+<h2>
+Análisis Bioinformático Completo
+</h2>
+</div>
+<div class="informe-titulo-seccion-unique">
+<h1>
+Sección 1
+</h1>
+<h2>
+Revisión Inicial de Muestras y Metadatos
+</h2>
+</div>
+<div class="flecha-abajo">
+<p>▼</p>
+</div>
+<div class="informe-resumen">
+<h2>
+Resumen
+</h2>
+<p>
+Esta primera sección tiene como objetivo establecer el <strong>contexto fundacional</strong> del análisis de <strong>Single-Cell RNA-Seq (scRNA-Seq)</strong>. Antes de proceder con el riguroso filtrado de calidad y el modelado matemático de las células, es imprescindible comprender la arquitectura de los datos de partida. Para ello, en primer lugar, se presenta una exploración interactiva de la <strong>organización y estructura de directorios</strong> del proyecto. Esto no solo garantiza la <strong>reproducibilidad</strong> del estudio, sino que permite al investigador localizar de forma rápida e intuitiva todos los recursos generados durante cada fase del <em>pipeline</em>, desde los datos crudos hasta los gráficos finales.
+</p>
+<p>
+En segundo lugar, se inspeccionan en detalle los documentos que dictan el <strong>diseño experimental</strong>. Se revisan a fondo los <strong>metadatos clínicos y fenotípicos</strong> asociados a cada muestra (como el genotipo, la condición, el tejido o el lote de procesamiento). Este “diccionario biológico” es una pieza fundamental, ya que guiará los pasos computacionales posteriores, permitiendo agrupar las células correctamente, corregir posibles sesgos técnicos (<em>batch effects</em>) y definir los contrastes estadísticos para el cálculo de la expresión diferencial.
+</p>
+<p>
+Finalmente, se detalla el <strong>trazado de secuenciación</strong>, estableciendo el mapeo informático exacto entre los identificadores biológicos de las muestras y sus correspondientes archivos binarios crudos (<strong>archivos FASTQ</strong>). Esta rigurosa trazabilidad asegura un flujo de trabajo transparente desde la salida de la plataforma Illumina y el procesamiento primario con <strong>Cell Ranger</strong>, hasta la obtención de la <strong>matriz de expresión</strong> final sobre la que operan las herramientas de análisis downstream como <em>Seurat</em>.
+</p>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  TABLA DE CONTENIDOS -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="height: 15px; background-color: transparent;">
+
+</div>
+<div class="titulo-toc">
+<p>Tabla de contenidos de esta sección</p>
+</div>
+<div class="toc">
+<ul>
+<li>
+<a href="#tab3-seccion1">1<span>.</span> Revisión Inicial de muestras y metadatos</a>
+<ul>
+<li>
+<a href="#tab3-seccion1.1">1.1. Organización y estructura del directorio del proyecto</a>
+</li>
+<li>
+<a href="#tab3-seccion1.2">1.2. Diseño experimental y metadatos clínicos</a>
+</li>
+<li>
+<a href="#tab3-seccion1.3">1.3. Trazado de secuenciación y datos crudos</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  REDACCIÓN -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="height: 25px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion1" class="titulo1">
+<p>1<span>.</span> Revisión Inicial de muestras y metadatos</p>
+</div>
+<p>
+La transición desde el procesamiento de muestras en el laboratorio (<em>wet lab</em>) hasta la interpretación puramente computacional (<em>dry lab</em>) exige un control sumamente estricto de la información. A diferencia de las aproximaciones transcriptómicas tradicionales en <em>bulk</em>, un experimento de célula única desglosa la expresión génica en miles o decenas de miles de entidades independientes, lo que multiplica exponencialmente el volumen de archivos generados y la complejidad de su gestión operativa.
+</p>
+<p>
+Abordar este vasto ecosistema de datos requiere, como primer paso lógico, realizar un ejercicio de reconocimiento del terreno. Antes de aplicar cualquier modelo matemático de filtrado, reducción de dimensionalidad o <em>clustering</em>, resulta vital confirmar que los cimientos documentales que soportan el estudio son sólidos y exactos. Por ello, iniciaremos esta fase desplegando el mapa visual de nuestro entorno de trabajo, una visión global que nos permitirá ubicar cada recurso técnico antes de descender al detalle biológico de las muestras.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion1.1" class="titulo2">
+<p>1.1. Organización y estructura del directorio del proyecto</p>
+</div>
+<p>
+El ecosistema de archivos que conforma un proyecto de <strong>Single-Cell RNA-Seq</strong> es el resultado directo de todo el análisis bioinformático previo a la generación de este informe interactivo. Este complejo flujo computacional se articula fundamentalmente en dos grandes etapas. En primer lugar, el <strong>procesamiento primario</strong> mediante pipelines estandarizados como <strong>Cell Ranger</strong> (10x Genomics), encargado de demultiplexar y transformar la señal binaria del secuenciador (archivos BCL) en lecturas interpretables (archivos FASTQ), mapearlas contra el genoma de referencia, construir las matrices de conteo iniciales y generar los reportes de calidad técnica primarios (como el <code>web_summary.html</code>).
+</p>
+<p>
+En segundo lugar, tiene lugar el <strong>análisis bioinformático <em>downstream</em></strong> utilizando paquetes matemáticos especializados como <strong>Seurat</strong>. Es en esta fase estadística donde las matrices en bruto cobran verdadero sentido biológico: se ejecuta el control de calidad celular, la normalización, la reducción de dimensionalidad, el agrupamiento de poblaciones (<em>clustering</em>) y los contrastes de expresión diferencial clínica.
+</p>
+<p>
+Para gestionar de forma eficiente la ingente cantidad de datos y metadatos que producen ambas fases, todos los elementos se consolidan en una <strong>estructura de directorios centralizada</strong> y coherente. El propósito de este apartado es proporcionar un mapa claro e intuitivo de dicha arquitectura. Concebido como una guía directa para el investigador, permite comprender cómo se vertebran las salidas del proyecto para ganar autonomía, de modo que pueda <strong>localizar y extraer rápidamente los resultados</strong> de mayor interés —como figuras de alta resolución, tablas Excel de marcadores o metadatos— sin necesidad de poseer conocimientos técnicos de programación ni depender de accesos complejos al servidor.
+</p>
+<p>
+A continuación se muestra la ruta del directorio principal donde se encuentran almacenados los datos y resultados generados para este proyecto:
+</p>
+<p><code>/workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized</code></p>
+<p>
+A continuación se muestra la estructura completa de dicho directorio. Esta representación permite visualizar los archivos y subcarpetas generados durante el análisis de Single-Cell RNA-Seq y que se emplearon como base para la construcción de este informe:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-folder">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis" target="_blank">analysis</a>
+</li>
+<li class="file-folder">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data" target="_blank">data</a>
+</li>
+<li class="file-folder">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/scripts" target="_blank">scripts</a>
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar los archivos de la carpeta “05-INT-24-scRNASeq_Timo_Mdelgado_organized” aquí </a>
+</p>
+<p>
+Tras visualizar la estructura de forma interactiva, se presenta a continuación un desglose detallado de las carpetas generadas durante el análisis de Single-Cell RNA-Seq para el proyecto <code>05-INT-24-scRNASeq_Timo_Mdelgado_organized</code>. Esta organización estandarizada no es casual; está diseñada para <strong>mapear directamente el flujo biológico del análisis</strong>. De este modo, funciona como un índice visual que le permitirá localizar rápidamente gráficos, tablas de Excel o archivos de código sin necesidad de ser un experto en bioinformática.
+</p>
+<div class="items">
+<ul>
+<li>
+<strong><code>05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/</code></strong> <strong>⇒</strong> Es el “almacén” del proyecto. Directorio raíz que aloja todos los datos crudos, matrices de expresión, objetos matemáticos y recursos externos empleados. Aquí no suele haber resultados gráficos, sino los cimientos del estudio.
+<ul>
+<li>
+<strong><code>01_raw_blc/</code></strong> <strong>→</strong> Archivos binarios directos del secuenciador (Illumina). Representan la señal óptica en bruto y se conservan principalmente como copia de seguridad a largo plazo.
+</li>
+<li>
+<strong><code>02_fastq_cellranger/</code></strong> <strong>→</strong> Resultados del procesamiento primario (ej. 10x Genomics). Contiene las secuencias genéticas legibles (FASTQ), las primeras matrices de conteo (cuántas veces se detecta cada gen en cada célula, formato <code>.h5</code>) y los reportes interactivos HTML (<em>web summaries</em>) que resumen la calidad de la secuenciación.
+</li>
+<li>
+<strong><code>03_processed_objects/</code></strong> <strong>→</strong> Archivos RDS (<em>R Data Structure</em>). Estos son los “puntos de guardado” del proyecto. Contienen los objetos de Seurat con toda la información de las células (expresión, coordenadas, metadatos) tras ser filtradas y anotadas. Si un investigador desea cargar los datos en R para hacer sus propias exploraciones interactivas en el futuro, utilizará estos archivos.
+</li>
+<li>
+<strong><code>04_resources/</code></strong> <strong>→</strong> El diccionario biológico. Incluye metadatos adicionales, bases de datos públicas de referencia (como HPCA o Tabula Muris) y las listas de genes (marcadores) seleccionadas manualmente por los investigadores para ayudar a identificar los tipos celulares.
+</li>
+</ul>
+</li>
+<li>
+<strong><code>05-INT-24-scRNASeq_Timo_Mdelgado_organized/scripts/</code></strong> <strong>⇒</strong> Repositorio del código fuente (las “recetas”). Aunque está dirigido a perfiles técnicos, su presencia aquí es vital para garantizar la transparencia y permitir que cualquier otro bioinformático pueda reproducir exactamente el mismo análisis en el futuro.
+<ul>
+<li>
+<strong><code>01_main/</code></strong> <strong>→</strong> Scripts principales de ejecución que dirigen el flujo completo de Seurat (procesamiento, <em>clustering</em> y contrastes de expresión diferencial).
+</li>
+<li>
+<strong><code>02_functions/</code></strong> <strong>→</strong> Archivos con funciones matemáticas auxiliares, personalizadas para cálculos estadísticos complejos o visualizaciones muy específicas de este proyecto.
+</li>
+<li>
+<strong><code>03_extra/</code></strong> <strong>→</strong> Scripts complementarios o pruebas de concepto exploratorias no incluidas en el documento final.
+</li>
+</ul>
+</li>
+<li>
+<strong><code>05-INT-24-scRNASeq_Timo_Mdelgado_organized/analysis/</code></strong> <strong>⇒</strong> La carpeta principal de resultados biológicos. Es la sección de mayor interés para el investigador, ya que contiene todos los gráficos (PDFs, PNGs), tablas de Excel y contrastes estadísticos generados etapa por etapa.
+<ul>
+<li>
+<strong><code>01_qc/</code></strong> <strong>→</strong> Control de calidad. Se divide en <code>01_reads_qc/</code> (si aplica, evalúa la calidad pura de las lecturas) y <code>02_cells_qc/</code>. En esta última encontrará los gráficos de violín que justifican qué células se conservan y cuáles se descartan por ser células muertas (alto porcentaje mitocondrial), gotas vacías o dobletes.
+</li>
+<li>
+<strong><code>02_dim_reduction/</code></strong> <strong>→</strong> Gráficos matemáticos (PCA, <em>Elbow plots</em>) que muestran cómo se ha simplificado la inmensa complejidad de miles de genes para poder agrupar las células correctamente.
+</li>
+<li>
+<strong><code>03_clustering/</code></strong> <strong>→</strong> Los mapas celulares. Aquí encontrará los famosos gráficos bidimensionales (UMAP/t-SNE) donde las células forman “islas” por similitud, además de gráficos de barras con proporciones celulares. Se divide en agrupaciones simples (<code>01_seurat_merged_clusters/</code>) y aquellas donde se han corregido efectos técnicos o de lote computacionalmente (<code>02_seurat_integrated_clusters/</code>).
+</li>
+<li>
+<strong><code>04_markers/</code></strong> <strong>→</strong> Tablas Excel detalladas con los genes constitutivos (<em>Top Markers</em>) que definen de forma única a cada “isla” o cluster numérico, cuando aún no sabemos qué identidad biológica tienen.
+</li>
+<li>
+<strong><code>05_cell_annotation/</code></strong> <strong>→</strong> Fase de identidad biológica. Resultados del proceso donde se bautiza a los clusters ciegos con nombres reales (ej. “Macrófagos”, “Células T”). Contiene las predicciones de bases de datos automáticas (<code>01_automatic_dbs_annotation/</code>) y los mapas definitivos tras la revisión manual experta (<code>02_manual_annotation/</code>).
+</li>
+<li>
+<strong><code>06_population_aggregation/</code></strong> <strong>→</strong> Justificación visual y mapas generados tras agrupar subtipos celulares muy similares en macro-poblaciones más generales, con el fin de obtener mayor potencia estadística en los análisis posteriores.
+</li>
+<li>
+<strong><code>07_deg_conditions/</code></strong> <strong>→</strong> El núcleo estadístico del estudio clínico. Contiene los análisis comparativos (ej. Condición WT frente a KO). Aquí encontrará las listas Excel con los genes que suben o bajan significativamente, junto con gráficos interpretativos como <em>Volcano plots</em> y <em>DotPlots</em>.
+</li>
+<li>
+<strong><code>08_enrichment/</code></strong> <strong>→</strong> Análisis de significado funcional. Gráficos de barras y redes que traducen las listas de genes diferencialmente expresados en rutas biológicas concretas (ej. vías de inflamación, ciclo celular) usando bases de datos como GO o KEGG.
+</li>
+<li>
+<strong><code>09_extra/</code></strong> <strong>→</strong> Resultados a la carta. Gráficos aislados solicitados específicamente por el equipo investigador, como mapas de expresión detallados para genes individuales de alto interés (<code>01_specific_genes_of_interest/</code>).
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>
+Esta estructura modular y transparente no solo permite automatizar los pasos clave del análisis bioinformático, sino que otorga total independencia al investigador para explorar sus hallazgos. Al estandarizar la localización de cada resultado, se garantiza la trazabilidad del dato, la reproducibilidad técnica y se facilita enormemente la colaboración a largo plazo o la futura publicación de los datos.
+</p>
+<p>
+Comprendida la topografía general del proyecto, el siguiente paso es inspeccionar los documentos que dotan de sentido biológico a todos estos archivos. En el siguiente apartado, se analizarán las tablas que vinculan los identificadores técnicos de las muestras con sus respectivas condiciones experimentales.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion1.2" class="titulo2">
+<p>1.2. Diseño experimental y metadatos clínicos</p>
+</div>
+<p>
+Un experimento de Single-Cell RNA-Seq carece de valor analítico si no está rigurosamente contextualizado. Mientras que las matrices de conteo nos indican <em>qué</em> genes están activos en cada célula, son los <strong>metadatos clínicos y experimentales</strong> los que nos permiten entender <em>por qué</em> y <em>bajo qué condiciones</em> ocurren dichos cambios transcripcionales. En este directorio se centralizan los archivos que definen el <strong>diseño experimental</strong>, estableciendo el puente crítico entre la realidad clínica de las muestras (paciente, modelo animal, tratamiento) y los algoritmos bioinformáticos posteriores.
+</p>
+<p>
+A continuación se detallan los archivos de metadatos disponibles y asociados a este proyecto:
+</p>
+<div class="box-files">
+<ul>
+<li class="file-tsv">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata/fastq_mapping.tsv" target="_blank">fastq_mapping.tsv</a>
+</li>
+<li class="file-tsv">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata/sample_metadata.tsv" target="_blank">sample_metadata.tsv</a>
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar los archivos de metadatos aquí </a>
+</p>
+<p>
+Tras ubicar estos documentos en la estructura del directorio, procedemos a explorar detalladamente el contenido de la tabla de metadatos clínicos. El siguiente visor interactivo le permite revisar de forma rápida y cómoda las asignaciones experimentales, ordenar los pacientes o muestras según variables de interés y comprobar la integridad del diseño antes de adentrarse en la interpretación de los resultados analíticos.
+</p>
+<div class="divider">
+
+</div>
+<p>
+<i class="fa-solid fa-flask" style="color: #4a86e8;"></i> <strong>Archivo:</strong> <code>sample_metadata.tsv</code>
+</p>
+<p>
+Este archivo actúa como el <strong>diccionario biológico</strong> fundamental del análisis. Su función principal es asignar a cada identificador único de muestra (<code>Sample_ID</code>) su contexto fenotípico correspondiente. Esto incluye <strong>variables experimentales primarias</strong> (como la condición clínica: e.g., WT vs KO, Sano vs Enfermo, Tratado vs Control), <strong>variables biológicas</strong> (tejido de origen, sexo, edad del donante) y <strong>variables técnicas</strong> (réplicas, investigador responsable o lote de secuenciación).
+</p>
+<p>
+La exactitud de estos parámetros es absolutamente crítica para el correcto funcionamiento de etapas computacionales avanzadas, ejecutadas mediante herramientas como <em>Seurat</em>. Gracias a la información contenida en esta tabla, el software es capaz de agrupar células provenientes de muestras biológicamente afines, aplicar algoritmos matemáticos para mitigar el ruido técnico (<em>batch effect correction</em>) y, lo más importante, definir los grupos exactos sobre los cuales se realizarán los contrastes estadísticos para hallar los <strong>genes diferencialmente expresados (DEGs)</strong>.
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-8de603a37dff6b61eeb7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8de603a37dff6b61eeb7">{"x":{"filter":"none","vertical":false,"data":[["SCS003_24_WT","SCS003_24_KO"],["WT","KO"],[1,1],["Thymus","Thymus"],[null,null],[null,null],[null,null],[null,null]],"container":"<table class=\"stripe hover compact\">\n  <thead>\n    <tr>\n      <th>Sample_ID<\/th>\n      <th>Condition<\/th>\n      <th>Replicate<\/th>\n      <th>Tissue<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Batch<\/th>\n      <th>Notes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"300px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"ft","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"className":"dt-right","targets":2},{"name":"Sample_ID","targets":0},{"name":"Condition","targets":1},{"name":"Replicate","targets":2},{"name":"Tissue","targets":3},{"name":"Age","targets":4},{"name":"Sex","targets":5},{"name":"Batch","targets":6},{"name":"Notes","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata/sample_metadata.tsv" download="sample_metadata.tsv" class="boton-file-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar archivo “sample_metadata.tsv” </a>
+</p>
+<p>
+Con el diseño biológico perfectamente definido y validado en la tabla anterior, resulta imperativo conectarlo con su contraparte técnica. Es decir, <strong>¿cómo sabe el pipeline bioinformático qué archivo físico salido del secuenciador corresponde a cada muestra clínica?</strong> Para resolver este solapamiento entre la biología y la informática, recurrimos al segundo archivo clave de este directorio.
+</p>
+<div class="divider">
+
+</div>
+<p>
+<i class="fa-solid fa-server" style="color: #4a86e8;"></i> <strong>Archivo:</strong> <code>fastq_mapping.tsv</code>
+</p>
+<p>
+Este documento representa el <strong>trazado informático y de secuenciación</strong> del proyecto. Establece la correspondencia directa y sin ambigüedades entre los nombres de muestra estandarizados (los definidos en el diccionario biológico) y los archivos binarios crudos <code>.fastq.gz</code> (R1 y R2) generados por el secuenciador Illumina.
+</p>
+<p>
+Esta trazabilidad garantiza una transparencia total del proceso computacional. Es el “mapa de instrucciones” que asegura que los pipelines de procesamiento primario (como <em>Cell Ranger</em>) identifiquen, asignen y ensamblen correctamente la estructura de códigos de barras celulares (<em>Cell Barcodes</em>), identificadores moleculares (UMIs) y lecturas transcriptómicas (<em>Reads</em>) provenientes de cada carril de secuenciación (<em>Lane</em>).
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ddd49552006e325def22" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ddd49552006e325def22">{"x":{"filter":"none","vertical":false,"data":[["SCS003_24_WT","SCS003_24_KO"],["WT","KO"],["L001","L005"],["SCS003_24_WT_S1_L001_R1_001.fastq.gz","SCS003_24_KO_S18_L005_R1_001.fastq.gz"],["SCS003_24_WT_S1_L001_R2_001.fastq.gz","SCS003_24_KO_S18_L005_R2_001.fastq.gz"]],"container":"<table class=\"stripe hover compact\">\n  <thead>\n    <tr>\n      <th>Sample_ID<\/th>\n      <th>Condition<\/th>\n      <th>Lane<\/th>\n      <th>FASTQ_R1<\/th>\n      <th>FASTQ_R2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"scrollY":"300px","scrollCollapse":true,"paging":false,"lengthChange":false,"info":false,"dom":"ft","language":{"url":"//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"},"columnDefs":[{"name":"Sample_ID","targets":0},{"name":"Condition","targets":1},{"name":"Lane","targets":2},{"name":"FASTQ_R1","targets":3},{"name":"FASTQ_R2","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p style="text-align:center; margin-top: 15px;">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/04_resources/01_metadata/fastq_mapping.tsv" download="fastq_mapping.tsv" class="boton-file-download"> <i class="fa-solid fa-file-arrow-down"></i> Descargar archivo “fastq_mapping.tsv” </a>
+</p>
+<p>
+Una vez completado el “mapa” documental que rige el experimento —tanto a nivel clínico como de trazabilidad técnica— estamos listos para explorar los archivos de datos reales. En el siguiente apartado, se revisará el punto de partida físico del procesamiento: las secuencias puras obtenidas tras la secuenciación y los informes primarios generados por el software <code>Cell Ranger</code>, los cuales constituyen los cimientos matemáticos del estudio.
+</p>
+<div style="height: 20px; background-color: transparent;">
+
+</div>
+<div id="tab3-seccion1.3" class="titulo2">
+<p>1.3. Trazado de secuenciación y datos crudos</p>
+</div>
+<p>
+Una vez completado el mapa documental que rige el experimento (tanto a nivel clínico como de trazabilidad técnica), el siguiente paso es inspeccionar los <strong>datos físicos reales</strong> de los que parte este estudio computacional.
+</p>
+<p>
+En el flujo de trabajo de Single-Cell RNA-Seq (como el implementado por 10x Genomics), la señal capturada por el secuenciador Illumina se almacena inicialmente en un formato binario en bruto (archivos <strong>BCL</strong>). A partir de este punto, el software <strong>Cell Ranger</strong> entra en acción ejecutando un procesamiento en dos fases principales. En primer lugar, demultiplexa y transforma esos archivos BCL en los archivos de lectura estándar en formato <strong>FASTQ</strong> (<code>.fastq.gz</code>). A continuación, el mismo pipeline procesa estos FASTQ: alinea las secuencias contra el genoma de referencia, colapsa los identificadores moleculares (UMIs) y asigna cada lectura a una célula específica (mediante los <em>Cell Barcodes</em>).
+</p>
+<p>
+El producto final de esta ejecución es un directorio que contiene tanto los FASTQ generados como una compleja estructura de subcarpetas por muestra con los resultados analíticos primarios (matrices de expresión, reportes de calidad, etc.). A continuación, se muestra la ruta absoluta del sistema donde se aloja este directorio:
+</p>
+<p><code>/workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger</code></p>
+<p>
+<em style="color: #666;"><i class="fa-solid fa-circle-info"></i> <strong>Aviso sobre la accesibilidad de los datos crudos:</strong> Debido al tamaño excepcional de los archivos de secuenciación (<code>.fastq.gz</code>) y las matrices primarias generadas, estos no se han copiado físicamente junto a este informe interactivo para garantizar un rendimiento óptimo y la portabilidad del documento. Por ello, el siguiente visor enlaza directamente con la carpeta original utilizando las rutas absolutas del sistema. Si intenta hacer clic en estos enlaces desde un equipo externo local (ajeno al servidor o clúster donde se ejecutó el análisis), es normal que reciba un mensaje de error (como <code>ERR_FILE_NOT_FOUND</code> o ruta inaccesible). En tal caso, este panel interactivo cumplirá una función puramente descriptiva, permitiéndole confirmar de manera visual la integridad, existencia y nomenclatura de los datos de partida.</em>
+</p>
+<div class="box-files">
+<ul>
+<li class="file-folder">
+<a href="../../../../../../../workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_KO_S18" target="_blank">SCS003_24_KO_S18</a>
+</li>
+<li class="file-fastqgz">
+<a href="../../../../../../../workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_KO_S18_L005_R1_001.fastq.gz" target="_blank">SCS003_24_KO_S18_L005_R1_001.fastq.gz</a>
+</li>
+<li class="file-fastqgz">
+<a href="../../../../../../../workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_KO_S18_L005_R2_001.fastq.gz" target="_blank">SCS003_24_KO_S18_L005_R2_001.fastq.gz</a>
+</li>
+<li class="file-folder">
+<a href="../../../../../../../workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_WT_S1" target="_blank">SCS003_24_WT_S1</a>
+</li>
+<li class="file-fastqgz">
+<a href="../../../../../../../workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_WT_S1_L001_R1_001.fastq.gz" target="_blank">SCS003_24_WT_S1_L001_R1_001.fastq.gz</a>
+</li>
+<li class="file-fastqgz">
+<a href="../../../../../../../workspace/data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/SCS003_24_WT_S1_L001_R2_001.fastq.gz" target="_blank">SCS003_24_WT_S1_L001_R2_001.fastq.gz</a>
+</li>
+</ul>
+</div>
+<p style="text-align:center;">
+<a href="../../../../../../../resources/02-nextflow-results/01-project-data/05-INT-24-scRNASeq_Timo_Mdelgado_organized/data/02_fastq_cellranger/" target="_blank" class="boton-files"> <i class="fa-solid fa-folder-open"></i> Explorar los datos crudos y resultados de Cell Ranger aquí </a>
+</p>
+<p>
+Como se puede observar en la estructura superior, para cada muestra listada en nuestro diccionario biológico existe un par (o varios pares) de archivos <code>.fastq.gz</code> (R1 y R2) correspondientes a las lecturas directas del secuenciador. Junto a ellos, se generan carpetas individuales (con el nombre de la muestra) que albergan el volcado completo de resultados de <em>Cell Ranger</em>, incluyendo la vital carpeta <code>outs/</code> donde residen las matrices de expresión filtradas.
+</p>
+<div class="divider">
+
+</div>
+<p>
+Habiendo validado la correcta estructuración del proyecto, la coherencia de los metadatos biológicos y la disponibilidad física de los datos crudos, hemos consolidado la base sobre la que se asienta todo el estudio. El siguiente paso ineludible en el flujo de trabajo es garantizar la <strong>fiabilidad técnica e integridad</strong> de estos datos antes de inferir cualquier conclusión biológica.
+</p>
+<p>
+En la próxima etapa del informe, accesible a través de la sección de <strong><a href="02-control-calidad.html" class="normalink">Control de calidad y filtrado (QC)</a></strong>, llevaremos a cabo una evaluación rigurosa de las métricas a dos niveles. Por un lado, examinaremos la calidad primaria de las lecturas de secuenciación (apoyándonos en los reportes de <code>Cell Ranger</code> y en herramientas complementarias como <code>Fastp</code> o <code>MultiQC</code>). Por otro lado, ejecutaremos un estricto <strong>control de calidad a nivel celular</strong> mediante <code>Seurat</code>, filtrando eventos anómalos —como células muertas, dobletes o gotas vacías— en base al porcentaje de transcritos mitocondriales, la diversidad de genes detectados y el volumen de conteos totales. Este doble cribado resulta absolutamente crítico antes de poder avanzar de forma segura hacia las fases de reducción de dimensionalidad y <em>clustering</em>.
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  FOOTER -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<footer>
+<a href="#" class="arriba"><i class="fa-solid fa-angles-up"></i></a>
+</footer>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--  CARGAR SCRIPTS DE JAVASCRIPT -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<script type="module" src="../../../../04-javascript/chatbot.js"></script>
+<script type="module" src="../../../../04-javascript/script.js"></script>
+
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../../../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

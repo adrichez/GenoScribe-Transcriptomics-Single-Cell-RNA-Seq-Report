@@ -1,0 +1,25 @@
+###############################################################################################################################
+# GIT IGNORE CONFIGURATION FILE
+###############################################################################################################################
+
+# Archivos del sistema (macOS)
+**/.DS_Store
+**/._*
+
+
+# Archivos grandes de análisis
+**/*.cloupe
+**/*.h5
+
+
+# Archivos temporales y de respaldo
+**/*.log
+**/*.tmp
+**/*.bak
+**/*.swp
+
+
+# Archivos de R
+**/.RData
+**/.Rhistory
+**/*.rds

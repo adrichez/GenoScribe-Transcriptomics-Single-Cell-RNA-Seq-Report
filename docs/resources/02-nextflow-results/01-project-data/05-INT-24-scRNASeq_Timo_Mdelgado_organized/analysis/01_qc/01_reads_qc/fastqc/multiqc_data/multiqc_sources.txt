@@ -1,0 +1,5 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	SCS003_24_WT__S1_L001_R2_001	/mnt/beegfs/asanchez/workspace/1-projects/01-reports/2-extension/prototipo-resultados/02-EXT-25-SC-RNA-Seq/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/10k_vs_7k_cells_edu/reads/qc_reports/fastqc/SCS003_24_WT__S1_L001_R2_001_fastqc.zip
+FastQC	all_sections	SCS003_24_WT__S1_L001_R1_001	/mnt/beegfs/asanchez/workspace/1-projects/01-reports/2-extension/prototipo-resultados/02-EXT-25-SC-RNA-Seq/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/10k_vs_7k_cells_edu/reads/qc_reports/fastqc/SCS003_24_WT__S1_L001_R1_001_fastqc.zip
+FastQC	all_sections	SCS003_24_KO_S18_L005_R1_001	/mnt/beegfs/asanchez/workspace/1-projects/01-reports/2-extension/prototipo-resultados/02-EXT-25-SC-RNA-Seq/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/10k_vs_7k_cells_edu/reads/qc_reports/fastqc/SCS003_24_KO_S18_L005_R1_001_fastqc.zip
+FastQC	all_sections	SCS003_24_KO_S18_L005_R2_001	/mnt/beegfs/asanchez/workspace/1-projects/01-reports/2-extension/prototipo-resultados/02-EXT-25-SC-RNA-Seq/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/10k_vs_7k_cells_edu/reads/qc_reports/fastqc/SCS003_24_KO_S18_L005_R2_001_fastqc.zip

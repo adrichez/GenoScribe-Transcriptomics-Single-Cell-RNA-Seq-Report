@@ -1,0 +1,190 @@
+{
+    "name": "ID.SCS003_24_KO_S18.SC_RNA_COUNTER_CS.SC_MULTI_CORE.MULTI_GEM_WELL_PROCESSOR.COUNT_GEM_WELL_PROCESSOR._BASIC_SC_RNA_COUNTER._MATRIX_COMPUTER.BARCODE_CORRECTION.fork0.chnk48",
+    "type": "local",
+    "cwd": "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_KO_S18/SC_RNA_COUNTER_CS/SC_MULTI_CORE/MULTI_GEM_WELL_PROCESSOR/COUNT_GEM_WELL_PROCESSOR/_BASIC_SC_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk48-u3c063641e9/files",
+    "rusage": {
+        "self": {
+            "ru_maxrss": 50000,
+            "ru_ixrss": 0,
+            "ru_idrss": 0,
+            "ru_minflt": 2104,
+            "ru_majflt": 27,
+            "ru_nswap": 0,
+            "ru_utime": 0.008161,
+            "ru_stime": 0.018423,
+            "ru_inblock": 5204,
+            "ru_oublock": 8,
+            "ru_msgsnd": 0,
+            "ru_msgrcv": 0,
+            "ru_nsignals": 0,
+            "ru_nivcsw": 45
+        },
+        "children": {
+            "ru_maxrss": 877288,
+            "ru_ixrss": 0,
+            "ru_idrss": 0,
+            "ru_minflt": 110526,
+            "ru_majflt": 155,
+            "ru_nswap": 0,
+            "ru_utime": 13.016689,
+            "ru_stime": 11.941053,
+            "ru_inblock": 522254,
+            "ru_oublock": 224745,
+            "ru_msgsnd": 0,
+            "ru_msgrcv": 0,
+            "ru_nsignals": 0,
+            "ru_nivcsw": 5749
+        }
+    },
+    "used_bytes": {
+        "rss": 775221248,
+        "shared": 2215936,
+        "vmem": 2800541696,
+        "text": 20201472,
+        "stack": 2757599232,
+        "proc_count": 1
+    },
+    "io": {
+        "total": {
+            "read": {
+                "sysc": 70245,
+                "bytes": 87593004
+            },
+            "write": {
+                "sysc": 1099,
+                "bytes": 0
+            }
+        },
+        "max": {
+            "read": {
+                "sysc": 2256.5549933646676,
+                "bytes": 17513978.94248076
+            },
+            "write": {
+                "sysc": 2092.3771603330865,
+                "bytes": 0
+            }
+        },
+        "dev": {
+            "read": {
+                "sysc": 680.7451859997869,
+                "bytes": 5229147.620884167
+            },
+            "write": {
+                "sysc": 207.36005019914805,
+                "bytes": 0
+            }
+        }
+    },
+    "wallclock": {
+        "start": "2024-11-14T19:31:56.456780724+01:00",
+        "end": "2024-11-14T19:32:47.510386278+01:00",
+        "duration_seconds": 51.053605511
+    },
+    "profile_mode": "disable",
+    "stackvars_flag": "disable",
+    "monitor_flag": "disable",
+    "invocation": {
+        "call": "SC_RNA_COUNTER_CS",
+        "args": {
+            "aligner": null,
+            "check_library_compatibility": true,
+            "chemistry": "auto",
+            "disable_ab_aggregate_detection": false,
+            "emptydrops_minimum_umis": null,
+            "feature_reference": null,
+            "filter_probes": null,
+            "force_cells": null,
+            "global_minimum_umis": null,
+            "include_introns": true,
+            "max_mito_percent": null,
+            "no_bam": true,
+            "no_secondary_analysis": false,
+            "no_target_umi_filter": false,
+            "r1_length": null,
+            "r2_length": null,
+            "recovered_cells": null,
+            "reference_path": "/mnt/beegfs/Bioinformatica/datasets/CellRanger/Mouse/refdata-gex-GRCm39-2024-A",
+            "sample_def": [
+                {
+                    "fastq_id": null,
+                    "fastq_mode": "ILMN_BCL2FASTQ",
+                    "gem_group": null,
+                    "lanes": null,
+                    "library_type": "Gene Expression",
+                    "read_path": "/mnt/beegfs/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads",
+                    "sample_indices": [
+                        "any"
+                    ],
+                    "sample_names": [
+                        "SCS003_24_KO"
+                    ],
+                    "subsample_rate": null,
+                    "target_set": null,
+                    "target_set_name": null
+                }
+            ],
+            "sample_desc": "",
+            "sample_id": "SCS003_24_KO_S18",
+            "targeting_method": null,
+            "trim_polya_min_score": 20,
+            "trim_tso_min_score": 20
+        },
+        "mro_file": "rna/sc_rna_counter_cs.mro"
+    },
+    "version": {
+        "martian": "v4.0.12",
+        "pipelines": "cellranger-8.0.0"
+    },
+    "sge": {
+        "SLURM_CHECKPOINT_IMAGE_DIR": "/var/slurm/checkpoint",
+        "SLURM_CLUSTER_NAME": "ladon",
+        "SLURM_CPUS_ON_NODE": "20",
+        "SLURM_CPUS_PER_TASK": "20",
+        "SLURM_DISTRIBUTION": "cyclic",
+        "SLURM_GTIDS": "0",
+        "SLURM_JOBID": "44443",
+        "SLURM_JOB_CPUS_PER_NODE": "20",
+        "SLURM_JOB_GID": "1054",
+        "SLURM_JOB_ID": "44443",
+        "SLURM_JOB_NAME": "scRNASeq_Mario",
+        "SLURM_JOB_NODELIST": "nodo07",
+        "SLURM_JOB_NUM_NODES": "1",
+        "SLURM_JOB_PARTITION": "ladon",
+        "SLURM_JOB_UID": "1001",
+        "SLURM_JOB_USER": "eandres",
+        "SLURM_LAUNCH_NODE_IPADDR": "192.168.2.10",
+        "SLURM_LOCALID": "0",
+        "SLURM_NNODES": "1",
+        "SLURM_NODEID": "0",
+        "SLURM_NODELIST": "nodo07",
+        "SLURM_NPROCS": "1",
+        "SLURM_NTASKS": "1",
+        "SLURM_PRIO_PROCESS": "0",
+        "SLURM_PROCID": "0",
+        "SLURM_PTY_PORT": "44213",
+        "SLURM_PTY_WIN_COL": "278",
+        "SLURM_PTY_WIN_ROW": "67",
+        "SLURM_SRUN_COMM_HOST": "192.168.2.10",
+        "SLURM_SRUN_COMM_PORT": "39350",
+        "SLURM_STEPID": "0",
+        "SLURM_STEP_ID": "0",
+        "SLURM_STEP_LAUNCHER_PORT": "39350",
+        "SLURM_STEP_NODELIST": "nodo07",
+        "SLURM_STEP_NUM_NODES": "1",
+        "SLURM_STEP_NUM_TASKS": "1",
+        "SLURM_STEP_TASKS_PER_NODE": "1",
+        "SLURM_SUBMIT_DIR": "/mnt/beegfs/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads",
+        "SLURM_SUBMIT_HOST": "nodo00",
+        "SLURM_TASKS_PER_NODE": "1",
+        "SLURM_TASK_PID": "12533",
+        "SLURM_TOPOLOGY_ADDR": "nodo07",
+        "SLURM_TOPOLOGY_ADDR_PATTERN": "node",
+        "SLURM_UMASK": "0002"
+    },
+    "host": "nodo07",
+    "pid": 23445,
+    "threads": 1,
+    "memGB": 4,
+    "vmemGB": 7
+}

@@ -1,0 +1,20 @@
+{
+    "timestamp": "2024-11-14T21:02:10.900124308+01:00",
+    "paths": [
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/COMBINE_CLUSTERING/fork0/chnk0-u51213656fe/files/clustering_csv",
+        "/home/eandres/Bioinformatica/INT/05-INT-24-scRNASeq_Timo_Mdelgado/Analisis/reads/SCS003_24_WT_S1/SC_RNA_COUNTER_CS/SC_MULTI_CORE/COUNT_ANALYZER/SC_RNA_ANALYZER/COMBINE_CLUSTERING/fork0/chnk0-u51213656fe/files/clustering_h5.h5"
+    ],
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2024-11-14T21:01:02.551345815+01:00",
+            "DeltaBytes": 1723154
+        },
+        {
+            "Timestamp": "2024-11-14T21:02:10.900124308+01:00",
+            "DeltaBytes": -1716632
+        }
+    ],
+    "count": 22,
+    "size": 1716632
+}

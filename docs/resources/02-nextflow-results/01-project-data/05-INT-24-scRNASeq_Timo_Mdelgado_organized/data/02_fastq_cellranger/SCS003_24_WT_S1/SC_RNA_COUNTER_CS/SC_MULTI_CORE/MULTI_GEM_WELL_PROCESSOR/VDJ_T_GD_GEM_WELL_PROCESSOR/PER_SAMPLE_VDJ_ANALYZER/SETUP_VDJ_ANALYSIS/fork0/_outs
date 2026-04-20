@@ -1,0 +1,10 @@
+{
+    "beam_mode": null,
+    "disable_beam": null,
+    "disable_cell_calling": null,
+    "disable_clonotyping": null,
+    "filtered_barcodes": null,
+    "filtered_matrix_h5": null,
+    "raw_matrix_h5": null,
+    "receptor": null
+}
